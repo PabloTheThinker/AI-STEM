@@ -2,13 +2,13 @@
 
 ## Purpose
 
-This document converts the `E = mc²` research analogue into a measurable specification for the future top-level system above `triune`.
+This document converts the `E = mc²` research analogue into a measurable specification for the future top-level system above the cognition engine.
 
 The goal is not to claim a physical law.
 The goal is to define:
 
 - what each term means operationally,
-- which current `triune` signals can estimate it,
+- which current the cognition engine signals can estimate it,
 - which parts are direct measurements,
 - which parts are first-pass proxies,
 - how the resulting quantities can be used by a controller.
@@ -56,13 +56,13 @@ Where:
 
 Every variable must be either:
 
-1. directly measurable from current `triune` state,
-2. inferable by combining current `triune` signals,
+1. directly measurable from current the cognition engine state,
+2. inferable by combining current the cognition engine signals,
 3. explicitly marked as not yet instrumented.
 
 If a term is not measurable or inferable, it does not belong in the first controller.
 
-## Available Current Signals In `triune`
+## Available Current Signals In the cognition engine
 
 The current codebase already exposes enough state to build a first estimator.
 
@@ -259,7 +259,7 @@ P_mem = 0.7 sat(total_mesh_entries; 200) + 0.3 sat(identity_entry_count; 12)
 
 #### 4. Graph cohesion term `P_graph`
 
-Current `triune` does not yet expose a full graph Laplacian.
+Current the cognition engine does not yet expose a full graph Laplacian.
 So the first proxy is:
 
 ```text
@@ -382,7 +382,7 @@ So:
 
 ## Estimating Reliable Propagation Bound `ν*`
 
-`ν*` is the hardest term because current `triune` does not record explicit latency or settling-time instrumentation.
+`ν*` is the hardest term because current the cognition engine does not record explicit latency or settling-time instrumentation.
 
 So the first controller must treat `ν*` as a reliability-throughput bound estimated from health and coherence, not literal speed.
 
@@ -601,7 +601,7 @@ These missing signals should be instrumented before the second controller iterat
 
 ## Recommended Estimation Order
 
-The first implementation above `triune` should estimate in this order:
+The first implementation above the cognition engine should estimate in this order:
 
 1. read latest cognitive-web snapshot,
 2. enrich with one-hour pathway and daemon windows,

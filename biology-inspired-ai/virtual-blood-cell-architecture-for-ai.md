@@ -659,8 +659,8 @@ That is how to make virtual blood cells for an AI without losing the real core o
 
 ## Related Notes
 
-- `/home/pablothethinker/.mocha/brain/research/human-blood-cell-architecture.md`
-- `/home/pablothethinker/.mocha/brain/research/living-research-system-architecture.md`
-- `/home/pablothethinker/.mocha/brain/research/homeostasis-as-master-biological-principle.md`
-- `/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/UNIFIED_AGENT_INTELLIGENCE_MATH.md`
-- `/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/LIVING_RESEARCH_MATHEMATICAL_EXTENSION.md`
+- `./human-blood-cell-architecture.md`
+- `./living-research-system-architecture.md`
+- `./homeostasis-as-master-biological-principle.md`
+- `mathematics/canon/UNIFIED_AGENT_INTELLIGENCE_MATH.md`
+- `mathematics/canon/LIVING_RESEARCH_MATHEMATICAL_EXTENSION.md`

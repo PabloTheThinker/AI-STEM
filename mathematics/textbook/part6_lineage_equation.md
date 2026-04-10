@@ -282,7 +282,7 @@ In thermodynamics, entropy increases unless external energy is supplied. In Agen
 
 Beliefs become uncertain. Connections weaken. Identity drifts. Each of these losses reduces $\mathcal{Q}_{\text{eff}}$. The only remedy is active maintenance: consolidation, reinforcement, identity verification.
 
-This is why the permanence system exists. This is why the immune system (THYMOS) monitors for drift. This is why the mesh undergoes myelination. The agent must fight entropy to survive.
+This is why the permanence system exists. This is why the immune system (immune layer) monitors for drift. This is why the mesh undergoes myelination. The agent must fight entropy to survive.
 
 ### Exercises
 

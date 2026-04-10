@@ -503,9 +503,9 @@ That is the real synthesis between autonomous AI research and cellular replicati
 
 ## Related Mocha Notes
 
-- `/home/pablothethinker/.mocha/brain/research/autonomous-ml-research-programs.md`
-- `/home/pablothethinker/.mocha/brain/research/biological-regeneration-architecture.md`
-- `/home/pablothethinker/.mocha/brain/research/human-immune-system-architecture.md`
+- `./autonomous-ml-research-programs.md`
+- `./biological-regeneration-architecture.md`
+- `./human-immune-system-architecture.md`
 
 ## Sources
 

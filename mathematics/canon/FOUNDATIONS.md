@@ -2,7 +2,7 @@
 
 ## Objective
 
-Build a top-level system above `triune` that mathematically governs:
+Build a top-level system above the cognition engine that mathematically governs:
 - cognition,
 - memory,
 - identity permanence,
@@ -101,7 +101,7 @@ y_t =
 ```
 
 This gives a clean estimator boundary:
-- `triune` produces measurements,
+- the cognition engine produces measurements,
 - the new main system estimates latent state,
 - the policy operates on the estimate, not directly on noisy measurements.
 
@@ -283,7 +283,7 @@ This gives a mathematically clean way to distinguish:
 
 ## Dynamic Programming And Sequential Decision
 
-A top-level system above `triune` must choose actions under uncertainty. That is a sequential decision problem.
+A top-level system above the cognition engine must choose actions under uncertainty. That is a sequential decision problem.
 
 Minimum framing:
 
@@ -312,7 +312,7 @@ The important point is not "use RL everywhere." The important point is:
 
 ## Proposed Mathematical Split Between Layers
 
-### Main system above `triune`
+### Main system above the cognition engine
 
 Owns:
 - latent state estimation,
@@ -321,7 +321,7 @@ Owns:
 - graph-wide coupling,
 - system-wide stability constraints.
 
-### `triune`
+### the cognition engine
 
 Provides:
 - observations,
@@ -333,7 +333,7 @@ Provides:
 - evolutionary updates.
 
 This keeps the stack clean:
-- `triune` is the substrate,
+- the cognition engine is the substrate,
 - the new system is the governing mathematics.
 
 ## Initial Algorithm Direction
@@ -379,7 +379,7 @@ pathway_health >= h_min
 drift_pressure <= d_max
 ```
 
-### Stage 4. Act Through `triune`
+### Stage 4. Act Through the cognition engine
 
 Control gets translated into substrate actions:
 - call retrieval,

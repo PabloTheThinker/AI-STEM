@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document is the third-pass research brief for the future main system above `triune`.
+This document is the third-pass research brief for the future main system above the cognition engine.
 
 This pass focuses on four mathematical areas that matter for implementation:
 - observability and identifiability,
@@ -16,7 +16,7 @@ These are closer to implementation math than the first two research passes.
 
 The top-level system will operate on latent state. That means one of the first hard questions is:
 
-> can the chosen latent state actually be inferred from the measurements produced by `triune`?
+> can the chosen latent state actually be inferred from the measurements produced by the cognition engine?
 
 That is an observability question.
 
@@ -328,7 +328,7 @@ That is a coherent mathematical stack for a real top-level system.
 
 ## 8. What This Means For The Future Main System
 
-The top-level system above `triune` should likely expose:
+The top-level system above the cognition engine should likely expose:
 
 1. a measurement model,
 2. a latent state estimator,
@@ -368,7 +368,7 @@ Without that, a learned top-level system would likely optimize noise.
 
 The next research pass should become more design-specific:
 
-1. define a candidate measurement vector from real `triune` outputs,
+1. define a candidate measurement vector from real the cognition engine outputs,
 2. define the first latent state vector numerically,
 3. propose an initial `A, B, C` structure,
 4. write the first healthy equilibrium `x*`,

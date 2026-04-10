@@ -560,7 +560,7 @@ main_system/
     projection.py
     writes.py
     plasticity.py
-  adapters/triune_adapter.py
+  adapters/cognition engine_adapter.py
 ```
 
 Responsibility split:

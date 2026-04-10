@@ -10,7 +10,7 @@ neural-network side of the Lineage Engine.
 It exists for three reasons:
 
 1. the Lineage Equation paper is already live in
-   `/home/pablothethinker/.mocha/brain/research/papers/lineage-equation-paper.md`
+   `./papers/lineage-equation-paper.md`
 2. external critique has now arrived through Grok and correctly identified the
    next credibility questions
 3. the codebase already contains more of the answer than the paper alone makes
@@ -39,10 +39,10 @@ The paper and implementation already define:
 
 Primary anchors:
 
-- `/home/pablothethinker/.mocha/brain/research/papers/lineage-equation-paper.md`
-- `/home/pablothethinker/lineage-engine/src/lineage/math/capacity.py`
-- `/home/pablothethinker/lineage-engine/src/lineage/math/optimize.py`
-- `/home/pablothethinker/lineage-engine/src/lineage/math/validate.py`
+- `./papers/lineage-equation-paper.md`
+- `
+- `
+- `
 
 ### 2. Weight-derivation and cross-architecture scaffolding already exist
 
@@ -61,7 +61,7 @@ paper here:
 
 Primary anchor:
 
-- `/home/pablothethinker/lineage-engine/src/lineage/math/ablation.py`
+- `
 
 So the right next move is not "invent a justification from scratch."
 It is:
@@ -81,9 +81,9 @@ The current implementation already includes:
 
 Primary anchors:
 
-- `/home/pablothethinker/lineage-engine/src/lineage/math/network.py`
-- `/home/pablothethinker/lineage-engine/src/lineage/math/coupling.py`
-- `/home/pablothethinker/koda/ascent.py`
+- `
+- `
+- `
 
 So the next neural-network research stage is not "should we use a network?"
 It is:
@@ -145,9 +145,9 @@ But `AscentOptimizer._persist()` currently writes:
 
 Primary anchors:
 
-- `/home/pablothethinker/lineage-engine/src/lineage/math/network.py`
-- `/home/pablothethinker/lineage-engine/src/lineage/math/optimize.py`
-- `/home/pablothethinker/koda/state/ascent-trajectory.json`
+- `
+- `
+- `
 
 So the advertised periodic retraining path in Koda is weaker than it should be.
 The trainer and optimizer are not yet speaking the same data language.
@@ -183,8 +183,8 @@ The coupled math is already present:
 
 Primary anchors:
 
-- `/home/pablothethinker/lineage-engine/src/lineage/math/coupling.py`
-- `/home/pablothethinker/lineage-engine/src/lineage/math/network.py`
+- `
+- `
 
 But the coupling coefficients are still:
 

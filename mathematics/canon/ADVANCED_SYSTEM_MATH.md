@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document is the second-pass research brief for the future top-level system above `triune`.
+This document is the second-pass research brief for the future top-level system above the cognition engine.
 
 The first-pass document established the broad mathematical families. This document sharpens that into a more specific claim:
 
@@ -41,7 +41,7 @@ y_t     = h(x_t) + v_t
 
 with:
 - `x_t` latent state of the whole agent,
-- `y_t` measured outputs from `triune`,
+- `y_t` measured outputs from the cognition engine,
 - `u_t` control decisions from the new top-level system,
 - `w_t` external disturbance,
 - `v_t` observation noise.
@@ -250,7 +250,7 @@ That is mathematically valuable because it gives a direct penalty for "cognitive
 
 ## Robust Control Framing
 
-The system above `triune` should assume model mismatch.
+The system above the cognition engine should assume model mismatch.
 
 That suggests using the generalized plant view:
 
@@ -395,7 +395,7 @@ The new top-level system should likely be:
 
 ```text
 a constrained belief-state controller over a graph-coupled latent agent state,
-using triune as the observation-and-actuation substrate.
+using cognition engine as the observation-and-actuation substrate.
 ```
 
 That is the most mathematically coherent synthesis of the research gathered so far.
@@ -413,7 +413,7 @@ Remaining mathematics to deepen:
 
 ## Practical Implication
 
-If we follow this path, the future new main system above `triune` is no longer "a manager script."
+If we follow this path, the future new main system above the cognition engine is no longer "a manager script."
 
 It becomes:
 - the estimator,

@@ -9,7 +9,7 @@ This document turns the merged mathematics into a first implementation plan.
 It answers four concrete questions:
 
 1. what should count as `r_t` in the first version,
-2. where those signals can be collected in the current `triune` code,
+2. where those signals can be collected in the current the cognition engine code,
 3. how `q_t` should be computed on each cycle,
 4. how the first controller loop should wrap around retrieval, thinking, memory updates, and maintenance.
 
@@ -25,16 +25,16 @@ replace with native internal metrics later
 ```
 
 That means the first version must not wait for perfect transformer introspection.
-It should begin with observable inference-path summaries already present in `triune`.
+It should begin with observable inference-path summaries already present in the cognition engine.
 
 ## Target Runtime Stack
 
-The future main system should sit above `triune` and orchestrate:
+The future main system should sit above the cognition engine and orchestrate:
 
 ```text
 request
 -> controller pre-state estimate
--> triune retrieval / think path
+-> cognition engine retrieval / think path
 -> post-think state estimate
 -> q_t update
 -> control action selection
@@ -43,7 +43,7 @@ request
 
 This is the first practical form of the multi-scale system.
 
-## Current Hook Points In `triune`
+## Current Hook Points In the cognition engine
 
 The current engine already gives clear hook points.
 
@@ -512,7 +512,7 @@ and expose `/api/control-state`.
 
 ### Step 5
 
-Wrap `think()` and `weighted_think()` with a top-level orchestrator function in the new main system, not inside raw `triune` cognition functions.
+Wrap `think()` and `weighted_think()` with a top-level orchestrator function in the new main system, not inside raw the cognition engine cognition functions.
 
 ## What Stays As V2
 
@@ -537,7 +537,7 @@ main_system/
   capacity.py
   policy.py
   orchestrator.py
-  adapters/triune_adapter.py
+  adapters/cognition engine_adapter.py
 ```
 
 Responsibility split:
@@ -546,7 +546,7 @@ Responsibility split:
 - `capacity.py` computes `q_t`,
 - `policy.py` selects regime and decision policy,
 - `orchestrator.py` sequences the runtime,
-- `triune_adapter.py` calls `triune` functions and APIs.
+- `cognition engine_adapter.py` calls the cognition engine functions and APIs.
 
 ## Final Statement
 
@@ -554,7 +554,7 @@ The first implementation should not try to fully solve internal interpretability
 It should:
 
 ```text
-use the current `triune` inference path as a source of structured internal-state proxies,
+use the current the cognition engine inference path as a source of structured internal-state proxies,
 merge those proxies with cognitive-web state,
 compute q_t every cycle,
 and let q_t govern retrieval, writing, maintenance, and action risk

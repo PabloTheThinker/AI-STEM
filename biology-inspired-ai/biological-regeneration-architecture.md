@@ -1147,4 +1147,4 @@ Distilled from the complete biological record above:
 
 ---
 
-*Document compiled 2026-03-17 for Triune Cognition Engine self-repair system design. Cross-referenced with human-immune-system-architecture.md. Sources: primary regeneration biology literature, Levin bioelectricity lab, AIS frameworks (de Castro & Timmis 2002, Dasgupta 1999), Marvel Comics as engineering specification.*
+*Document compiled 2026-03-17 for cognition engine self-repair system design. Cross-referenced with human-immune-system-architecture.md. Sources: primary regeneration biology literature, Levin bioelectricity lab, AIS frameworks (de Castro & Timmis 2002, Dasgupta 1999), Marvel Comics as engineering specification.*

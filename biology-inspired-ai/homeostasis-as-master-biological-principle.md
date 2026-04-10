@@ -557,10 +557,10 @@ That is why homeostasis is the deepest biological idea for designing research sy
 
 ## Related Mocha Notes
 
-- `/home/pablothethinker/.mocha/brain/research/autonomous-ml-research-programs.md`
-- `/home/pablothethinker/.mocha/brain/research/cellular-replication-inspired-research-programs.md`
-- `/home/pablothethinker/.mocha/brain/research/biological-regeneration-architecture.md`
-- `/home/pablothethinker/.mocha/brain/research/human-immune-system-architecture.md`
+- `./autonomous-ml-research-programs.md`
+- `./cellular-replication-inspired-research-programs.md`
+- `./biological-regeneration-architecture.md`
+- `./human-immune-system-architecture.md`
 
 ## Sources
 

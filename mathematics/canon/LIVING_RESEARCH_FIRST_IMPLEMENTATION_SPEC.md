@@ -699,7 +699,7 @@ main_system/
     niches.py
     modes.py
     governance.py
-  adapters/triune_adapter.py
+  adapters/cognition engine_adapter.py
 ```
 
 Responsibility split:

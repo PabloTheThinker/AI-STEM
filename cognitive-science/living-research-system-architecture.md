@@ -824,11 +824,11 @@ That is the merged conclusion of the recent research.
 
 ## Related Notes
 
-- `/home/pablothethinker/.mocha/brain/research/autonomous-ml-research-programs.md`
-- `/home/pablothethinker/.mocha/brain/research/cellular-replication-inspired-research-programs.md`
-- `/home/pablothethinker/.mocha/brain/research/homeostasis-as-master-biological-principle.md`
-- `/home/pablothethinker/.mocha/brain/research/biological-regeneration-architecture.md`
-- `/home/pablothethinker/.mocha/brain/research/human-immune-system-architecture.md`
+- `./autonomous-ml-research-programs.md`
+- `./cellular-replication-inspired-research-programs.md`
+- `./homeostasis-as-master-biological-principle.md`
+- `./biological-regeneration-architecture.md`
+- `./human-immune-system-architecture.md`
 
 ## Sources
 

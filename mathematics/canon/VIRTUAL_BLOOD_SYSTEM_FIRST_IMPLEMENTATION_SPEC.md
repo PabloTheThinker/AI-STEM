@@ -698,7 +698,7 @@ main_system/
     stabilization.py
     clearance.py
     health.py
-  adapters/triune_adapter.py
+  adapters/cognition engine_adapter.py
 ```
 
 Responsibility split:

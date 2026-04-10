@@ -21,7 +21,7 @@ Target stage: `E` (identified parameters)
 The first promotion attempt (earlier on 2026-04-07) was correctly held due to five blockers:
 
 1. **Target circularity** — Q_obs was computed by the same formula being fit
-2. **Formula mismatch** — sovereign runtime used different proxies than Lineage-engine
+2. **Formula mismatch** — agent runtime used different proxies than Lineage-engine
 3. **Lack of condition diversity** — only opus + claude_cli_stream
 4. **Degenerate input variation** — 8 components had zero variance
 5. **Collapsed target** — q_net was zero in 100% of cases

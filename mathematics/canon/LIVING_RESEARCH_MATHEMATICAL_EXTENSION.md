@@ -537,10 +537,10 @@ This extension does not replace the current packet.
 
 It uses:
 
-- [`UNIFIED_MATHEMATICAL_SYNTHESIS.md`](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/UNIFIED_MATHEMATICAL_SYNTHESIS.md) for organism potential, belief, and constraints
-- [`UNIFIED_AGENT_INTELLIGENCE_MATH.md`](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/UNIFIED_AGENT_INTELLIGENCE_MATH.md) for micro/meso/macro coupling
-- [`MASS_ENERGY_CONTROLLER_SPEC.md`](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/MASS_ENERGY_CONTROLLER_SPEC.md) for measurable capacity and reserve-adjacent variables
-- [`UNIFIED_AGENT_FIRST_IMPLEMENTATION_SPEC.md`](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/UNIFIED_AGENT_FIRST_IMPLEMENTATION_SPEC.md) for first regime implementation
+- [`UNIFIED_MATHEMATICAL_SYNTHESIS.md`](mathematics/canon/UNIFIED_MATHEMATICAL_SYNTHESIS.md) for organism potential, belief, and constraints
+- [`UNIFIED_AGENT_INTELLIGENCE_MATH.md`](mathematics/canon/UNIFIED_AGENT_INTELLIGENCE_MATH.md) for micro/meso/macro coupling
+- [`MASS_ENERGY_CONTROLLER_SPEC.md`](mathematics/canon/MASS_ENERGY_CONTROLLER_SPEC.md) for measurable capacity and reserve-adjacent variables
+- [`UNIFIED_AGENT_FIRST_IMPLEMENTATION_SPEC.md`](mathematics/canon/UNIFIED_AGENT_FIRST_IMPLEMENTATION_SPEC.md) for first regime implementation
 
 This note adds:
 

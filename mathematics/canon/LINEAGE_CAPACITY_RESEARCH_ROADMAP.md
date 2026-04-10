@@ -10,9 +10,9 @@ program for the mathematics packet.
 It is driven by three inputs:
 
 - the current Lineage Equation paper in
-  `/home/pablothethinker/.mocha/brain/research/papers/lineage-equation-paper.md`,
+  `./papers/lineage-equation-paper.md`,
 - the actual implementation in
-  `/home/pablothethinker/lineage-engine/src/lineage/math/`,
+  `
 - and Grok's critique, which correctly identifies the two main pressure points:
   coefficient justification and cross-architecture generalization.
 
@@ -27,13 +27,13 @@ The current stack already contains more than the paper alone makes obvious.
 Live or implemented now:
 
 - the linear Lineage Equation in
-  `/home/pablothethinker/lineage-engine/src/lineage/math/capacity.py`,
+  `
 - a ten-check validation path in
-  `/home/pablothethinker/lineage-engine/src/lineage/math/validate.py`,
+  `
 - a sensitivity and cross-architecture module in
-  `/home/pablothethinker/lineage-engine/src/lineage/math/ablation.py`,
+  `
 - and a nonlinear coupling extension in
-  `/home/pablothethinker/lineage-engine/src/lineage/math/coupling.py`.
+  `
 
 This changes the framing.
 
@@ -218,7 +218,7 @@ Questions:
 - should `nu*` remain a hard bottleneck over max latency,
 - or become a quantile-based or reliability-weighted rate estimate,
 - how should variance and tail latency enter the invariant,
-- and what is the correct estimator under real Koda/Mocha runtime traces?
+- and what is the correct estimator under real Koda/agent runtime traces?
 
 Required work:
 
@@ -377,8 +377,8 @@ The right pattern is:
   State Spaces."
   https://arxiv.org/abs/2312.00752
 - The existing Lineage Equation paper.
-  `/home/pablothethinker/.mocha/brain/research/papers/lineage-equation-paper.md`
+  `./papers/lineage-equation-paper.md`
 - Local implementation anchors:
-  `/home/pablothethinker/lineage-engine/src/lineage/math/capacity.py`
-  `/home/pablothethinker/lineage-engine/src/lineage/math/ablation.py`
-  `/home/pablothethinker/lineage-engine/src/lineage/math/coupling.py`
+  `
+  `
+  `

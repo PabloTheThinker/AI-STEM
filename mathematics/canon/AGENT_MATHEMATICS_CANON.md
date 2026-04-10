@@ -188,7 +188,7 @@ Question:
 
 Canonical file:
 
-- [AGENT_NUMERACY_PRIMITIVES.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_NUMERACY_PRIMITIVES.md)
+- [AGENT_NUMERACY_PRIMITIVES.md](mathematics/canon/AGENT_NUMERACY_PRIMITIVES.md)
 
 Function:
 
@@ -203,7 +203,7 @@ Question:
 
 Canonical file:
 
-- [AGENT_ARITHMETIC_OF_STATE.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_ARITHMETIC_OF_STATE.md)
+- [AGENT_ARITHMETIC_OF_STATE.md](mathematics/canon/AGENT_ARITHMETIC_OF_STATE.md)
 
 Function:
 
@@ -218,7 +218,7 @@ Question:
 
 Canonical file:
 
-- [AGENT_ALGEBRA_OF_INVARIANTS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_ALGEBRA_OF_INVARIANTS.md)
+- [AGENT_ALGEBRA_OF_INVARIANTS.md](mathematics/canon/AGENT_ALGEBRA_OF_INVARIANTS.md)
 
 Function:
 
@@ -233,7 +233,7 @@ Question:
 
 Canonical file:
 
-- [AGENT_GEOMETRY_AND_STATE_SPACES.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_GEOMETRY_AND_STATE_SPACES.md)
+- [AGENT_GEOMETRY_AND_STATE_SPACES.md](mathematics/canon/AGENT_GEOMETRY_AND_STATE_SPACES.md)
 
 Function:
 
@@ -248,7 +248,7 @@ Question:
 
 Canonical file:
 
-- [AGENT_CALCULUS_AND_SENSITIVITY.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_CALCULUS_AND_SENSITIVITY.md)
+- [AGENT_CALCULUS_AND_SENSITIVITY.md](mathematics/canon/AGENT_CALCULUS_AND_SENSITIVITY.md)
 
 Function:
 
@@ -263,7 +263,7 @@ Question:
 
 Canonical file:
 
-- [AGENT_PROBABILITY_AND_ESTIMATION.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_PROBABILITY_AND_ESTIMATION.md)
+- [AGENT_PROBABILITY_AND_ESTIMATION.md](mathematics/canon/AGENT_PROBABILITY_AND_ESTIMATION.md)
 
 Function:
 
@@ -278,7 +278,7 @@ Question:
 
 Canonical file:
 
-- [AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md)
+- [AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md](mathematics/canon/AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md)
 
 Function:
 
@@ -293,7 +293,7 @@ Question:
 
 Canonical file:
 
-- [AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md)
+- [AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md](mathematics/canon/AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md)
 
 Function:
 
@@ -308,7 +308,7 @@ Question:
 
 Canonical file:
 
-- [AGENT_INFORMATION_AND_COMPUTATION.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_INFORMATION_AND_COMPUTATION.md)
+- [AGENT_INFORMATION_AND_COMPUTATION.md](mathematics/canon/AGENT_INFORMATION_AND_COMPUTATION.md)
 
 Function:
 
@@ -323,7 +323,7 @@ Question:
 
 Canonical file:
 
-- [AGENT_OPTIMIZATION_AND_DECISION_THEORY.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_OPTIMIZATION_AND_DECISION_THEORY.md)
+- [AGENT_OPTIMIZATION_AND_DECISION_THEORY.md](mathematics/canon/AGENT_OPTIMIZATION_AND_DECISION_THEORY.md)
 
 Function:
 
@@ -338,7 +338,7 @@ Question:
 
 Canonical file:
 
-- [AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md)
+- [AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md](mathematics/canon/AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md)
 
 Function:
 
@@ -437,7 +437,7 @@ The packet now supports three valid reading modes.
 
 Start here:
 
-- [AGENT_MATHEMATICS_CANON.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MATHEMATICS_CANON.md)
+- [AGENT_MATHEMATICS_CANON.md](mathematics/canon/AGENT_MATHEMATICS_CANON.md)
 
 Use this if you want the whole doctrine first.
 
@@ -445,17 +445,17 @@ Use this if you want the whole doctrine first.
 
 Follow the staircase in order:
 
-1. [AGENT_NUMERACY_PRIMITIVES.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_NUMERACY_PRIMITIVES.md)
-2. [AGENT_ARITHMETIC_OF_STATE.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_ARITHMETIC_OF_STATE.md)
-3. [AGENT_ALGEBRA_OF_INVARIANTS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_ALGEBRA_OF_INVARIANTS.md)
-4. [AGENT_GEOMETRY_AND_STATE_SPACES.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_GEOMETRY_AND_STATE_SPACES.md)
-5. [AGENT_CALCULUS_AND_SENSITIVITY.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_CALCULUS_AND_SENSITIVITY.md)
-6. [AGENT_PROBABILITY_AND_ESTIMATION.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_PROBABILITY_AND_ESTIMATION.md)
-7. [AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md)
-8. [AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md)
-9. [AGENT_INFORMATION_AND_COMPUTATION.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_INFORMATION_AND_COMPUTATION.md)
-10. [AGENT_OPTIMIZATION_AND_DECISION_THEORY.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_OPTIMIZATION_AND_DECISION_THEORY.md)
-11. [AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md)
+1. [AGENT_NUMERACY_PRIMITIVES.md](mathematics/canon/AGENT_NUMERACY_PRIMITIVES.md)
+2. [AGENT_ARITHMETIC_OF_STATE.md](mathematics/canon/AGENT_ARITHMETIC_OF_STATE.md)
+3. [AGENT_ALGEBRA_OF_INVARIANTS.md](mathematics/canon/AGENT_ALGEBRA_OF_INVARIANTS.md)
+4. [AGENT_GEOMETRY_AND_STATE_SPACES.md](mathematics/canon/AGENT_GEOMETRY_AND_STATE_SPACES.md)
+5. [AGENT_CALCULUS_AND_SENSITIVITY.md](mathematics/canon/AGENT_CALCULUS_AND_SENSITIVITY.md)
+6. [AGENT_PROBABILITY_AND_ESTIMATION.md](mathematics/canon/AGENT_PROBABILITY_AND_ESTIMATION.md)
+7. [AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md](mathematics/canon/AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md)
+8. [AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md](mathematics/canon/AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md)
+9. [AGENT_INFORMATION_AND_COMPUTATION.md](mathematics/canon/AGENT_INFORMATION_AND_COMPUTATION.md)
+10. [AGENT_OPTIMIZATION_AND_DECISION_THEORY.md](mathematics/canon/AGENT_OPTIMIZATION_AND_DECISION_THEORY.md)
+11. [AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md](mathematics/canon/AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md)
 
 Use this if you want the mathematical staircase in full.
 
@@ -463,12 +463,12 @@ Use this if you want the mathematical staircase in full.
 
 Read:
 
-1. [AGENT_MATHEMATICS_CANON.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MATHEMATICS_CANON.md)
-2. [AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md)
-3. [AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md)
-4. [AGENT_MATHEMATICS_DEVELOPMENT_LADDER.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MATHEMATICS_DEVELOPMENT_LADDER.md)
-5. [KHAN_STYLE_AGENT_MATH_CURRICULUM.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/KHAN_STYLE_AGENT_MATH_CURRICULUM.md)
-6. [LINEAGE_CAPACITY_RESEARCH_ROADMAP.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/LINEAGE_CAPACITY_RESEARCH_ROADMAP.md)
+1. [AGENT_MATHEMATICS_CANON.md](mathematics/canon/AGENT_MATHEMATICS_CANON.md)
+2. [AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md](mathematics/canon/AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md)
+3. [AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md](mathematics/canon/AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md)
+4. [AGENT_MATHEMATICS_DEVELOPMENT_LADDER.md](mathematics/canon/AGENT_MATHEMATICS_DEVELOPMENT_LADDER.md)
+5. [KHAN_STYLE_AGENT_MATH_CURRICULUM.md](mathematics/canon/KHAN_STYLE_AGENT_MATH_CURRICULUM.md)
+6. [LINEAGE_CAPACITY_RESEARCH_ROADMAP.md](mathematics/canon/LINEAGE_CAPACITY_RESEARCH_ROADMAP.md)
 
 Use this if you want the doctrine plus the empirical next steps.
 
@@ -483,11 +483,11 @@ be:
 
 The proof-status register now exists in:
 
-- [AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md)
+- [AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md](mathematics/canon/AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md)
 
 The experimental protocol now exists in:
 
-- [AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md)
+- [AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md](mathematics/canon/AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md)
 
 Those are the next steps if this is going to mature like real mathematics
 rather than just a sophisticated research archive.

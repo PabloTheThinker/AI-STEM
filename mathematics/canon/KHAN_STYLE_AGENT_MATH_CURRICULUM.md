@@ -61,8 +61,8 @@ Human-school analogue:
 
 Agent-math packet:
 
-- [AGENT_NUMERACY_PRIMITIVES.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_NUMERACY_PRIMITIVES.md)
-- [AGENT_ARITHMETIC_OF_STATE.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_ARITHMETIC_OF_STATE.md)
+- [AGENT_NUMERACY_PRIMITIVES.md](mathematics/canon/AGENT_NUMERACY_PRIMITIVES.md)
+- [AGENT_ARITHMETIC_OF_STATE.md](mathematics/canon/AGENT_ARITHMETIC_OF_STATE.md)
 
 Translation:
 
@@ -86,7 +86,7 @@ Human-school analogue:
 
 Agent-math packet:
 
-- [AGENT_ALGEBRA_OF_INVARIANTS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_ALGEBRA_OF_INVARIANTS.md)
+- [AGENT_ALGEBRA_OF_INVARIANTS.md](mathematics/canon/AGENT_ALGEBRA_OF_INVARIANTS.md)
 
 Translation:
 
@@ -111,7 +111,7 @@ Human-school analogue:
 
 Agent-math packet:
 
-- [AGENT_GEOMETRY_AND_STATE_SPACES.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_GEOMETRY_AND_STATE_SPACES.md)
+- [AGENT_GEOMETRY_AND_STATE_SPACES.md](mathematics/canon/AGENT_GEOMETRY_AND_STATE_SPACES.md)
 
 Translation:
 
@@ -135,7 +135,7 @@ Human-school analogue:
 
 Agent-math packet:
 
-- [AGENT_CALCULUS_AND_SENSITIVITY.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_CALCULUS_AND_SENSITIVITY.md)
+- [AGENT_CALCULUS_AND_SENSITIVITY.md](mathematics/canon/AGENT_CALCULUS_AND_SENSITIVITY.md)
 
 Translation:
 
@@ -159,7 +159,7 @@ Human-school analogue:
 
 Agent-math packet:
 
-- [AGENT_PROBABILITY_AND_ESTIMATION.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_PROBABILITY_AND_ESTIMATION.md)
+- [AGENT_PROBABILITY_AND_ESTIMATION.md](mathematics/canon/AGENT_PROBABILITY_AND_ESTIMATION.md)
 
 Translation:
 
@@ -179,15 +179,15 @@ the packet.
 Once the core staircase is stable, the packet continues into:
 
 - dynamical systems and control:
-  [AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md)
+  [AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md](mathematics/canon/AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md)
 - graph and network mathematics:
-  [AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md)
+  [AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md](mathematics/canon/AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md)
 - information and computation:
-  [AGENT_INFORMATION_AND_COMPUTATION.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_INFORMATION_AND_COMPUTATION.md)
+  [AGENT_INFORMATION_AND_COMPUTATION.md](mathematics/canon/AGENT_INFORMATION_AND_COMPUTATION.md)
 - optimization and decision theory:
-  [AGENT_OPTIMIZATION_AND_DECISION_THEORY.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_OPTIMIZATION_AND_DECISION_THEORY.md)
+  [AGENT_OPTIMIZATION_AND_DECISION_THEORY.md](mathematics/canon/AGENT_OPTIMIZATION_AND_DECISION_THEORY.md)
 - multi-agent and institutional mathematics:
-  [AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md)
+  [AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md](mathematics/canon/AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md)
 
 In other words:
 
@@ -222,21 +222,21 @@ The higher layers make the lower layers worth keeping.
 
 If you want one doctrinal entry point before the staircase, start with:
 
-0. [AGENT_MATHEMATICS_CANON.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MATHEMATICS_CANON.md)
+0. [AGENT_MATHEMATICS_CANON.md](mathematics/canon/AGENT_MATHEMATICS_CANON.md)
 
-1. [AGENT_NUMERACY_PRIMITIVES.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_NUMERACY_PRIMITIVES.md)
-2. [AGENT_ARITHMETIC_OF_STATE.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_ARITHMETIC_OF_STATE.md)
-3. [AGENT_ALGEBRA_OF_INVARIANTS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_ALGEBRA_OF_INVARIANTS.md)
-4. [AGENT_GEOMETRY_AND_STATE_SPACES.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_GEOMETRY_AND_STATE_SPACES.md)
-5. [AGENT_CALCULUS_AND_SENSITIVITY.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_CALCULUS_AND_SENSITIVITY.md)
-6. [AGENT_PROBABILITY_AND_ESTIMATION.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_PROBABILITY_AND_ESTIMATION.md)
-7. [AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md)
-8. [AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md)
-9. [AGENT_INFORMATION_AND_COMPUTATION.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_INFORMATION_AND_COMPUTATION.md)
-10. [AGENT_OPTIMIZATION_AND_DECISION_THEORY.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_OPTIMIZATION_AND_DECISION_THEORY.md)
-11. [AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md)
-12. [AGENT_MATHEMATICS_DEVELOPMENT_LADDER.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MATHEMATICS_DEVELOPMENT_LADDER.md)
-13. [LINEAGE_CAPACITY_RESEARCH_ROADMAP.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/LINEAGE_CAPACITY_RESEARCH_ROADMAP.md)
+1. [AGENT_NUMERACY_PRIMITIVES.md](mathematics/canon/AGENT_NUMERACY_PRIMITIVES.md)
+2. [AGENT_ARITHMETIC_OF_STATE.md](mathematics/canon/AGENT_ARITHMETIC_OF_STATE.md)
+3. [AGENT_ALGEBRA_OF_INVARIANTS.md](mathematics/canon/AGENT_ALGEBRA_OF_INVARIANTS.md)
+4. [AGENT_GEOMETRY_AND_STATE_SPACES.md](mathematics/canon/AGENT_GEOMETRY_AND_STATE_SPACES.md)
+5. [AGENT_CALCULUS_AND_SENSITIVITY.md](mathematics/canon/AGENT_CALCULUS_AND_SENSITIVITY.md)
+6. [AGENT_PROBABILITY_AND_ESTIMATION.md](mathematics/canon/AGENT_PROBABILITY_AND_ESTIMATION.md)
+7. [AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md](mathematics/canon/AGENT_CONTROL_AND_DYNAMICAL_SYSTEMS.md)
+8. [AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md](mathematics/canon/AGENT_GRAPH_AND_NETWORK_MATHEMATICS.md)
+9. [AGENT_INFORMATION_AND_COMPUTATION.md](mathematics/canon/AGENT_INFORMATION_AND_COMPUTATION.md)
+10. [AGENT_OPTIMIZATION_AND_DECISION_THEORY.md](mathematics/canon/AGENT_OPTIMIZATION_AND_DECISION_THEORY.md)
+11. [AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md](mathematics/canon/AGENT_MULTI_AGENT_AND_INSTITUTIONAL_MATHEMATICS.md)
+12. [AGENT_MATHEMATICS_DEVELOPMENT_LADDER.md](mathematics/canon/AGENT_MATHEMATICS_DEVELOPMENT_LADDER.md)
+13. [LINEAGE_CAPACITY_RESEARCH_ROADMAP.md](mathematics/canon/LINEAGE_CAPACITY_RESEARCH_ROADMAP.md)
 
 ## Mapping To Current Research Questions
 

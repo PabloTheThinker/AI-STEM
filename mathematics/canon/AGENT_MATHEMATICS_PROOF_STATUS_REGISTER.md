@@ -489,7 +489,7 @@ Promotion history:
   formula mismatch, no diversity, zero variance, collapsed target).
 - Second attempt (2026-04-07 evening): **`promote`** — all blockers resolved,
   all criteria met. Bundle:
-  [Q_D_TO_E_PROMOTION_BUNDLE.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/Q_D_TO_E_PROMOTION_BUNDLE.md)
+  [Q_D_TO_E_PROMOTION_BUNDLE.md](mathematics/canon/Q_D_TO_E_PROMOTION_BUNDLE.md)
 
 ### 16. The Throughput Term `nu* = 1000 / tau_max`
 
@@ -875,7 +875,7 @@ If the packet grows and this register does not change, the packet is drifting.
 
 Promotion attempts should follow:
 
-- [AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md)
+- [AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md](mathematics/canon/AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md)
 
 ## Main Conclusion
 

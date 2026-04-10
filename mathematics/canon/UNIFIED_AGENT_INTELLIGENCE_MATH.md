@@ -7,10 +7,10 @@ Updated: `2026-03-31 03:27 UTC`
 This document closes the gap between three mathematical layers that were previously written separately:
 
 - neural-network mathematics, especially transformer and residual/ODE views,
-- `triune` memory-body mathematics, especially graph, permanence, and cognitive-web state,
+- the cognition engine memory-body mathematics, especially graph, permanence, and cognitive-web state,
 - top-level control mathematics, especially belief-state control and organizational-capacity regulation.
 
-The goal is one governing object for a future main system above `triune`.
+The goal is one governing object for a future main system above the cognition engine.
 
 This merged view treats an agent as:
 
@@ -90,7 +90,7 @@ q_t = [𝓜_t, Π_t, ν*_t, 𝓔₀_t, 𝓠_raw,t, 𝓠_net,t]^T
 Interpretation:
 
 - `r_t` captures model-internal computation,
-- `x_t` captures organism-level state visible in `triune`,
+- `x_t` captures organism-level state visible in the cognition engine,
 - `q_t` captures the capacity/stability variables used by the top-level controller.
 
 ## Micro Scale: Internal Computation
@@ -137,11 +137,11 @@ Where:
 - `ψ_write` converts internal computation into memory updates, pathway calls, merge updates, and working-memory changes,
 - `ψ_emit` converts internal state into outward actions or tool calls.
 
-This is the formal bridge between the transformer and `triune`.
+This is the formal bridge between the transformer and the cognition engine.
 
 ## Meso Scale: Cognitive Web
 
-At the meso scale, `triune` already suggests the right state blocks:
+At the meso scale, the cognition engine already suggests the right state blocks:
 
 ```text
 x_t = [x_id, x_mem, x_aff, x_body, x_merge, x_exec]^T
@@ -343,7 +343,7 @@ y_t =
 ]^T
 ```
 
-Current `triune` provides most of the external terms already.
+Current the cognition engine provides most of the external terms already.
 The internal terms will require future instrumentation.
 
 ## Role Of The Transformer In Control

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document merges the prior research packet into one mathematical system that can actually be used as the governing language for a future top-level system above `triune`.
+This document merges the prior research packet into one mathematical system that can actually be used as the governing language for a future top-level system above the cognition engine.
 
 This is not a claim that a brand-new branch of mathematics has been discovered.
 It is a proposed synthesis:
@@ -472,11 +472,11 @@ Then the system evolves under:
 
 That is why the synthesis is stronger than simply combining papers.
 
-## Relation To `triune`
+## Relation To the cognition engine
 
 Under this synthesis:
 
-### `triune` provides
+### the cognition engine provides
 - measurements `y_t`,
 - memory transition effects,
 - permanence verification,
@@ -496,7 +496,7 @@ Under this synthesis:
 So the relationship is:
 
 ```text
-triune = substrate
+cognition engine = substrate
 main system = governing mathematics
 ```
 

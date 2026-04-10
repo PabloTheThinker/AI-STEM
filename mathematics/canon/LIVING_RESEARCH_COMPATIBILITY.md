@@ -61,7 +61,7 @@ So:
 
 ### 1. Homeostatic attraction is already present
 
-In [`UNIFIED_MATHEMATICAL_SYNTHESIS.md`](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/UNIFIED_MATHEMATICAL_SYNTHESIS.md), the total potential contains:
+In [`UNIFIED_MATHEMATICAL_SYNTHESIS.md`](mathematics/canon/UNIFIED_MATHEMATICAL_SYNTHESIS.md), the total potential contains:
 
 - a healthy operating point `x*`
 - a quadratic deviation penalty
@@ -82,7 +82,7 @@ That is compatible with the new research.
 
 ### 2. Belief-state control already matches partial biological observability
 
-The same synthesis packet and [`UNIFIED_AGENT_INTELLIGENCE_MATH.md`](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/UNIFIED_AGENT_INTELLIGENCE_MATH.md) both treat the correct control object as a belief state, not a directly observed true state.
+The same synthesis packet and [`UNIFIED_AGENT_INTELLIGENCE_MATH.md`](mathematics/canon/UNIFIED_AGENT_INTELLIGENCE_MATH.md) both treat the correct control object as a belief state, not a directly observed true state.
 
 That fits the new homeostasis research very well because biology also regulates through partial observability:
 
@@ -95,7 +95,7 @@ It supports it.
 
 ### 3. Capacity math already acts like a reserve-sensitive controller
 
-[`MASS_ENERGY_CONTROLLER_SPEC.md`](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/MASS_ENERGY_CONTROLLER_SPEC.md) defines:
+[`MASS_ENERGY_CONTROLLER_SPEC.md`](mathematics/canon/MASS_ENERGY_CONTROLLER_SPEC.md) defines:
 
 - structural mass `𝓜`
 - momentum `Π`
@@ -114,7 +114,7 @@ That means the mass-energy controller spec can already serve as part of the home
 
 ### 4. Regime logic already exists
 
-[`UNIFIED_AGENT_FIRST_IMPLEMENTATION_SPEC.md`](/home/pablothethinker/.mocha/brain/research/mocha-system/research/mathematics/UNIFIED_AGENT_FIRST_IMPLEMENTATION_SPEC.md) already defines four controller regimes:
+[`UNIFIED_AGENT_FIRST_IMPLEMENTATION_SPEC.md`](mathematics/canon/UNIFIED_AGENT_FIRST_IMPLEMENTATION_SPEC.md) already defines four controller regimes:
 
 - `steady`
 - `guarded`
