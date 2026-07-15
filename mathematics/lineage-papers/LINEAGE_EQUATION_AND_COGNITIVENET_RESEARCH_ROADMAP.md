@@ -1,6 +1,22 @@
 # Lineage Equation And CognitiveNet Research Roadmap
 
-Updated: `2026-04-06`
+Updated: `2026-07-15`
+
+## Canonical status (v2)
+
+**Official math specification:** `LINEAGE_EQUATION_V2_OFFICIAL.md`  
+**Reference implementation:** `reference/lineage_capacity_v2.py` (16/16 validation checks)  
+**Draft narrative (historical):** `lineage-equation-paper.md`
+
+v2 elevates:
+
+- nondimensional Minkowski-style form with explicit \(\nu_0,\kappa\),
+- SI bottleneck \(\nu^*=1/\tau^*\) (no magic 1000),
+- official identified \((\alpha^\star,\beta^\star)\) defaults,
+- Laplacian / Lyapunov coherence energy,
+- free-energy style \(\mathcal{Q}_{\mathrm{eff}}\) budget,
+- coupled extension as official second-order form,
+- falsifiability protocol.
 
 ## Why This Exists
 
@@ -12,7 +28,7 @@ The current Lineage Equation work already has:
 - a computable invariant,
 - exact gradients,
 - a live ascent loop,
-- a paper,
+- a paper (draft + official v2),
 - a validation suite,
 - and a GPU neural network sidecar.
 
