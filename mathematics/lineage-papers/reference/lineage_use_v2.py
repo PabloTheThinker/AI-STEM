@@ -34,7 +34,9 @@ try:
         shed_pi,
         step_scores,
     )
+    from lineage_network_v2 import DEFAULT_KAPPA, DEFAULT_W_MAX
     from lineage_ops_v2 import mm1_sojourn, ops_card
+    from lineage_qos_v2 import qos_action_text, qos_card
     from lineage_slice_v2 import (
         SliceResult,
         TelemetryRecord,
@@ -53,7 +55,9 @@ except ImportError:  # pragma: no cover
         shed_pi,
         step_scores,
     )
+    from lineage_network_v2 import DEFAULT_KAPPA, DEFAULT_W_MAX
     from lineage_ops_v2 import mm1_sojourn, ops_card
+    from lineage_qos_v2 import qos_action_text, qos_card
     from lineage_slice_v2 import (
         SliceResult,
         TelemetryRecord,
@@ -73,6 +77,10 @@ TAU_FIELDS: tuple[tuple[str, str], ...] = (
     ("sync", "tau_sync_s"),
     ("settling", "tau_settling_s"),
 )
+
+
+def record_taus(rec: TelemetryRecord) -> tuple[float, ...]:
+    return tuple(float(getattr(rec, field)) for _, field in TAU_FIELDS)
 
 HINT_ACTION = {
     "cut_bottleneck_latency": "Cut the slowest pipe.",
@@ -204,7 +212,13 @@ def _action(rec: TelemetryRecord, out: SliceResult) -> str:
     return stem
 
 
-def evaluate(rec: TelemetryRecord, warnings: list[str] | None = None) -> dict[str, Any]:
+def evaluate(
+    rec: TelemetryRecord,
+    warnings: list[str] | None = None,
+    w_max: float = DEFAULT_W_MAX,
+    kappa: float = DEFAULT_KAPPA,
+    alpha: float | None = None,
+) -> dict[str, Any]:
     """Dashboard card for one window. Law unchanged."""
     out = compute_slice(rec)
     Q = float(out.terms["Q"])
@@ -218,13 +232,24 @@ def evaluate(rec: TelemetryRecord, warnings: list[str] | None = None) -> dict[st
     q_core = core_q(M, Pi, r)
     nu = float(out.terms["nu_star"])
     ops = ops_card(M, Pi, nu, float(out.usable))
-    action = ops_action(M, Pi, nu, float(out.usable))
+    taus = record_taus(rec)
+    qos = qos_card(M, Pi, taus, float(out.usable), w_max, kappa, alpha)
+    action = str(qos["network_action"])
     W = float(ops["W_sojourn"])
     tau_star = 1.0 / nu if nu else math.inf
+    W_net = float(qos["W_net"])
+    shed = float(qos["shed_needed"])
+    cut_ms = float(qos["cut_T_ms"])
+    over = bool(qos["over_sla"])
     bn = bottleneck(rec)
     warn = list(warnings or [])
     if Pi >= 1.0:
         warn.append("Π ≥ 1: utilization reading is unstable; sojourn is infinite")
+    if over:
+        warn.append(
+            f"W_net {W_net:.3f} s exceeds SLA {w_max:.3f} s; "
+            f"shed Π by {shed:.3f} or cut T by {cut_ms:.1f} ms"
+        )
     return {
         "schema": SCHEMA,
         "weight_table": out.weight_table,
@@ -246,15 +271,40 @@ def evaluate(rec: TelemetryRecord, warnings: list[str] | None = None) -> dict[st
         "Lambda_eff": ops["Lambda_eff"],
         "Lambda_job": lambda_job(M, Pi, nu),
         "Lambda_W": lambda_W(M, Pi, nu),
+        "Lambda_W_net": float(qos["Lambda_W_net"]),
+        "Lambda_job_cap": float(qos["Lambda_job_cap"]),
         "C_shannon": ops["C_shannon"],
         "eta": ops["eta"],
         "W_sojourn": W,
+        "W_net": W_net,
+        "T": float(qos["T"]),
+        "kappa": float(qos["kappa"]),
+        "W_max": float(qos["W_max"]),
+        "Pi_star": float(qos["Pi_star"]),
+        "shed_needed": shed,
+        "cut_T_ms": cut_ms,
+        "over_sla": over,
+        "p_over_sla": qos["p_over_sla"],
+        "Pi_star_pct": qos.get("Pi_star_pct"),
+        "alpha": qos.get("alpha"),
+        "serial_fraction": float(qos["serial_fraction"]),
+        "fits_bottleneck": bool(qos["fits_bottleneck"]),
         "zone": out.zone,
         "hint": out.hint,
         "action": _action(rec, out),
         "ops_action": action,
-        "ops_text": ops_action_text(action, Pi, W if math.isfinite(W) else 0.0, tau_star),
+        "ops_text": qos_action_text(
+            action,
+            Pi,
+            W_net if math.isfinite(W_net) else 0.0,
+            w_max,
+            shed,
+            cut_ms if math.isfinite(cut_ms) else 0.0,
+            tau_star if math.isfinite(tau_star) else 0.0,
+            over,
+        ),
         "ops_scores": step_scores(M, Pi, nu),
+        "partition_action": ops_action(M, Pi, nu, float(out.usable)),
         "gate_open": bool(out.gate_open),
         "Phi_org": float(out.phi["Phi_org"]),
         "bottleneck": bn,
@@ -263,9 +313,14 @@ def evaluate(rec: TelemetryRecord, warnings: list[str] | None = None) -> dict[st
     }
 
 
-def evaluate_mapping(data: Mapping[str, Any]) -> dict[str, Any]:
+def evaluate_mapping(
+    data: Mapping[str, Any],
+    w_max: float = DEFAULT_W_MAX,
+    kappa: float = DEFAULT_KAPPA,
+    alpha: float | None = None,
+) -> dict[str, Any]:
     rec, warnings = record_from_mapping(data)
-    return evaluate(rec, warnings)
+    return evaluate(rec, warnings, w_max=w_max, kappa=kappa, alpha=alpha)
 
 
 def compare(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:
@@ -280,8 +335,11 @@ def compare(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:
         "Lambda_M",
         "Lambda_job",
         "Lambda_W",
+        "Lambda_W_net",
         "eta",
         "W_sojourn",
+        "W_net",
+        "shed_needed",
         "rest_share",
         "transport_share",
         "Phi_org",
@@ -312,38 +370,96 @@ def cut_bottleneck(rec: TelemetryRecord, cut_ms: float) -> TelemetryRecord:
     return replace(rec, **{bn["field"]: new_tau})
 
 
-def what_if_cut(rec: TelemetryRecord, cut_ms: float, warnings: list[str] | None = None) -> dict[str, Any]:
-    before = evaluate(rec, warnings)
+def what_if_cut(
+    rec: TelemetryRecord,
+    cut_ms: float,
+    warnings: list[str] | None = None,
+    w_max: float = DEFAULT_W_MAX,
+    kappa: float = DEFAULT_KAPPA,
+) -> dict[str, Any]:
+    before = evaluate(rec, warnings, w_max=w_max, kappa=kappa)
     after_rec = cut_bottleneck(rec, cut_ms)
-    after = evaluate(after_rec)
+    after = evaluate(after_rec, w_max=w_max, kappa=kappa)
     card = compare(before, after)
     card["cut_ms"] = float(cut_ms)
     card["cut_channel"] = before["bottleneck"]["name"]
     return card
 
 
-def what_if_shed(rec: TelemetryRecord, delta_pi: float, warnings: list[str] | None = None) -> dict[str, Any]:
+def what_if_shed(
+    rec: TelemetryRecord,
+    delta_pi: float,
+    warnings: list[str] | None = None,
+    w_max: float = DEFAULT_W_MAX,
+    kappa: float = DEFAULT_KAPPA,
+) -> dict[str, Any]:
     """Move Π only. M, ν*, u held. Operations lever."""
-    before = evaluate(rec, warnings)
+    before = evaluate(rec, warnings, w_max=w_max, kappa=kappa)
     new_pi = shed_pi(float(before["Pi"]), delta_pi)
     after = dict(before)
     nu = float(before["nu_star_hz"])
     M = float(before["M"])
     u = float(before["u"])
     tau = 1.0 / nu if nu else math.inf
+    taus = record_taus(rec)
+    qos = qos_card(M, new_pi, taus, u, w_max, kappa)
     after["Pi"] = new_pi
     after["eta"] = 1.0 - new_pi
     after["Lambda_job"] = lambda_job(M, new_pi, nu)
     after["Lambda_W"] = lambda_W(M, new_pi, nu)
+    after["Lambda_W_net"] = float(qos["Lambda_W_net"])
     after["W_sojourn"] = mm1_sojourn(tau, new_pi) if math.isfinite(tau) else math.inf
-    action = ops_action(M, new_pi, nu, u)
+    after["W_net"] = float(qos["W_net"])
+    after["Pi_star"] = float(qos["Pi_star"])
+    after["shed_needed"] = float(qos["shed_needed"])
+    after["cut_T_ms"] = float(qos["cut_T_ms"])
+    after["over_sla"] = bool(qos["over_sla"])
+    after["p_over_sla"] = qos["p_over_sla"]
+    after["fits_bottleneck"] = bool(qos["fits_bottleneck"])
+    action = str(qos["network_action"])
     after["ops_action"] = action
-    after["ops_text"] = ops_action_text(
-        action, new_pi, after["W_sojourn"] if math.isfinite(after["W_sojourn"]) else 0.0, tau
+    after["ops_text"] = qos_action_text(
+        action,
+        new_pi,
+        after["W_net"] if math.isfinite(after["W_net"]) else 0.0,
+        w_max,
+        after["shed_needed"],
+        after["cut_T_ms"] if math.isfinite(after["cut_T_ms"]) else 0.0,
+        tau if math.isfinite(tau) else 0.0,
+        after["over_sla"],
     )
     after["ops_scores"] = step_scores(M, new_pi, nu)
+    after["partition_action"] = ops_action(M, new_pi, nu, u)
+    warn: list[str] = []
+    if new_pi >= 1.0:
+        warn.append("Π ≥ 1: utilization reading is unstable; sojourn is infinite")
+    if after["over_sla"]:
+        warn.append(
+            f"W_net {after['W_net']:.3f} s exceeds SLA {w_max:.3f} s; "
+            f"shed Π by {after['shed_needed']:.3f} or cut T by {after['cut_T_ms']:.1f} ms"
+        )
+    after["warnings"] = warn
     card = compare(before, after)
     card["shed_pi"] = float(delta_pi)
+    return card
+
+
+def what_if_meet_sla(
+    rec: TelemetryRecord,
+    warnings: list[str] | None = None,
+    w_max: float = DEFAULT_W_MAX,
+    kappa: float = DEFAULT_KAPPA,
+) -> dict[str, Any]:
+    """Shed exactly δ* so the mean SLA holds. No-op if already under."""
+    before = evaluate(rec, warnings, w_max=w_max, kappa=kappa)
+    delta = float(before["shed_needed"])
+    if delta <= 1e-15:
+        card = compare(before, before)
+        card["meet_sla"] = True
+        card["shed_pi"] = 0.0
+        return card
+    card = what_if_shed(rec, delta, warnings, w_max=w_max, kappa=kappa)
+    card["meet_sla"] = True
     return card
 
 
@@ -351,6 +467,8 @@ def render_card(card: dict[str, Any]) -> str:
     bn = card["bottleneck"]
     missing = card["missing"] or ["(none)"]
     warnings = card["warnings"] or ["(none)"]
+    p_miss = card["p_over_sla"]
+    p_txt = "n/a" if p_miss is None else f"{float(p_miss):.6f}"
     lines = [
         f"schema          {card['schema']}",
         f"weight_table    {card['weight_table']}",
@@ -364,10 +482,20 @@ def render_card(card: dict[str, Any]) -> str:
         f"Lambda_M        {card['Lambda_M']:.6f} Hz",
         f"Lambda_job      {card['Lambda_job']:.6f} Hz",
         f"Lambda_W        {card['Lambda_W']:.6f} Hz",
+        f"Lambda_W_net    {card['Lambda_W_net']:.6f} Hz",
+        f"Lambda_job_cap  {card['Lambda_job_cap']:.6f} Hz",
         f"Lambda_eff      {card['Lambda_eff']:.6f} Hz",
         f"C_shannon       {card['C_shannon']:.6f} Hz",
         f"eta             {card['eta']:.6f}",
         f"W_sojourn       {card['W_sojourn']:.6f} s",
+        f"W_net           {card['W_net']:.6f} s",
+        f"T               {card['T']:.6f} s",
+        f"W_max           {card['W_max']:.6f} s",
+        f"Pi_star         {card['Pi_star']:.6f}",
+        f"shed_needed     {card['shed_needed']:.6f}",
+        f"cut_T_ms        {card['cut_T_ms']:.3f}",
+        f"over_sla        {card['over_sla']}",
+        f"p_over_sla      {p_txt}",
         f"ops_action      {card['ops_action']}",
         f"ops_text        {card['ops_text']}",
         f"E0              {card['E0']:.6f}",
@@ -392,13 +520,18 @@ def render_compare(card: dict[str, Any]) -> str:
         extra.append(f"cut             {card['cut_ms']:g} ms off {card['cut_channel']}")
     if "shed_pi" in card:
         extra.append(f"shed            Π − {card['shed_pi']:g}")
+    if card.get("meet_sla"):
+        extra.append("meet_sla        shed exactly δ*")
     lines = extra + [
         f"ΔQ              {d['Q']:+.6f}",
         f"ΔQ_eff          {d['Q_eff']:+.6f}",
         f"Δu              {d['u']:+.6f}",
         f"ΔLambda_job     {d['Lambda_job']:+.6f} Hz",
         f"ΔLambda_W       {d['Lambda_W']:+.6f} Hz",
+        f"ΔLambda_W_net   {d['Lambda_W_net']:+.6f} Hz",
         f"ΔW_sojourn      {d['W_sojourn']:+.6f} s",
+        f"ΔW_net          {d['W_net']:+.6f} s",
+        f"Δshed_needed    {d['shed_needed']:+.6f}",
         f"zone_changed    {card['zone_changed']}",
         f"hint_changed    {card['hint_changed']}",
         f"bottleneck_changed {card['bottleneck_changed']}",
@@ -436,6 +569,15 @@ def run_checks() -> dict[str, bool]:
     ) < 1e-9
     suite["ops_sheds"] = card["ops_action"] == "shed_load"
     suite["hint_still_cuts"] = card["hint"] == "cut_bottleneck_latency"
+    suite["over_sla"] = card["over_sla"] is True
+    suite["W_net_gt_single"] = float(card["W_net"]) > float(card["W_sojourn"])
+    suite["shed_needed_pos"] = float(card["shed_needed"]) > 0.02
+    suite["p_over_mid"] = (
+        card["p_over_sla"] is not None and 0.40 < float(card["p_over_sla"]) < 0.48
+    )
+    meet = what_if_meet_sla(rec)
+    suite["meet_clears_sla"] = meet["after"]["over_sla"] is False
+    suite["meet_raises_LWnet"] = meet["delta"]["Lambda_W_net"] > 0.0
 
     shed = what_if_shed(rec, 0.10)
     suite["shed_raises_LW"] = shed["delta"]["Lambda_W"] > 0.0
@@ -495,6 +637,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--compare", nargs=2, metavar=("BEFORE", "AFTER"), help="two windows")
     parser.add_argument("--cut-ms", type=float, dest="cut_ms", help="preview cutting bottleneck by this many ms")
     parser.add_argument("--shed-pi", type=float, dest="shed_pi", help="preview dropping utilization Π by this amount")
+    parser.add_argument("--meet-sla", action="store_true", dest="meet_sla", help="preview shedding exactly δ* to meet the mean SLA")
+    parser.add_argument("--w-max", type=float, dest="w_max", default=DEFAULT_W_MAX, help="delay SLA in seconds (default 0.400)")
+    parser.add_argument("--kappa", type=float, dest="kappa", default=DEFAULT_KAPPA, help="Kingman κ (default 1 = M/M/1)")
+    parser.add_argument("--alpha", type=float, dest="alpha", default=None, help="optional percentile SLA; reports Π*_pct only")
     parser.add_argument("--batch", metavar="JSONL", help="one JSON object per line")
     parser.add_argument("--self-test", action="store_true", help="run instrument checks")
     args = parser.parse_args(argv)
@@ -521,16 +667,20 @@ def main(argv: list[str] | None = None) -> int:
             if not line:
                 continue
             try:
-                card = evaluate_mapping(json.loads(line))
+                card = evaluate_mapping(
+                    json.loads(line), w_max=args.w_max, kappa=args.kappa, alpha=args.alpha
+                )
             except (TelemetryError, json.JSONDecodeError) as exc:
                 print(json.dumps({"line": line_no, "error": str(exc)}), flush=True)
                 continue
             print(json.dumps(card, sort_keys=True), flush=True)
         return 0
 
+    qos_kw = {"w_max": args.w_max, "kappa": args.kappa}
+
     if args.compare:
-        before = evaluate_mapping(_load_json(Path(args.compare[0])))
-        after = evaluate_mapping(_load_json(Path(args.compare[1])))
+        before = evaluate_mapping(_load_json(Path(args.compare[0])), alpha=args.alpha, **qos_kw)
+        after = evaluate_mapping(_load_json(Path(args.compare[1])), alpha=args.alpha, **qos_kw)
         card = compare(before, after)
         print(json.dumps(card, indent=2, sort_keys=True) if args.json_out else render_compare(card))
         return 0
@@ -543,16 +693,21 @@ def main(argv: list[str] | None = None) -> int:
         rec, warnings = worked_example_record(), []
 
     if args.cut_ms is not None:
-        card = what_if_cut(rec, args.cut_ms, warnings)
+        card = what_if_cut(rec, args.cut_ms, warnings, **qos_kw)
         print(json.dumps(card, indent=2, sort_keys=True) if args.json_out else render_compare(card))
         return 0
 
     if args.shed_pi is not None:
-        card = what_if_shed(rec, args.shed_pi, warnings)
+        card = what_if_shed(rec, args.shed_pi, warnings, **qos_kw)
         print(json.dumps(card, indent=2, sort_keys=True) if args.json_out else render_compare(card))
         return 0
 
-    card = evaluate(rec, warnings)
+    if args.meet_sla:
+        card = what_if_meet_sla(rec, warnings, **qos_kw)
+        print(json.dumps(card, indent=2, sort_keys=True) if args.json_out else render_compare(card))
+        return 0
+
+    card = evaluate(rec, warnings, alpha=args.alpha, **qos_kw)
     print(json.dumps(card, indent=2, sort_keys=True) if args.json_out else render_card(card))
     return 0
 

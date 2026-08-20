@@ -19,10 +19,14 @@ One telemetry window in. A card out:
 | `regime` | `rest` / `mixed` / `transport` from `ε` |
 | `Lambda_M` | installed rate `M ν*` in Hz. `Λ_job + Λ_W`. |
 | `Lambda_job` | delivered throughput `M Π ν*`. |
-| `Lambda_W` | responsiveness `M (1−Π) ν*`. The controller maximizes this. |
-| `ops_action` | working lever from `Λ_W`. `hint` is still the official-`Q` score. |
+| `Lambda_W` | single-node responsiveness `M (1−Π) ν*`. Partitions with `Λ_job`. |
+| `Lambda_W_net` | tandem responsiveness `M / W_net`. This is the wait the job feels. |
+| `ops_action` | working lever: mean SLA first, then `Λ_W`. `hint` is still the official-`Q` score. |
+| `W_net` | Jackson tandem sojourn `T/(1−Π)` (or Kingman if `κ ≠ 1`). |
+| `shed_needed` / `cut_T_ms` | exact levers that put `W_net` on `W_max`. Same `Λ_W,net`, different `Λ_job`. |
+| `p_over_sla` | `P(W_net > W_max)` under Jackson-exponential sojourns. A mean cap is not this. |
 | `eta` | `1 − Π`. Stability margin under the utilization reading. |
-| `W_sojourn` | M/M/1 sojourn `τ*/(1−Π)` in seconds. |
+| `W_sojourn` | single-node M/M/1 sojourn `τ*/(1−Π)` in seconds. |
 | `u` | usable fraction in `[0,1]`. This is the health number. |
 | `Q_eff` | `u · Q`. Report this next to `Q`. |
 | `zone` | `steady` / `guarded` / `repair` / `critical` from `u` |
@@ -46,10 +50,13 @@ python3 mathematics/lineage-papers/reference/lineage_use_v2.py --compare \
 python3 mathematics/lineage-papers/reference/lineage_use_v2.py \
     mathematics/lineage-papers/reference/example_telemetry.json --cut-ms 20
 python3 mathematics/lineage-papers/reference/lineage_use_v2.py --example --shed-pi 0.10
+python3 mathematics/lineage-papers/reference/lineage_use_v2.py --example --meet-sla
 python3 mathematics/lineage-papers/reference/lineage_use_v2.py --self-test
 ```
 
 `--cut-ms` does not change the log. It answers: if the slowest pipe were that many milliseconds faster, what happens to `Q` and `Q_eff`.
+
+`--meet-sla` sheds exactly `δ* = Π − Π*` so the mean delay cap holds. `--w-max` and `--kappa` override the defaults (`0.400 s`, Poisson). `--alpha` only reports the percentile utilization cap; it does not change the working action.
 
 `--batch windows.jsonl` writes one JSON card per line. Bad lines become `{"line": N, "error": "..."}`.
 

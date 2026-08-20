@@ -14,8 +14,12 @@ Pure-Python official implementation of the Lineage Equation, plus the computable
 - Core / scaling-family module: `lineage_core_v2.py`
 - Operations / Little / renewal module: `lineage_ops_v2.py`
 - Operational control module: `lineage_control_v2.py`
+- Tandem / Kingman / SLA module: `lineage_network_v2.py`
+- Pareto / Amdahl / PK / tail module: `lineage_qos_v2.py`
 - Example records: `example_telemetry.json`, `minimal_telemetry.json`
 - Core paper: `../LINEAGE_CORE_AND_SCALING_FAMILY.md`
+- Tandem paper: `../LINEAGE_TANDEM_KINGMAN_QOS.md`
+- QoS paper: `../LINEAGE_PARETO_AMDAHL_PK.md`
 
 ```bash
 python3 lineage_use_v2.py --example
@@ -25,9 +29,11 @@ python3 lineage_use_v2.py --self-test
 python3 lineage_core_v2.py
 python3 lineage_ops_v2.py
 python3 lineage_control_v2.py
+python3 lineage_network_v2.py
+python3 lineage_qos_v2.py
 python3 lineage_capacity_v2.py
 python3 lineage_slice_v2.py --example
 python3 lineage_geometry_v2.py
 ```
 
-Expect `use_checks_passed 27`, `core_checks_passed 19`, `ops_checks_passed 16`, `control_checks_passed 12`, `all_validation_checks_passed 20`, `slice_validation_checks_passed 31`, and `geometry_validation_checks_passed 17`.
+Expect `use_checks_passed 34`, `core_checks_passed 19`, `ops_checks_passed 16`, `control_checks_passed 12`, `network_checks_passed 14`, `qos_checks_passed 19`, `all_validation_checks_passed 20`, `slice_validation_checks_passed 31`, and `geometry_validation_checks_passed 17`.

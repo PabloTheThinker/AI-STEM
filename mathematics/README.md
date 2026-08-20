@@ -17,6 +17,8 @@ The current law is the Lineage Equation. The operator instrument is [`canon/LINE
 | Core, load ratio, scaling family | [`lineage-papers/LINEAGE_CORE_AND_SCALING_FAMILY.md`](lineage-papers/LINEAGE_CORE_AND_SCALING_FAMILY.md) then [`lineage-papers/reference/lineage_core_v2.py`](lineage-papers/reference/lineage_core_v2.py) |
 | Little, renewal reward, dimension | [`lineage-papers/LINEAGE_OPERATIONS_LITTLE_RENEWAL.md`](lineage-papers/LINEAGE_OPERATIONS_LITTLE_RENEWAL.md) then [`lineage-papers/reference/lineage_ops_v2.py`](lineage-papers/reference/lineage_ops_v2.py) |
 | Operational control (`Λ_job + Λ_W = Λ_M`) | [`lineage-papers/LINEAGE_OPERATIONAL_CONTROL.md`](lineage-papers/LINEAGE_OPERATIONAL_CONTROL.md) then [`lineage-papers/reference/lineage_control_v2.py`](lineage-papers/reference/lineage_control_v2.py) |
+| Tandem sojourn, Kingman, mean SLA | [`lineage-papers/LINEAGE_TANDEM_KINGMAN_QOS.md`](lineage-papers/LINEAGE_TANDEM_KINGMAN_QOS.md) then [`lineage-papers/reference/lineage_network_v2.py`](lineage-papers/reference/lineage_network_v2.py) |
+| Pareto / Amdahl / PK / miss tail | [`lineage-papers/LINEAGE_PARETO_AMDAHL_PK.md`](lineage-papers/LINEAGE_PARETO_AMDAHL_PK.md) then [`lineage-papers/reference/lineage_qos_v2.py`](lineage-papers/reference/lineage_qos_v2.py) |
 | Runnable law check | [`lineage-papers/reference/lineage_capacity_v2.py`](lineage-papers/reference/lineage_capacity_v2.py) |
 | Formal system (optional) | [`canon/AXIOMATIC_SYSTEM.md`](canon/AXIOMATIC_SYSTEM.md) then [`lineage-papers/reference/ams_kernel_v2.py`](lineage-papers/reference/ams_kernel_v2.py) |
 | Doctrinal front door | [`canon/AGENT_MATHEMATICS_CANON.md`](canon/AGENT_MATHEMATICS_CANON.md) |
@@ -54,6 +56,8 @@ Cognitive mass `M` is structural inertia. Cognitive momentum `Π` is directed fl
 | Clock-free core `q`, load ratio `ε`, scaling family | **C** | Factorization, Little form, exponent fork. Official `Q` unchanged. |
 | Operations / Little / renewal / Buckingham | **C** | `Λ = M ν*` from renewal reward; official `Q = ν* Λ_q`; M/M/1 margin. |
 | Operational control | **C** | Partition `Λ_job+Λ_W=Λ_M`. Working action maximizes `Λ_W`, not `Q`. |
+| Tandem / Kingman / mean SLA | **C** | `W_net = T/(1−Π)`. One-node wait overestimates by `T/τ*`. |
+| Pareto / Amdahl / PK / tail | **C** | Exact `δ*` and `ΔT*`. Mean SLA ≠ percentile SLA. Idle already misses 10%. |
 | Live held-out prediction | not yet F | Protocol is written; bundle is not run |
 | Full organism `𝒪_t` | C | Specified; not live-populated |
 | Multi-agent `Q_team` | **C** | Shared-fabric bottleneck + isolated RMS; textbook sum-of-`Q` form retired |

@@ -1051,6 +1051,75 @@ Promotion trigger:
 
 - Book V with the same axiom–definition–theorem shape; an external checker.
 
+## Part XIII. Tandem SLA and Pareto levers (2026-08-20)
+
+### 1. Jackson tandem sojourn
+
+Object:
+
+- `W_net = T/(1−Π)`, `Λ_W,net = M(1−Π)/T`, overestimate `T/τ*`.
+
+Current Stage:
+
+- `C`
+
+Why:
+
+- Jackson (1957) + Burke (1956) under a common-`Π` reading. 14 checks in `lineage_network_v2.py`. Working `W_net = 0.423 s` against single-node `0.226 s`.
+
+Main missing evidence:
+
+- measured per-node utilization, not one flux scalar.
+- live sojourn vs predicted `T/(1−Π)`.
+
+Promotion trigger:
+
+- exogenous end-to-end wait on held-out windows; `R² > 0.5` against `W_net`.
+
+### 2. Required shed / cut and Amdahl slack
+
+Object:
+
+- `δ* = Π − Π*`, `ΔT* = T − W_max(1−Π)`, wall invariance `Λ_W,net = M/W_max`.
+
+Current Stage:
+
+- `C`
+
+Why:
+
+- invert the tandem mean; Little on the wall; Amdahl serial fraction `τ*/T = 0.533`. 19 checks in `lineage_qos_v2.py`.
+
+Main missing evidence:
+
+- an operator actually shedding `δ*` or cutting `ΔT*` and measuring `W_net`.
+
+Promotion trigger:
+
+- intervention whose sign matches `--meet-sla` or a 12 ms bottleneck cut.
+
+### 3. Jackson miss tail
+
+Object:
+
+- `P(W_net > W_max)` as a hypoexponential survival function.
+
+Current Stage:
+
+- `C`
+
+Why:
+
+- closed form for distinct exponential sojourns. Pinned: live `0.439`, mean-wall `0.401`, idle `0.098`. A 10% miss budget allows `Π ≈ 0.007`.
+
+Main missing evidence:
+
+- empirical sojourn histogram. Exponential service is a reading.
+
+Promotion trigger:
+
+- Kolmogorov–Smirnov against the hypoexponential on live waits; or a declared non-exponential `κ` with measured SCVs.
+
 ## Part XII. Register Governance Rule
 
 This document should be updated whenever one of the following happens:
