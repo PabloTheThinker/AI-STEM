@@ -406,6 +406,7 @@ Algebraic identities (Theorems 1–4) are not empirical claims; they are checked
 | Official spec (this document) | `mathematics/lineage-papers/LINEAGE_EQUATION_V2_OFFICIAL.md` |
 | Pure Python reference | `mathematics/lineage-papers/reference/lineage_capacity_v2.py` |
 | Validation entrypoint | `python3 …/lineage_capacity_v2.py` |
+| Computable slice (telemetry → numbers) | `mathematics/canon/CONCRETE_COMPUTABLE_SLICE.md` + `reference/lineage_slice_v2.py` |
 | Engine implementation (product) | external `lineage-engine` (`capacity.py`, `coupling.py`) — should converge to v2 defaults |
 | Draft narrative paper | `lineage-equation-paper.md` |
 

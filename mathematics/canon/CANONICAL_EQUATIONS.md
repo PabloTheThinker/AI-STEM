@@ -1,6 +1,6 @@
 # Canonical Equations
 
-Updated: `2026-04-05`
+Updated: `2026-08-20`
 
 ## Purpose
 
@@ -409,9 +409,60 @@ with:
 τ_alpha << τ_sigma << τ_blood << τ_gov << τ_theta
 ```
 
-## 13. Implementation Reading
+## 13. Computable Slice Equations
 
-For implementation purposes, the equations should be read in this order:
+Operational layer. Full estimators and the worked example live in `CONCRETE_COMPUTABLE_SLICE.md`.
+
+Primitive proxies:
+
+```text
+C_id    = clip(1 − 0.6 · alerts/axes − 0.4 · drift)
+C_mem   = 0.7 sat(entries; 200) + 0.3 coverage
+C_graph = 0.6 sat(edges/nodes; 0.25) + 0.4 healthy_edge_ratio
+C_perm  = permanence_integrity
+F_wm    = sat(turnover; 8)
+F_ret   = 0.6 · hit_rate + 0.4 · retrieval_score
+F_path  = sat(pathway_events; 40)
+F_ctrl  = sat(control_actions; 20)
+F_merge = 0.6 sat(merge_writes; 12) + 0.4 merge_confidence
+ν*      = 1 / max_ℓ τ_ℓ
+```
+
+Operational usable capacity (units-repaired):
+
+```text
+u     = clip(1 − λ_H H − λ_E Ê − λ_D D)
+Q_eff = u · Q
+```
+
+Slice barrier:
+
+```text
+Φ_sub  = 0
+Φ_gov  = D
+Φ_sig  = H
+Φ_sup  = Ê
+Φ_org  = Φ_sub + Φ_gov + Φ_sig + Φ_sup + 1[plasticity closed]
+```
+
+Ascent hint:
+
+```text
+hint = argmax_ξ |∂Q/∂ξ| · Δξ_typical
+ΔM = 0.05,  ΔΠ = 0.10,  Δν* = 1 Hz
+```
+
+## 14. Implementation Reading
+
+Until the full organism is live-populated, compute the slice first:
+
+1. fill `TelemetryRecord`
+2. estimate primitives (`C_i`, `F_k`, `ν*`, `H`, `Ê`, `D`)
+3. evaluate `Q` from the official law
+4. evaluate `u`, `Q_eff`, `Φ_org`, zone, hint
+5. declare the weight table
+
+When the full organism is available, continue:
 
 1. load `𝒪_t`
 2. compute `c_t`
@@ -430,5 +481,6 @@ If a later document needs to quote the mathematics packet in one place, it shoul
 
 - `SYMBOLS_AND_NOTATION_GLOSSARY.md`
 - `NOTATION_POLICY.md`
+- `CONCRETE_COMPUTABLE_SLICE.md` for the operational estimators
 
-That gives one canonical system, one canonical symbol set, and one canonical equation family.
+That gives one canonical system, one canonical symbol set, one canonical equation family, and one path from a log line to a number.

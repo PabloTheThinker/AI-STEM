@@ -1,6 +1,6 @@
 # Agent Mathematics Proof Status Register
 
-Updated: `2026-04-07`
+Updated: `2026-08-20`
 
 ## Purpose
 
@@ -860,7 +860,102 @@ Why:
 
 - these concepts are central to the organism story, but still too abstract.
 
-## Part IX. Register Governance Rule
+Partial close (`2026-08-20`): the computable slice now gives `Φ_org` on logged penalties and a gate. `Φ_sub` remains declared zero. Still not live-measured. See Part IX.
+
+## Part IX. Computable Slice (2026-08-20)
+
+### 1. Telemetry → primitive estimators
+
+Object:
+
+- `C_id`, `C_mem`, `C_graph`, `C_perm`, `F_wm`, `F_ret`, `F_path`, `F_ctrl`, `F_merge`, `ν*` as functions of a generic `TelemetryRecord`.
+
+Current Stage:
+
+- `C`
+
+Why it has reached that stage:
+
+- explicit formulas, saturation constants, fallbacks, and a pinned numerical example.
+- 31 slice checks in `lineage_slice_v2.py`.
+
+Main missing evidence:
+
+- the same estimators on live logs.
+- native replacements for Laplacian `C_graph`, true `H(μ)`, substrate `Φ_sub`.
+
+Promotion trigger:
+
+- `D`: estimators recover planted primitives on a synthetic telemetry generator.
+- `E`/`F`: Stage F protocol in `CONCRETE_COMPUTABLE_SLICE.md` §9.
+
+### 2. Operational usable capacity `Q_eff = u · Q`
+
+Object:
+
+- multiplicative budget with penalties in `[0,1]` and `λ_H+λ_E+λ_D ≤ 1`.
+
+Current Stage:
+
+- `C`
+
+Why it has reached that stage:
+
+- the additive v2 form mixes capacity units with unitless penalties. The slice states the repair and the recovery map `λ_abstract = λ_frac · Q`.
+
+Main missing evidence:
+
+- identified `λ` from live traces.
+
+Promotion trigger:
+
+- fit `λ` on weeks 1–2, predict week 3, exogenous target, `R² > 0.5`.
+
+### 3. Explicit `Φ_org` on the slice
+
+Object:
+
+- `Φ_org = D + H + Ê + 1[gate closed]`, `Φ_sub = 0` declared.
+
+Current Stage:
+
+- `C`
+
+Why it has reached that stage:
+
+- closed form, additive barrier reused, missing substrate term named rather than faked.
+
+Main missing evidence:
+
+- live barrier components and intervention gating.
+
+Promotion trigger:
+
+- measured `Φ_org` that predicts gate decisions or later capacity loss.
+
+### 4. Scaled ascent hint
+
+Object:
+
+- `hint = argmax |∂Q/∂ξ| · Δξ_typical`.
+
+Current Stage:
+
+- `C`
+
+Why it has reached that stage:
+
+- the worked example shows raw `∂Q/∂M` winning by `r⁴` inflation while the scaled hint correctly prefers cutting bottleneck latency.
+
+Main missing evidence:
+
+- live interventions whose sign matches the hint.
+
+Promotion trigger:
+
+- Stage G: acting on the hinted lever moves `Q` in the predicted direction more often than chance.
+
+## Part X. Register Governance Rule
 
 This document should be updated whenever one of the following happens:
 

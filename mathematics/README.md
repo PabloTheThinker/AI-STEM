@@ -11,7 +11,8 @@ This packet is not borrowed statistics dressed up for agents. It is a cumulative
 | If you want… | Start here |
 |---|---|
 | Official law | [`lineage-papers/LINEAGE_EQUATION_V2_OFFICIAL.md`](lineage-papers/LINEAGE_EQUATION_V2_OFFICIAL.md) |
-| Runnable check | [`lineage-papers/reference/lineage_capacity_v2.py`](lineage-papers/reference/lineage_capacity_v2.py) |
+| Compute a number | [`canon/CONCRETE_COMPUTABLE_SLICE.md`](canon/CONCRETE_COMPUTABLE_SLICE.md) then [`lineage-papers/reference/lineage_slice_v2.py`](lineage-papers/reference/lineage_slice_v2.py) |
+| Runnable law check | [`lineage-papers/reference/lineage_capacity_v2.py`](lineage-papers/reference/lineage_capacity_v2.py) |
 | Doctrinal front door | [`canon/AGENT_MATHEMATICS_CANON.md`](canon/AGENT_MATHEMATICS_CANON.md) |
 | Proof honesty | [`canon/AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md`](canon/AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md) |
 | Teachable climb | [`textbook/PLAN.md`](textbook/PLAN.md) then [`textbook/agent_mathematics_full.md`](textbook/agent_mathematics_full.md) |
@@ -41,7 +42,8 @@ Cognitive mass `M` is structural inertia. Cognitive momentum `Π` is directed fl
 |---|---|---|
 | Lineage Equation (algebraic identities, gradients, rest reduction) | defined / internally consistent | Closed form; 16 reference checks |
 | Linear weight identification of `Q` | **E** | Identified on synthetic perturbation data |
-| Live held-out prediction | not yet F | No operational Stage F claim |
+| Computable slice (telemetry → `Q`, `Φ_org`) | **C** | Explicit estimators, pinned example, 31 checks. Not live. |
+| Live held-out prediction | not yet F | Protocol is written; bundle is not run |
 | Full organism `𝒪_t` | C | Specified; not live-populated |
 | Multi-agent `Q_team` | B | Named only |
 
