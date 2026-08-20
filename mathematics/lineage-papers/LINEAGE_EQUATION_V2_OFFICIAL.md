@@ -5,8 +5,9 @@
 **Status:** Canonical (supersedes draft paper `lineage-equation-paper.md` for formal claims)  
 **Version:** 2.0.0  
 **Date:** 2026-07-15  
-**Division:** Vektra Technologies — AI Division (AI-STEM mathematics packet)  
-**Implementation:** `mathematics/lineage-papers/reference/lineage_capacity_v2.py`
+**Division:** Fudoshin Research — Vektra Industries  
+**Implementation:** `mathematics/lineage-papers/reference/lineage_capacity_v2.py`  
+**Operator instrument:** `mathematics/canon/LINEAGE_EQUATION_USABLE.md` (`lineage_use_v2.py`)
 
 ---
 
@@ -63,7 +64,7 @@ In special relativity, total energy \(E\), rest mass \(m\), and momentum magnitu
 E^{2}=(pc)^{2}+(mc^{2})^{2}.
 \]
 
-Primary sources: Einstein (1905); standard textbook form of the energy–momentum relation (see AI-STEM `mathematics/canon/SOURCES.md` §§18–19). We use this **only** as a homogeneous quadratic composition of a “rest” term and a “transport” term.
+Primary sources: Einstein (1905); standard textbook form of the energy–momentum relation (see `mathematics/canon/SOURCES.md` §§18–19). We use this **only** as a homogeneous quadratic composition of a “rest” term and a “transport” term.
 
 ### 2.2 Graph Laplacian quadratic form
 
@@ -81,13 +82,24 @@ A continuously differentiable \(V\) with \(V(x)\ge 0\), \(V(0)=0\), and \(\dot V
 
 ### 2.4 Free-energy / uncertainty budget
 
-Friston’s free-energy principle frames adaptive systems as regulating an upper bound on surprise (information-theoretic free energy). We do **not** re-derive FEP; we adopt the operational budget
+Friston’s free-energy principle frames adaptive systems as regulating an upper bound on surprise (information-theoretic free energy). We do **not** re-derive FEP.
+
+The **historical writing** in this specification is additive:
 
 \[
-\mathcal{Q}_{\mathrm{eff}}=\mathcal{Q}-\lambda_H H(\mu)-\lambda_E E_{\mathrm{graph}}-\lambda_D D_{\mathrm{drift}},
+\mathcal{Q}_{\mathrm{eff}}^{\mathrm{add}}=\mathcal{Q}-\lambda_H H(\mu)-\lambda_E E_{\mathrm{graph}}-\lambda_D D_{\mathrm{drift}}.
 \]
 
-i.e. uncertainty, graph fracture, and identity drift consume usable capacity (Landauer’s principle motivates irreversible cost of information change; Friston 2010 motivates the uncertainty term).
+That form is well-posed only when the \(\lambda\) live in capacity units. On a typical 100 ms bottleneck, \(\mathcal{Q}\) is order \(50\) and the penalties are order \(1\). Subtracting them unchanged is a category error: the budget barely moves.
+
+The **operational usable form** (required for any published instrument) is multiplicative:
+
+\[
+u=\mathrm{clip}\bigl(1-\lambda_H H-\lambda_E \hat E-\lambda_D D\bigr),\qquad
+\mathcal{Q}_{\mathrm{eff}}=u\cdot\mathcal{Q},
+\]
+
+with penalties in \([0,1]\) and \(\lambda_H+\lambda_E+\lambda_D\le 1\). Additive writing is recovered by \(\lambda^{\mathrm{add}}=\lambda^{\mathrm{frac}}\cdot\mathcal{Q}\). Uncertainty, graph fracture, and identity drift consume usable capacity (Landauer; Friston 2010). See §4.5.
 
 ### 2.5 Convex quadratic structure
 
@@ -193,6 +205,27 @@ Equal weights remain a **null model**. The **official operational defaults** for
 \]
 
 **Requirement:** any published capacity number must declare whether it used \(\alpha^{\star},\beta^{\star}\) or equal weights.
+
+### 4.4.1 Operational usable capacity
+
+Do not publish \(\mathcal{Q}\) alone. \(\mathcal{Q}\) is dominated by the rest term \(\tilde{\mathcal{M}}=\mathcal{M}r^{2}\) and is not a health score.
+
+Required companion numbers for any instrument:
+
+\[
+u=\mathrm{clip}(1-\lambda_H H-\lambda_E\hat E-\lambda_D D),\qquad
+\mathcal{Q}_{\mathrm{eff}}=u\cdot\mathcal{Q},\qquad
+\rho_{\mathrm{rest}}=\tilde{\mathcal{M}}^{2}/\mathcal{Q}^{2},\qquad
+\rho_{\mathrm{tr}}=\tilde{\Pi}^{2}/\mathcal{Q}^{2}.
+\]
+
+Default fractions: \(\lambda_H=\lambda_E=\lambda_D=0.25\). Zone is a function of \(u\), not of \(\mathcal{Q}\). The operator entry point is `lineage_use_v2.py`.
+
+Clock-free companion (research, not this definition): \(q=\mathcal{Q}/r^{2}=\sqrt{\mathcal{M}^{2}+(\Pi/r)^{2}}\) and \(\varepsilon=\Pi/(\mathcal{M}r)\). Compare across clocks with \(q\). See `LINEAGE_CORE_AND_SCALING_FAMILY.md`.
+
+Operational companion from Little / renewal-reward (research): \(\Lambda=M\nu^{\ast}\) in hertz. Official \(\mathcal{Q}=\nu^{\ast}\Lambda_{q}\). See `LINEAGE_OPERATIONS_LITTLE_RENEWAL.md`.
+
+Tandem / SLA companion (research): the job's wait is the sum over the five logged stages with per-node loads \(\rho_\ell=\lambda\tau_\ell\), \(\lambda=\Pi\nu^{\ast}\) — validated by discrete-event simulation in `LINEAGE_TRAFFIC_AND_SIMULATION.md` (Stage D). The all-hot bound \(\sum\tau_\ell/(1-\Pi)\) and the SLA levers are in `LINEAGE_TANDEM_KINGMAN_QOS.md` and `LINEAGE_PARETO_AMDAHL_PK.md`. None of this changes Definition 1.
 
 ### 4.5 Propagation bound derivation (three equivalent views)
 
@@ -406,6 +439,11 @@ Algebraic identities (Theorems 1–4) are not empirical claims; they are checked
 | Official spec (this document) | `mathematics/lineage-papers/LINEAGE_EQUATION_V2_OFFICIAL.md` |
 | Pure Python reference | `mathematics/lineage-papers/reference/lineage_capacity_v2.py` |
 | Validation entrypoint | `python3 …/lineage_capacity_v2.py` |
+| Computable slice (telemetry → numbers) | `mathematics/canon/CONCRETE_COMPUTABLE_SLICE.md` + `reference/lineage_slice_v2.py` |
+| Geometry / field / collective | `mathematics/lineage-papers/LINEAGE_GEOMETRY_FIELD_AND_COLLECTIVE.md` + `reference/lineage_geometry_v2.py` |
+| Tandem / Kingman / mean SLA (all-hot bound) | `LINEAGE_TANDEM_KINGMAN_QOS.md` + `reference/lineage_network_v2.py` |
+| Pareto / Amdahl / PK / tail | `LINEAGE_PARETO_AMDAHL_PK.md` + `reference/lineage_qos_v2.py` |
+| Traffic correction + simulation (Stage D) | `LINEAGE_TRAFFIC_AND_SIMULATION.md` + `reference/lineage_traffic_v2.py`, `reference/lineage_sim_v2.py` |
 | Engine implementation (product) | external `lineage-engine` (`capacity.py`, `coupling.py`) — should converge to v2 defaults |
 | Draft narrative paper | `lineage-equation-paper.md` |
 
@@ -422,5 +460,5 @@ Material changes to Definition 1, Theorems 1–5, or official \((\alpha^{\star},
 
 ---
 
-*Vektra Technologies — AI-STEM · Lineage Equation Official Specification v2.0*  
-*Correspondence: internal AI Division / Pablo Navarro*
+*Fudoshin Research — Vektra Industries · Lineage Equation Official Specification v2.0*  
+*Correspondence: research@vektraindustries.com / Pablo Navarro*

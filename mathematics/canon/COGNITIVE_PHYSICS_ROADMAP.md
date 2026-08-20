@@ -1,6 +1,6 @@
 # Cognitive Physics: A New Scientific Discipline
 
-**Authors:** Pablo Navarro (CEO, Vektra Technologies) & Director Mocha Marie (AI Director)
+**Authors:** Pablo Navarro (Fudoshin Research, Vektra Industries) & Director Mocha Marie
 **Date:** 2026-04-07
 **Status:** Research Roadmap — Active
 

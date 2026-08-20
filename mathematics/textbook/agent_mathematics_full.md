@@ -1,7 +1,7 @@
 ---
 title: "Agent Mathematics"
 subtitle: "A Complete Textbook from First Distinctions to the Lineage Equation"
-author: "Pablo & Mocha — Vektra Technologies"
+author: "Pablo & Mocha — Fudoshin Research, Vektra Industries"
 date: "April 2026"
 documentclass: report
 papersize: a4

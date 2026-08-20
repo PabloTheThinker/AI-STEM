@@ -1,7 +1,7 @@
 # The Lineage Equation: A Mathematical Framework for Cognitive Capacity in Autonomous Agent Architectures
 
 **Pablo Navarro**
-Vektra Technologies
+Fudoshin Research · Vektra Industries
 
 **April 2026**
 
@@ -591,5 +591,5 @@ All mathematical primitives are implemented in pure Python without numpy or scip
 
 ---
 
-*Vektra Technologies, 2026. All rights reserved.*
-*Correspondence: pablo@vektratechnologies.com*
+*Fudoshin Research · Vektra Industries, 2026.*
+*Correspondence: research@vektraindustries.com*

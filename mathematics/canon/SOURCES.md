@@ -177,3 +177,64 @@ Those can be added next in a second research pass.
     https://discovery.ucl.ac.uk/id/eprint/10175520/
     Why it matters:
     - useful for treating adaptive intelligence through a single uncertainty-and-regulation budget, which helps frame the AI-side analogue.
+
+## Operations, queueing, dimension
+
+22. John D. C. Little, `A Proof for the Queuing Formula: L = λW`, *Operations Research* 9 (1961)
+    DOI: https://doi.org/10.1287/opre.9.3.383
+    Why it matters:
+    - occupancy from throughput and wait. Used to read Π as bottleneck utilization.
+
+23. Sheldon M. Ross, `Stochastic Processes`
+    Why it matters:
+    - renewal-reward theorem: long-run rate = E[reward per cycle] / E[cycle time]. This is the operational capacity Λ = M ν*.
+
+24. Leonard Kleinrock, `Queueing Systems`, vol. 1
+    Why it matters:
+    - tandem bottleneck, M/D/1 and M/M/1 sojourn and occupancy. Grounds ν* and the stability margin 1−Π.
+
+25. François Baccelli, Guy Cohen, Geert Jan Olsder, Jean-Pierre Quadrat, `Synchronization and Linearity`
+    Why it matters:
+    - max-plus eigenvalue of a serial timed event graph is the cycle time max τ_ℓ. Discrete-event form of official A3.
+
+26. Edgar Buckingham, `On Physically Similar Systems`, *Physical Review* 4 (1914)
+    Why it matters:
+    - π-theorem: any scalar from (M, Π, ν*) is ν*^k f(M, Π). Official Q is k=2. Renewal-reward is k=1.
+
+27. James R. Jackson, `Networks of Waiting Lines`, *Operations Research* 5 (1957)
+    DOI: https://doi.org/10.1287/opre.5.4.518
+    Why it matters:
+    - product-form open networks. Tandem sojourn is the sum of node sojourns.
+
+28. Paul J. Burke, `The Output of a Queuing System`, *Operations Research* 4 (1956)
+    DOI: https://doi.org/10.1287/opre.4.6.699
+    Why it matters:
+    - a stable M/M/1 has Poisson departures. Justifies treating the five logged pipes as a Jackson tandem.
+
+29. J. F. C. Kingman, `The single server queue in heavy traffic`, *Math. Proc. Camb. Phil. Soc.* 57 (1961)
+    DOI: https://doi.org/10.1017/S0305004100036094
+    Why it matters:
+    - G/G/1 wait ≈ τ · κ · Π/(1−Π) with κ = (c_a² + c_s²)/2. Burstiness is a declared factor, not a new law.
+
+30. Felix Pollaczek (1930) and A. Y. Khinchine (1932), the M/G/1 formula
+    Why it matters:
+    - exact Poisson-arrival case of Kingman: κ = (1 + c_s²)/2. Default κ = 1 is exponential service, not a guess.
+
+31. Gene M. Amdahl, `Validity of the single processor approach to achieving large scale computing capabilities`, AFIPS SJCC (1967)
+    Why it matters:
+    - serial fraction s = τ*/T. A bottleneck-only cut cannot remove the other four latencies, and it moves the argmax once slack is spent.
+
+32. Ronald W. Wolff, `Poisson Arrivals See Time Averages`, *Operations Research* 30 (1982)
+    DOI: https://doi.org/10.1287/opre.30.2.223
+    Why it matters:
+    - reading Π from a window mean equals the arrival-average utilization under Poisson arrivals.
+
+33. Edgar Reich, `Waiting Times When Queues are in Tandem`, *Ann. Math. Statist.* 28 (1957)
+    DOI: https://doi.org/10.1214/aoms/1177706889
+    Why it matters:
+    - tandem waits; with Burke, the tagged job’s time in system is a hypoexponential sum.
+
+34. D. V. Lindley, `The theory of queues with a single server`, *Math. Proc. Camb. Phil. Soc.* 48 (1952)
+    DOI: https://doi.org/10.1017/S0305004100027638
+    Why it matters:
+    - the waiting-time recursion behind the discrete-event simulator: mechanism, not formula, generates the waits the theory must match.

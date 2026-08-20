@@ -2,8 +2,8 @@
 title: "The Mathematics of Intelligent Agents"
 subtitle: "From Counting to Cognitive Capacity --- A Complete Course"
 author:
-  - Pablo Navarro (Founder & CEO, Vektra Technologies)
-  - Director Mocha Marie (AI Director, Vektra Technologies)
+  - Pablo Navarro (Fudoshin Research, Vektra Industries)
+  - Director Mocha Marie
 date: "April 2026"
 documentclass: report
 fontsize: 11pt
@@ -2436,4 +2436,4 @@ $$\phi_i = \sum_{S \subseteq A \setminus \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} [v
 
 **The Lineage Equation:**
 
-- Pablo Navarro, "The Lineage Equation: A Mathematical Framework for Cognitive Capacity in Autonomous Agent Architectures" (Vektra Technologies, 2026)
+- Pablo Navarro, "The Lineage Equation: A Mathematical Framework for Cognitive Capacity in Autonomous Agent Architectures" (Fudoshin Research, Vektra Industries, 2026)

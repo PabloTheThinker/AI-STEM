@@ -1,6 +1,6 @@
 # Agent Mathematics Proof Status Register
 
-Updated: `2026-04-07`
+Updated: `2026-08-20`
 
 ## Purpose
 
@@ -860,7 +860,303 @@ Why:
 
 - these concepts are central to the organism story, but still too abstract.
 
-## Part IX. Register Governance Rule
+Partial close (`2026-08-20`): the computable slice now gives `Φ_org` on logged penalties and a gate. `Φ_sub` remains declared zero. Still not live-measured. See Part IX.
+
+## Part IX. Computable Slice (2026-08-20)
+
+### 1. Telemetry → primitive estimators
+
+Object:
+
+- `C_id`, `C_mem`, `C_graph`, `C_perm`, `F_wm`, `F_ret`, `F_path`, `F_ctrl`, `F_merge`, `ν*` as functions of a generic `TelemetryRecord`.
+
+Current Stage:
+
+- `C`
+
+Why it has reached that stage:
+
+- explicit formulas, saturation constants, fallbacks, and a pinned numerical example.
+- 31 slice checks in `lineage_slice_v2.py`.
+
+Main missing evidence:
+
+- the same estimators on live logs.
+- native replacements for Laplacian `C_graph`, true `H(μ)`, substrate `Φ_sub`.
+
+Promotion trigger:
+
+- `D`: estimators recover planted primitives on a synthetic telemetry generator.
+- `E`/`F`: Stage F protocol in `CONCRETE_COMPUTABLE_SLICE.md` §9.
+
+### 2. Operational usable capacity `Q_eff = u · Q`
+
+Object:
+
+- multiplicative budget with penalties in `[0,1]` and `λ_H+λ_E+λ_D ≤ 1`.
+
+Current Stage:
+
+- `C`
+
+Why it has reached that stage:
+
+- the additive v2 form mixes capacity units with unitless penalties. The slice states the repair and the recovery map `λ_abstract = λ_frac · Q`.
+
+Main missing evidence:
+
+- identified `λ` from live traces.
+
+Promotion trigger:
+
+- fit `λ` on weeks 1–2, predict week 3, exogenous target, `R² > 0.5`.
+
+### 3. Explicit `Φ_org` on the slice
+
+Object:
+
+- `Φ_org = D + H + Ê + 1[gate closed]`, `Φ_sub = 0` declared.
+
+Current Stage:
+
+- `C`
+
+Why it has reached that stage:
+
+- closed form, additive barrier reused, missing substrate term named rather than faked.
+
+Main missing evidence:
+
+- live barrier components and intervention gating.
+
+Promotion trigger:
+
+- measured `Φ_org` that predicts gate decisions or later capacity loss.
+
+### 4. Scaled ascent hint
+
+Object:
+
+- `hint = argmax |∂Q/∂ξ| · Δξ_typical`.
+
+Current Stage:
+
+- `C`
+
+Why it has reached that stage:
+
+- the worked example shows raw `∂Q/∂M` winning by `r⁴` inflation while the scaled hint correctly prefers cutting bottleneck latency.
+
+Main missing evidence:
+
+- live interventions whose sign matches the hint.
+
+Promotion trigger:
+
+- Stage G: acting on the hinted lever moves `Q` in the predicted direction more often than chance.
+
+## Part X. Lineage Geometry (2026-08-20)
+
+### 1. Sensitivity ratio and rank-1 β-information
+
+Object:
+
+- `R = ‖∇_β Q‖ / ‖∇_α Q‖ = (Π/M) r^{-2} (‖F‖/‖C‖)` and `I_β ∝ F Fᵀ`.
+
+Current Stage:
+
+- `C` (algebraic) / `D` (numerical on the slice working point)
+
+Why:
+
+- closed-form proof; `R = 0.00686` pinned; β gradient parallel to `F`.
+
+Main missing evidence:
+
+- the same `R` on live `(M, Π, r)` trajectories.
+
+Promotion trigger:
+
+- live `R` time series; confirmation that β fitted from `Q` is unstable while β fitted from `Q_lin` is not.
+
+### 2. Bottleneck vs mean-field field reduction
+
+Object:
+
+- `Q_org = Q(M, Π, min_i ν_i)` vs `Q_mean = avg_i Q(M_i, Π_i, ν_i)`.
+
+Current Stage:
+
+- `C` / `D`
+
+Why:
+
+- Theorem 4; `k=2, n=8` overestimate `3.59×`; rest ratio `1/k²` checked at `k=2` and `k=3`.
+
+Main missing evidence:
+
+- a live graph with heterogeneous latencies.
+
+Promotion trigger:
+
+- Stage 3 falsification in the textbook: the slow vertex loses capacity first, and organism `Q` follows the min, not the mean.
+
+### 3. Collective square tax
+
+Object:
+
+- `η ≈ (ν_team / ν_fast)²` in the rest-dominated regime; isolated pool `Q_par = √(Σ Q_i²)`.
+
+Current Stage:
+
+- `C` / `D`
+
+Why:
+
+- rest reduction already in v2; coordination numbers pinned (`η = 0.252` at half-rate).
+
+Main missing evidence:
+
+- a two-agent live fabric with measured `ν_comm`.
+
+Promotion trigger:
+
+- measured `η` within 20% of `(ν_team/ν_fast)²` on a shared channel.
+
+## Part XI. Axiomatic System (2026-08-20)
+
+### 1. AMS Books I–IV
+
+Object:
+
+- Formal system: Peano `ℕ`, ordered field `ℝ`, typed agent arithmetic, 2-dimensional capacity plane.
+
+Current Stage:
+
+- `C` for the axioms and the internal theorems (I.1, II.1–2, III.1–3, IV.1–5).
+- Not `I`. The system is new; it has not been the reusable backbone of an independent literature.
+
+Why it has reached that stage:
+
+- Theorem I.1 is the standard Peano proof of `1+1=2`.
+- Theorem IV.1 is Pythagoras on a stated inner-product space. The Lineage Equation is that theorem, not an extra axiom.
+- `ams_kernel_v2.py` constructs `ℕ` from `0` and `S` (no integer literals in the proof object) and checks IV.1–IV.3.
+
+Main missing evidence:
+
+- a proof assistant encoding (Lean / Metamath), not only a Python kernel.
+- Book V (graphs, teams) written at the same standard.
+
+Promotion trigger:
+
+- Book V with the same axiom–definition–theorem shape; an external checker.
+
+## Part XIII. Tandem SLA and Pareto levers (2026-08-20)
+
+> **Corrected same day (Part XIV).** The common-`Π` model below is an
+> upper bound, not the default. It overstated the working-point wait by
+> 22.8% and wrongly declared it over the mean SLA. The corrected model
+> was validated against a discrete-event simulation and holds Stage D.
+
+### 1. Jackson tandem sojourn (all-hot bound)
+
+Object:
+
+- `W_net_upper = T/(1−Π)`: every stage at the bottleneck's utilization.
+
+Current Stage:
+
+- `C` — retained as the exact worst case; demoted from default.
+
+Why:
+
+- Jackson (1957) + Burke (1956) under a common-`Π` reading. 14 checks in `lineage_network_v2.py`. The reading was flagged in the paper and turned out to be worth 78 ms of phantom wait; see Part XIV.
+
+Main missing evidence:
+
+- a live system where the fast stages actually carry foreign traffic (the only regime where this bound is tight).
+
+Promotion trigger:
+
+- none sought; this is a bound, not a model.
+
+### 2. Required shed / cut and Amdahl slack
+
+Object:
+
+- `δ* = Π − Π*`, `ΔT* = T − W_max(1−Π)`, wall invariance `Λ_W,net = M/W_max`.
+
+Current Stage:
+
+- `C`
+
+Why:
+
+- invert the tandem mean; Little on the wall; Amdahl serial fraction `τ*/T = 0.533`. 19 checks in `lineage_qos_v2.py`.
+
+Main missing evidence:
+
+- an operator actually shedding `δ*` or cutting `ΔT*` and measuring `W_net`.
+
+Promotion trigger:
+
+- intervention whose sign matches `--meet-sla` or a 12 ms bottleneck cut.
+
+### 3. Jackson miss tail
+
+Object:
+
+- `P(W_net > W_max)` as a hypoexponential survival function.
+
+Current Stage:
+
+- `C`
+
+Why:
+
+- closed form for distinct exponential sojourns. Pinned: live `0.439`, mean-wall `0.401`, idle `0.098`. A 10% miss budget allows `Π ≈ 0.007`.
+
+Main missing evidence:
+
+- empirical sojourn histogram. Exponential service is a reading.
+
+Promotion trigger:
+
+- Kolmogorov–Smirnov against the hypoexponential on live waits; or a declared non-exponential `κ` with measured SCVs.
+
+## Part XIV. Traffic correction and simulated validation (2026-08-20)
+
+### 1. Single-stream traffic model
+
+Object:
+
+- `ρ_ℓ = λ τ_ℓ` with `λ = Π ν*`; `W_net = Σ τ_ℓ/(1−λτ_ℓ)`; levers `δ*`, cut by bisection; hypoexponential tail with rates `1/τ_ℓ − λ`.
+
+Current Stage:
+
+- **`D`** — first exogenous validation in the program.
+
+Why:
+
+- A seeded discrete-event simulator (Lindley tandem recursion, 70,000 measured jobs, no sojourn formula inside) reproduced the predicted mean to 0.6% and the predicted 400 ms miss fraction to 0.0007, at two load levels. The all-hot model missed mechanism by 23% and was rejected by the same run.
+
+What the correction changed:
+
+- Working point is **under** the 400 ms mean SLA (`0.345 s`), `Π* = 0.568` not `0.4375`, `δ* = 0`, throughput unbound by the SLA. The tail conclusion survived: `p_miss = 0.301`; a 10% miss budget still allows `Π ≈ 0.010`.
+
+Main missing evidence:
+
+- Stage D is still synthetic: Poisson arrivals and exponential services are the assumed mechanism. Stage F needs live per-stage waits.
+
+Promotion trigger:
+
+- live end-to-end waits: mean within 10% of `W_net` and KS non-rejection of the hypoexponential, on held-out windows.
+
+### 2. Program-level lesson
+
+Every earlier check tested formulas against themselves. The one reading that was flagged in prose but never priced ("Π common across nodes") flipped an operational verdict when priced. Rule going forward: **a named reading must either carry a bound or a mechanism test before its numbers reach a card.**
+
+## Part XII. Register Governance Rule
 
 This document should be updated whenever one of the following happens:
 
