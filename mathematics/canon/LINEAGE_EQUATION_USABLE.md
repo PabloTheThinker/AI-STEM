@@ -17,6 +17,9 @@ One telemetry window in. A card out:
 | `q` | clock-free core `Q/r² ≈ M`. Compare minds across clocks with this. |
 | `eps` | load ratio `Π/(M r)`. Flux share of `Q²` is `ε²/(1+ε²)`. |
 | `regime` | `rest` / `mixed` / `transport` from `ε` |
+| `Lambda_M` | renewal-reward rate `M ν*` in Hz. Operational capacity. |
+| `eta` | `1 − Π`. Stability margin under the utilization reading. |
+| `W_sojourn` | M/M/1 sojourn `τ*/(1−Π)` in seconds. |
 | `u` | usable fraction in `[0,1]`. This is the health number. |
 | `Q_eff` | `u · Q`. Report this next to `Q`. |
 | `zone` | `steady` / `guarded` / `repair` / `critical` from `u` |

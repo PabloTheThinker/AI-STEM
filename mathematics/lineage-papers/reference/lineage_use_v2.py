@@ -26,6 +26,7 @@ from typing import Any, Mapping
 try:
     from lineage_capacity_v2 import usable_fraction
     from lineage_core_v2 import core_q, little_L, load_ratio, regime
+    from lineage_ops_v2 import ops_card
     from lineage_slice_v2 import (
         SliceResult,
         TelemetryRecord,
@@ -36,6 +37,7 @@ except ImportError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from lineage_capacity_v2 import usable_fraction
     from lineage_core_v2 import core_q, little_L, load_ratio, regime
+    from lineage_ops_v2 import ops_card
     from lineage_slice_v2 import (
         SliceResult,
         TelemetryRecord,
@@ -198,8 +200,12 @@ def evaluate(rec: TelemetryRecord, warnings: list[str] | None = None) -> dict[st
     q2 = Q * Q if Q > 0.0 else 1.0
     eps = load_ratio(M, Pi, r) if M != 0.0 else float("inf")
     q_core = core_q(M, Pi, r)
+    nu = float(out.terms["nu_star"])
+    ops = ops_card(M, Pi, nu, float(out.usable))
     bn = bottleneck(rec)
     warn = list(warnings or [])
+    if Pi >= 1.0:
+        warn.append("Π ≥ 1: utilization reading is unstable; sojourn is infinite")
     return {
         "schema": SCHEMA,
         "weight_table": out.weight_table,
@@ -215,7 +221,13 @@ def evaluate(rec: TelemetryRecord, warnings: list[str] | None = None) -> dict[st
         "transport_share": (p_t * p_t) / q2,
         "M": M,
         "Pi": Pi,
-        "nu_star_hz": float(out.terms["nu_star"]),
+        "nu_star_hz": nu,
+        "Lambda_M": ops["Lambda_M"],
+        "Lambda_q": ops["Lambda_q"],
+        "Lambda_eff": ops["Lambda_eff"],
+        "C_shannon": ops["C_shannon"],
+        "eta": ops["eta"],
+        "W_sojourn": ops["W_sojourn"],
         "zone": out.zone,
         "hint": out.hint,
         "action": _action(rec, out),
@@ -233,7 +245,21 @@ def evaluate_mapping(data: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def compare(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:
-    keys = ("Q", "Q_eff", "u", "E0", "q", "eps", "L", "rest_share", "transport_share", "Phi_org")
+    keys = (
+        "Q",
+        "Q_eff",
+        "u",
+        "E0",
+        "q",
+        "eps",
+        "L",
+        "Lambda_M",
+        "eta",
+        "W_sojourn",
+        "rest_share",
+        "transport_share",
+        "Phi_org",
+    )
     delta = {k: float(after[k]) - float(before[k]) for k in keys}
     return {
         "schema": SCHEMA,
@@ -284,6 +310,11 @@ def render_card(card: dict[str, Any]) -> str:
         f"eps             {card['eps']:.6f}",
         f"L               {card['L']:.6f}",
         f"regime          {card['regime']}",
+        f"Lambda_M        {card['Lambda_M']:.6f} Hz",
+        f"Lambda_eff      {card['Lambda_eff']:.6f} Hz",
+        f"C_shannon       {card['C_shannon']:.6f} Hz",
+        f"eta             {card['eta']:.6f}",
+        f"W_sojourn       {card['W_sojourn']:.6f} s",
         f"E0              {card['E0']:.6f}",
         f"rest_share      {card['rest_share']:.6f}",
         f"transport_share {card['transport_share']:.6f}",
@@ -337,6 +368,9 @@ def run_checks() -> dict[str, bool]:
     suite["core_q_near_M"] = abs(float(card["q"]) - float(card["M"])) < 0.01
     suite["regime_rest"] = card["regime"] == "rest"
     suite["Q_is_r2_q"] = abs(float(card["Q"]) - float(card["q"]) * float(card["nu_star_hz"]) ** 2) < 1e-6
+    suite["lambda_M"] = abs(float(card["Lambda_M"]) - float(card["M"]) * float(card["nu_star_hz"])) < 1e-9
+    suite["Q_is_nu_lambda_q"] = abs(float(card["Q"]) - float(card["nu_star_hz"]) * float(card["Lambda_q"])) < 1e-6
+    suite["eta_is_one_minus_Pi"] = abs(float(card["eta"]) - (1.0 - float(card["Pi"]))) < 1e-12
 
     messy = dict(
         identity_alert_count=1,

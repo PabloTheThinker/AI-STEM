@@ -177,3 +177,26 @@ Those can be added next in a second research pass.
     https://discovery.ucl.ac.uk/id/eprint/10175520/
     Why it matters:
     - useful for treating adaptive intelligence through a single uncertainty-and-regulation budget, which helps frame the AI-side analogue.
+
+## Operations, queueing, dimension
+
+22. John D. C. Little, `A Proof for the Queuing Formula: L = λW`, *Operations Research* 9 (1961)
+    DOI: https://doi.org/10.1287/opre.9.3.383
+    Why it matters:
+    - occupancy from throughput and wait. Used to read Π as bottleneck utilization.
+
+23. Sheldon M. Ross, `Stochastic Processes`
+    Why it matters:
+    - renewal-reward theorem: long-run rate = E[reward per cycle] / E[cycle time]. This is the operational capacity Λ = M ν*.
+
+24. Leonard Kleinrock, `Queueing Systems`, vol. 1
+    Why it matters:
+    - tandem bottleneck, M/D/1 and M/M/1 sojourn and occupancy. Grounds ν* and the stability margin 1−Π.
+
+25. François Baccelli, Guy Cohen, Geert Jan Olsder, Jean-Pierre Quadrat, `Synchronization and Linearity`
+    Why it matters:
+    - max-plus eigenvalue of a serial timed event graph is the cycle time max τ_ℓ. Discrete-event form of official A3.
+
+26. Edgar Buckingham, `On Physically Similar Systems`, *Physical Review* 4 (1914)
+    Why it matters:
+    - π-theorem: any scalar from (M, Π, ν*) is ν*^k f(M, Π). Official Q is k=2. Renewal-reward is k=1.
