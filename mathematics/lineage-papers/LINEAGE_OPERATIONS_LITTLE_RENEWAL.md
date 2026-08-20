@@ -28,7 +28,7 @@ Buckingham’s π-theorem says that is legal — it is the unique-degree-2 lift 
 
 At the working point: `Λ = 6.003 Hz`, `Q = 50.176`, `Q/Λ = ν* = 8.333`. M/M/1 sojourn is `0.226 s`. Stability margin `η = 1−Π = 0.532`.
 
-Fifteen checks pass. Official `Q` is not replaced. `Π` as utilization is a reading of the flux score, not a claim that arrivals are Poisson.
+Sixteen checks pass. Official `Q` is not replaced. `Π` as utilization is a reading of the flux score, not a claim that arrivals are Poisson.
 
 ---
 
@@ -189,7 +189,7 @@ M = 0.72035    Π = 0.46811    ν* = 8.333 Hz    u = 0.840
 Λ_M   = 6.003 Hz
 Λ_q   = 6.021 Hz
 Λ_eff = 5.041 Hz
-C     = 6.517 Hz
+C     = 6.523 Hz
 Q     = 50.176
 Q/Λ_q = 8.333 = ν*
 η     = 0.532
@@ -204,4 +204,4 @@ W     = 0.226 s
 python3 mathematics/lineage-papers/reference/lineage_ops_v2.py
 ```
 
-Expect `ops_checks_passed 15`.
+Expect `ops_checks_passed 16`.

@@ -28,4 +28,4 @@ python3 lineage_slice_v2.py --example
 python3 lineage_geometry_v2.py
 ```
 
-Expect `use_checks_passed 23`, `core_checks_passed 19`, `ops_checks_passed 15`, `all_validation_checks_passed 20`, `slice_validation_checks_passed 31`, and `geometry_validation_checks_passed 17`.
+Expect `use_checks_passed 23`, `core_checks_passed 19`, `ops_checks_passed 16`, `all_validation_checks_passed 20`, `slice_validation_checks_passed 31`, and `geometry_validation_checks_passed 17`.
