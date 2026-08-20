@@ -11,11 +11,12 @@ This directory contains the canonical mathematics research for agent cognition a
 - Maintain rigorous proof-maturity tracking for all claims and equations
 
 Files:
+- `LINEAGE_EQUATION_BROKEN_DOWN.md` — the current official equation, taught the way `1 + 1 = 2` is taught: each mark, each operation, the pinned numbers. No new law.
 - `../LINEAGE_MATHEMATICS_AND_COGNITIVENET_RESEARCH_ROADMAP.md` — cross-packet
   roadmap for the next empirical Lineage Equation program, covering measured
   constant calibration, real-data CognitiveNet training, cross-architecture
   validation, nonlinear coupling, and multi-agent extensions.
-- `AXIOMATIC_SYSTEM.md` — Agent Mathematics System (AMS): Peano through the capacity plane. `1+1=2` is Theorem I.1. Lineage is Theorem IV.1.
+- `AXIOMATIC_SYSTEM.md` — Agent Mathematics System (AMS): Peano through the capacity plane. Optional formal layer. The school-arithmetic walkthrough of the current equation is `LINEAGE_EQUATION_BROKEN_DOWN.md`.
 - `CONCRETE_COMPUTABLE_SLICE.md` — first operational layer: generic telemetry → primitives → `Q`, `Q_eff`, `Φ_org`, zone, and ascent hint, with a pinned worked example and a pre-registered Stage F protocol.
 - `../lineage-papers/LINEAGE_GEOMETRY_FIELD_AND_COLLECTIVE.md` — research paper: identifiability theorems, `L_p` characterization of the quadratic, capacity-field vs bottleneck scalar, collective square tax.
 - `AGENT_MATHEMATICS_CANON.md` — canonical doctrinal entry point for the full packet, unifying the staircase, proof-maturity logic, reading modes, and how the current Lineage work fits into the overall research program.

@@ -9,7 +9,9 @@ Implementation: `mathematics/lineage-papers/reference/lineage_slice_v2.py`
 
 The packet has a law and an organism. It did not have a path from a log line to a number.
 
-This file is that path. It does **not** replace the official Lineage Equation. It answers four operational questions:
+This file is that path. It does **not** replace the official Lineage Equation. For the official identity itself, broken down mark by mark the way `1 + 1 = 2` is taught, see [`LINEAGE_EQUATION_BROKEN_DOWN.md`](LINEAGE_EQUATION_BROKEN_DOWN.md). This file is the telemetry path that produces the `C` and `F` numbers used there.
+
+It answers four operational questions:
 
 1. What do you log?
 2. How do you turn those logs into `C_i`, `F_k`, `ν*`, and penalties?

@@ -4,17 +4,20 @@
 
 The mathematical spine of Fudoshin Research. Scientific object: **capacity, structure, and constraint of a mind under load**.
 
-This packet is a **formal mathematical system** (AMS), in the same sense as Peano arithmetic: axioms, definitions, theorems, proofs. `1 + 1 = 2` is Theorem I.1. The Lineage Equation is Theorem IV.1 (Pythagoras on a defined plane). Research papers and the computable slice sit on top of that system. They are not a substitute for it.
+The current law is the Lineage Equation. Learn it the way school arithmetic teaches `1 + 1 = 2`: name each mark, do the operations, check the result. That walkthrough is [`canon/LINEAGE_EQUATION_BROKEN_DOWN.md`](canon/LINEAGE_EQUATION_BROKEN_DOWN.md). It does not change the equation.
+
+A separate formal system (AMS) exists if you want Peano through Pythagoras. It is not required to use the law.
 
 ## How to read
 
 | If you want… | Start here |
 |---|---|
-| The formal system (`1+1=2` → Lineage) | [`canon/AXIOMATIC_SYSTEM.md`](canon/AXIOMATIC_SYSTEM.md) then [`lineage-papers/reference/ams_kernel_v2.py`](lineage-papers/reference/ams_kernel_v2.py) |
+| The current equation, broken down like `1+1=2` | [`canon/LINEAGE_EQUATION_BROKEN_DOWN.md`](canon/LINEAGE_EQUATION_BROKEN_DOWN.md) then [`lineage-papers/reference/lineage_breakdown_v2.py`](lineage-papers/reference/lineage_breakdown_v2.py) |
 | Official law | [`lineage-papers/LINEAGE_EQUATION_V2_OFFICIAL.md`](lineage-papers/LINEAGE_EQUATION_V2_OFFICIAL.md) |
 | Compute a number | [`canon/CONCRETE_COMPUTABLE_SLICE.md`](canon/CONCRETE_COMPUTABLE_SLICE.md) then [`lineage-papers/reference/lineage_slice_v2.py`](lineage-papers/reference/lineage_slice_v2.py) |
 | Expand the law | [`lineage-papers/LINEAGE_GEOMETRY_FIELD_AND_COLLECTIVE.md`](lineage-papers/LINEAGE_GEOMETRY_FIELD_AND_COLLECTIVE.md) |
 | Runnable law check | [`lineage-papers/reference/lineage_capacity_v2.py`](lineage-papers/reference/lineage_capacity_v2.py) |
+| Formal system (optional) | [`canon/AXIOMATIC_SYSTEM.md`](canon/AXIOMATIC_SYSTEM.md) then [`lineage-papers/reference/ams_kernel_v2.py`](lineage-papers/reference/ams_kernel_v2.py) |
 | Doctrinal front door | [`canon/AGENT_MATHEMATICS_CANON.md`](canon/AGENT_MATHEMATICS_CANON.md) |
 | Proof honesty | [`canon/AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md`](canon/AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md) |
 | Teachable climb | [`textbook/PLAN.md`](textbook/PLAN.md) then [`textbook/agent_mathematics_full.md`](textbook/agent_mathematics_full.md) |

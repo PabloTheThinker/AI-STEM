@@ -26,6 +26,8 @@ The Fudoshin Research mathematics packet.
 
 Normative math lives in `mathematics/lineage-papers/LINEAGE_EQUATION_V2_OFFICIAL.md`.
 
+To learn the current equation the way school arithmetic teaches `1 + 1 = 2` (each mark, each operation, the numbers), start at `mathematics/canon/LINEAGE_EQUATION_BROKEN_DOWN.md`.
+
 ## Supporting research
 
 ### `biology-inspired-ai/`

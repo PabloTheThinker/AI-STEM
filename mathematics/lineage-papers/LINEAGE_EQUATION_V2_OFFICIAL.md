@@ -6,7 +6,8 @@
 **Version:** 2.0.0  
 **Date:** 2026-07-15  
 **Division:** Fudoshin Research — Vektra Industries  
-**Implementation:** `mathematics/lineage-papers/reference/lineage_capacity_v2.py`
+**Implementation:** `mathematics/lineage-papers/reference/lineage_capacity_v2.py`  
+**Worked arithmetic:** `mathematics/canon/LINEAGE_EQUATION_BROKEN_DOWN.md` (printer: `lineage_breakdown_v2.py`)
 
 ---
 
@@ -172,6 +173,8 @@ Fix \(\nu_{0}>0\) and \(\kappa\ge 0\). Set \(r=\nu^{\ast}/\nu_{0}\). Then
 \]
 
 **Transport term** \(\kappa|\tilde{\Pi}|\); **rest term** \(\kappa|\tilde{\mathcal{M}}|\).
+
+**Worked arithmetic.** `mathematics/canon/LINEAGE_EQUATION_BROKEN_DOWN.md` evaluates Definition 1 on the pinned loaded-but-coherent example, one operation at a time: name each mark, multiply, add, scale, square, add, take the square root, and check \(\mathcal{Q}^{2}=\tilde{\Pi}^{2}+\tilde{\mathcal{M}}^{2}\). Printer: `mathematics/lineage-papers/reference/lineage_breakdown_v2.py`. It does not alter this specification.
 
 ### 4.3 Relation to draft v1
 
