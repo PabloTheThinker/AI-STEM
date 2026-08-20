@@ -140,6 +140,8 @@ python3 mathematics/lineage-papers/reference/lineage_loop_v2.py \
 
 A line may be a plant dict `{M, Pi, taus, u}` or a telemetry window the slice already accepts. Optional `measured_wait_s` is the exogenous residual. Without it the replay falls back to the formula and says so.
 
+The table above is executed in `LINEAGE_BIND.md`. Shed drops low-priority jobs. Cut turns on a retrieval cache. Repair freezes writes. `--decide` is the socket for a live orchestrator.
+
 ---
 
 ## 6. What this is not
