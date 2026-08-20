@@ -17,7 +17,10 @@ One telemetry window in. A card out:
 | `q` | clock-free core `Q/r² ≈ M`. Compare minds across clocks with this. |
 | `eps` | load ratio `Π/(M r)`. Flux share of `Q²` is `ε²/(1+ε²)`. |
 | `regime` | `rest` / `mixed` / `transport` from `ε` |
-| `Lambda_M` | renewal-reward rate `M ν*` in Hz. Operational capacity. |
+| `Lambda_M` | installed rate `M ν*` in Hz. `Λ_job + Λ_W`. |
+| `Lambda_job` | delivered throughput `M Π ν*`. |
+| `Lambda_W` | responsiveness `M (1−Π) ν*`. The controller maximizes this. |
+| `ops_action` | working lever from `Λ_W`. `hint` is still the official-`Q` score. |
 | `eta` | `1 − Π`. Stability margin under the utilization reading. |
 | `W_sojourn` | M/M/1 sojourn `τ*/(1−Π)` in seconds. |
 | `u` | usable fraction in `[0,1]`. This is the health number. |
@@ -42,6 +45,7 @@ python3 mathematics/lineage-papers/reference/lineage_use_v2.py --compare \
     mathematics/lineage-papers/reference/minimal_telemetry.json
 python3 mathematics/lineage-papers/reference/lineage_use_v2.py \
     mathematics/lineage-papers/reference/example_telemetry.json --cut-ms 20
+python3 mathematics/lineage-papers/reference/lineage_use_v2.py --example --shed-pi 0.10
 python3 mathematics/lineage-papers/reference/lineage_use_v2.py --self-test
 ```
 

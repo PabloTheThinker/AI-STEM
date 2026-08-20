@@ -26,7 +26,15 @@ from typing import Any, Mapping
 try:
     from lineage_capacity_v2 import usable_fraction
     from lineage_core_v2 import core_q, little_L, load_ratio, regime
-    from lineage_ops_v2 import ops_card
+    from lineage_control_v2 import (
+        lambda_W,
+        lambda_job,
+        ops_action,
+        ops_action_text,
+        shed_pi,
+        step_scores,
+    )
+    from lineage_ops_v2 import mm1_sojourn, ops_card
     from lineage_slice_v2 import (
         SliceResult,
         TelemetryRecord,
@@ -37,7 +45,15 @@ except ImportError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from lineage_capacity_v2 import usable_fraction
     from lineage_core_v2 import core_q, little_L, load_ratio, regime
-    from lineage_ops_v2 import ops_card
+    from lineage_control_v2 import (
+        lambda_W,
+        lambda_job,
+        ops_action,
+        ops_action_text,
+        shed_pi,
+        step_scores,
+    )
+    from lineage_ops_v2 import mm1_sojourn, ops_card
     from lineage_slice_v2 import (
         SliceResult,
         TelemetryRecord,
@@ -202,6 +218,9 @@ def evaluate(rec: TelemetryRecord, warnings: list[str] | None = None) -> dict[st
     q_core = core_q(M, Pi, r)
     nu = float(out.terms["nu_star"])
     ops = ops_card(M, Pi, nu, float(out.usable))
+    action = ops_action(M, Pi, nu, float(out.usable))
+    W = float(ops["W_sojourn"])
+    tau_star = 1.0 / nu if nu else math.inf
     bn = bottleneck(rec)
     warn = list(warnings or [])
     if Pi >= 1.0:
@@ -225,12 +244,17 @@ def evaluate(rec: TelemetryRecord, warnings: list[str] | None = None) -> dict[st
         "Lambda_M": ops["Lambda_M"],
         "Lambda_q": ops["Lambda_q"],
         "Lambda_eff": ops["Lambda_eff"],
+        "Lambda_job": lambda_job(M, Pi, nu),
+        "Lambda_W": lambda_W(M, Pi, nu),
         "C_shannon": ops["C_shannon"],
         "eta": ops["eta"],
-        "W_sojourn": ops["W_sojourn"],
+        "W_sojourn": W,
         "zone": out.zone,
         "hint": out.hint,
         "action": _action(rec, out),
+        "ops_action": action,
+        "ops_text": ops_action_text(action, Pi, W if math.isfinite(W) else 0.0, tau_star),
+        "ops_scores": step_scores(M, Pi, nu),
         "gate_open": bool(out.gate_open),
         "Phi_org": float(out.phi["Phi_org"]),
         "bottleneck": bn,
@@ -254,6 +278,8 @@ def compare(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:
         "eps",
         "L",
         "Lambda_M",
+        "Lambda_job",
+        "Lambda_W",
         "eta",
         "W_sojourn",
         "rest_share",
@@ -296,6 +322,31 @@ def what_if_cut(rec: TelemetryRecord, cut_ms: float, warnings: list[str] | None 
     return card
 
 
+def what_if_shed(rec: TelemetryRecord, delta_pi: float, warnings: list[str] | None = None) -> dict[str, Any]:
+    """Move Π only. M, ν*, u held. Operations lever."""
+    before = evaluate(rec, warnings)
+    new_pi = shed_pi(float(before["Pi"]), delta_pi)
+    after = dict(before)
+    nu = float(before["nu_star_hz"])
+    M = float(before["M"])
+    u = float(before["u"])
+    tau = 1.0 / nu if nu else math.inf
+    after["Pi"] = new_pi
+    after["eta"] = 1.0 - new_pi
+    after["Lambda_job"] = lambda_job(M, new_pi, nu)
+    after["Lambda_W"] = lambda_W(M, new_pi, nu)
+    after["W_sojourn"] = mm1_sojourn(tau, new_pi) if math.isfinite(tau) else math.inf
+    action = ops_action(M, new_pi, nu, u)
+    after["ops_action"] = action
+    after["ops_text"] = ops_action_text(
+        action, new_pi, after["W_sojourn"] if math.isfinite(after["W_sojourn"]) else 0.0, tau
+    )
+    after["ops_scores"] = step_scores(M, new_pi, nu)
+    card = compare(before, after)
+    card["shed_pi"] = float(delta_pi)
+    return card
+
+
 def render_card(card: dict[str, Any]) -> str:
     bn = card["bottleneck"]
     missing = card["missing"] or ["(none)"]
@@ -311,10 +362,14 @@ def render_card(card: dict[str, Any]) -> str:
         f"L               {card['L']:.6f}",
         f"regime          {card['regime']}",
         f"Lambda_M        {card['Lambda_M']:.6f} Hz",
+        f"Lambda_job      {card['Lambda_job']:.6f} Hz",
+        f"Lambda_W        {card['Lambda_W']:.6f} Hz",
         f"Lambda_eff      {card['Lambda_eff']:.6f} Hz",
         f"C_shannon       {card['C_shannon']:.6f} Hz",
         f"eta             {card['eta']:.6f}",
         f"W_sojourn       {card['W_sojourn']:.6f} s",
+        f"ops_action      {card['ops_action']}",
+        f"ops_text        {card['ops_text']}",
         f"E0              {card['E0']:.6f}",
         f"rest_share      {card['rest_share']:.6f}",
         f"transport_share {card['transport_share']:.6f}",
@@ -335,6 +390,8 @@ def render_compare(card: dict[str, Any]) -> str:
     extra = []
     if "cut_ms" in card:
         extra.append(f"cut             {card['cut_ms']:g} ms off {card['cut_channel']}")
+    if "shed_pi" in card:
+        extra.append(f"shed            Π − {card['shed_pi']:g}")
     lines = extra + [
         f"ΔQ              {d['Q']:+.6f}",
         f"ΔQ_eff          {d['Q_eff']:+.6f}",
@@ -371,6 +428,15 @@ def run_checks() -> dict[str, bool]:
     suite["lambda_M"] = abs(float(card["Lambda_M"]) - float(card["M"]) * float(card["nu_star_hz"])) < 1e-9
     suite["Q_is_nu_lambda_q"] = abs(float(card["Q"]) - float(card["nu_star_hz"]) * float(card["Lambda_q"])) < 1e-6
     suite["eta_is_one_minus_Pi"] = abs(float(card["eta"]) - (1.0 - float(card["Pi"]))) < 1e-12
+    suite["partition"] = abs(
+        float(card["Lambda_job"]) + float(card["Lambda_W"]) - float(card["Lambda_M"])
+    ) < 1e-9
+    suite["ops_sheds"] = card["ops_action"] == "shed_load"
+    suite["hint_still_cuts"] = card["hint"] == "cut_bottleneck_latency"
+
+    shed = what_if_shed(rec, 0.10)
+    suite["shed_raises_LW"] = shed["delta"]["Lambda_W"] > 0.0
+    suite["shed_drops_job"] = shed["delta"]["Lambda_job"] < 0.0
 
     messy = dict(
         identity_alert_count=1,
@@ -425,6 +491,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--json", dest="json_out", action="store_true", help="print JSON")
     parser.add_argument("--compare", nargs=2, metavar=("BEFORE", "AFTER"), help="two windows")
     parser.add_argument("--cut-ms", type=float, dest="cut_ms", help="preview cutting bottleneck by this many ms")
+    parser.add_argument("--shed-pi", type=float, dest="shed_pi", help="preview dropping utilization Π by this amount")
     parser.add_argument("--batch", metavar="JSONL", help="one JSON object per line")
     parser.add_argument("--self-test", action="store_true", help="run instrument checks")
     args = parser.parse_args(argv)
@@ -474,6 +541,11 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.cut_ms is not None:
         card = what_if_cut(rec, args.cut_ms, warnings)
+        print(json.dumps(card, indent=2, sort_keys=True) if args.json_out else render_compare(card))
+        return 0
+
+    if args.shed_pi is not None:
+        card = what_if_shed(rec, args.shed_pi, warnings)
         print(json.dumps(card, indent=2, sort_keys=True) if args.json_out else render_compare(card))
         return 0
 
