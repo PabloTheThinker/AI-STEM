@@ -16,6 +16,7 @@ Files:
   constant calibration, real-data CognitiveNet training, cross-architecture
   validation, nonlinear coupling, and multi-agent extensions.
 - `CONCRETE_COMPUTABLE_SLICE.md` — first operational layer: generic telemetry → primitives → `Q`, `Q_eff`, `Φ_org`, zone, and ascent hint, with a pinned worked example and a pre-registered Stage F protocol.
+- `../lineage-papers/LINEAGE_GEOMETRY_FIELD_AND_COLLECTIVE.md` — research paper: identifiability theorems, `L_p` characterization of the quadratic, capacity-field vs bottleneck scalar, collective square tax.
 - `AGENT_MATHEMATICS_CANON.md` — canonical doctrinal entry point for the full packet, unifying the staircase, proof-maturity logic, reading modes, and how the current Lineage work fits into the overall research program.
 - `AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md` — explicit maturity register grading major laws, state objects, variable families, and research claims against the packet’s proof ladder, with promotion triggers for each.
 - `AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md` — stage-gated evidence workflow for promoting concepts through the proof ladder, including experiment bundles, artifact requirements, pass/fail rules, and standard study types.

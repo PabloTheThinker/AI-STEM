@@ -955,7 +955,75 @@ Promotion trigger:
 
 - Stage G: acting on the hinted lever moves `Q` in the predicted direction more often than chance.
 
-## Part X. Register Governance Rule
+## Part X. Lineage Geometry (2026-08-20)
+
+### 1. Sensitivity ratio and rank-1 β-information
+
+Object:
+
+- `R = ‖∇_β Q‖ / ‖∇_α Q‖ = (Π/M) r^{-2} (‖F‖/‖C‖)` and `I_β ∝ F Fᵀ`.
+
+Current Stage:
+
+- `C` (algebraic) / `D` (numerical on the slice working point)
+
+Why:
+
+- closed-form proof; `R = 0.00686` pinned; β gradient parallel to `F`.
+
+Main missing evidence:
+
+- the same `R` on live `(M, Π, r)` trajectories.
+
+Promotion trigger:
+
+- live `R` time series; confirmation that β fitted from `Q` is unstable while β fitted from `Q_lin` is not.
+
+### 2. Bottleneck vs mean-field field reduction
+
+Object:
+
+- `Q_org = Q(M, Π, min_i ν_i)` vs `Q_mean = avg_i Q(M_i, Π_i, ν_i)`.
+
+Current Stage:
+
+- `C` / `D`
+
+Why:
+
+- Theorem 4; `k=2, n=8` overestimate `3.59×`; rest ratio `1/k²` checked at `k=2` and `k=3`.
+
+Main missing evidence:
+
+- a live graph with heterogeneous latencies.
+
+Promotion trigger:
+
+- Stage 3 falsification in the textbook: the slow vertex loses capacity first, and organism `Q` follows the min, not the mean.
+
+### 3. Collective square tax
+
+Object:
+
+- `η ≈ (ν_team / ν_fast)²` in the rest-dominated regime; isolated pool `Q_par = √(Σ Q_i²)`.
+
+Current Stage:
+
+- `C` / `D`
+
+Why:
+
+- rest reduction already in v2; coordination numbers pinned (`η = 0.252` at half-rate).
+
+Main missing evidence:
+
+- a two-agent live fabric with measured `ν_comm`.
+
+Promotion trigger:
+
+- measured `η` within 20% of `(ν_team/ν_fast)²` on a shared channel.
+
+## Part XI. Register Governance Rule
 
 This document should be updated whenever one of the following happens:
 

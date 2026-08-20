@@ -12,6 +12,7 @@ This packet is not borrowed statistics dressed up for agents. It is a cumulative
 |---|---|
 | Official law | [`lineage-papers/LINEAGE_EQUATION_V2_OFFICIAL.md`](lineage-papers/LINEAGE_EQUATION_V2_OFFICIAL.md) |
 | Compute a number | [`canon/CONCRETE_COMPUTABLE_SLICE.md`](canon/CONCRETE_COMPUTABLE_SLICE.md) then [`lineage-papers/reference/lineage_slice_v2.py`](lineage-papers/reference/lineage_slice_v2.py) |
+| Expand the law | [`lineage-papers/LINEAGE_GEOMETRY_FIELD_AND_COLLECTIVE.md`](lineage-papers/LINEAGE_GEOMETRY_FIELD_AND_COLLECTIVE.md) |
 | Runnable law check | [`lineage-papers/reference/lineage_capacity_v2.py`](lineage-papers/reference/lineage_capacity_v2.py) |
 | Doctrinal front door | [`canon/AGENT_MATHEMATICS_CANON.md`](canon/AGENT_MATHEMATICS_CANON.md) |
 | Proof honesty | [`canon/AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md`](canon/AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md) |
@@ -43,9 +44,10 @@ Cognitive mass `M` is structural inertia. Cognitive momentum `Π` is directed fl
 | Lineage Equation (algebraic identities, gradients, rest reduction) | defined / internally consistent | Closed form; 16 reference checks |
 | Linear weight identification of `Q` | **E** | Identified on synthetic perturbation data |
 | Computable slice (telemetry → `Q`, `Φ_org`) | **C** | Explicit estimators, pinned example, 31 checks. Not live. |
+| Identifiability / field / collective theorems | **C** | Algebraic + 17 numerical checks. Not live. |
 | Live held-out prediction | not yet F | Protocol is written; bundle is not run |
 | Full organism `𝒪_t` | C | Specified; not live-populated |
-| Multi-agent `Q_team` | B | Named only |
+| Multi-agent `Q_team` | **C** | Shared-fabric bottleneck + isolated RMS; textbook sum-of-`Q` form retired |
 
 Weight tables currently differ across v1 equal defaults, the Stage E promotion bundle, and v2 official defaults. Any published `Q` number must name which table was used.
 
