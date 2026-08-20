@@ -238,3 +238,8 @@ Those can be added next in a second research pass.
     DOI: https://doi.org/10.1017/S0305004100027638
     Why it matters:
     - the waiting-time recursion behind the discrete-event simulator: mechanism, not formula, generates the waits the theory must match.
+
+35. Karl J. Åström and Richard M. Murray, `Feedback Systems`
+    Link: https://fbswiki.org/
+    Why it matters:
+    - a loop is measure, compare to a setpoint, act, measure again. The wait-loop is that object with setpoint `W_max`. Official `Q` is not the setpoint.

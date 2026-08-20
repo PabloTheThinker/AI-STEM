@@ -104,6 +104,8 @@ Failure of any rule would have shipped as a miss. It did not fail.
 
 Stage D is still synthetic: the simulator is honest about arrivals and services but they are the *assumed* laws (Poisson, exponential). Stage F needs live waits. What changed is that the formulas now survive contact with a process that does not know them.
 
+The next object is a loop, not another formula. Measure that sojourn, act, measure again. Official `Q` stays off the controller. See `LINEAGE_CLOSED_LOOP.md`.
+
 ## 6. Reproduce
 
 ```bash

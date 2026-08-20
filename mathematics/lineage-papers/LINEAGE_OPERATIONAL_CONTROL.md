@@ -115,4 +115,6 @@ python3 mathematics/lineage-papers/reference/lineage_use_v2.py --example --shed-
 
 Expect `control_checks_passed 12`. Card field `ops_action` is the working lever. `hint` remains the official-`Q` score for audit.
 
+A recommendation is not a loop. The wait-closed loop that applies a lever and measures sojourn again is `LINEAGE_CLOSED_LOOP.md`.
+
 Single-node `W*` is the identity that makes `Λ_job + Λ_W = Λ_M`. The job feels the tandem wait. See `LINEAGE_TANDEM_KINGMAN_QOS.md` and `LINEAGE_PARETO_AMDAHL_PK.md`.

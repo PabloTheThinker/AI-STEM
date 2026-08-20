@@ -55,10 +55,13 @@ def simulate_tandem(
     n_jobs: int = N_JOBS,
     warmup: int = WARMUP,
     seed: int = SEED,
+    w_max: float = DEFAULT_W_MAX,
 ) -> dict[str, float]:
-    """One seeded run. Returns mean sojourn and the 400 ms miss fraction."""
+    """One seeded run. Returns mean sojourn and the miss fraction vs w_max."""
     if lam <= 0.0 or min(taus) <= 0.0:
         raise ValueError("need λ > 0 and τ > 0")
+    if n_jobs <= warmup:
+        raise ValueError("need n_jobs > warmup")
     rng = random.Random(seed)
     last_dep = [0.0] * len(taus)
     t_arr = 0.0
@@ -76,7 +79,7 @@ def simulate_tandem(
             w = t - t_arr
             total += w
             kept += 1
-            if w > DEFAULT_W_MAX:
+            if w > w_max:
                 late += 1
     return {
         "mean_W": total / kept,

@@ -1156,6 +1156,30 @@ Promotion trigger:
 
 Every earlier check tested formulas against themselves. The one reading that was flagged in prose but never priced ("Π common across nodes") flipped an operational verdict when priced. Rule going forward: **a named reading must either carry a bound or a mechanism test before its numbers reach a card.**
 
+## Part XV. Wait-closed loop (2026-08-20)
+
+### 1. Measure → act → measure
+
+Object:
+
+- Plant `(M, Π, τ, u)` whose observation is a Lindley-simulated sojourn. Wait controller: hard gates on `Π` and `u`, then shed if `measured_W > W_max`. Official `Q` is audit. A Q-scored counterfactual always cuts.
+
+Current Stage:
+
+- **`D`** on a simulated plant. Not F (no live traces). Not G (no live intervention).
+
+Why:
+
+- Open loop at `Π = 0.60` stays over the 400 ms mean SLA. Wait-loop first action is `shed_load`; next measured mean is under. Q-loop first action is `cut_bottleneck_latency`. Controller signature and body do not take `Q`. Replay accepts `measured_wait_s` as an exogenous residual. 24 checks in `lineage_loop_v2.py`.
+
+Main missing evidence:
+
+- live end-to-end sojourn on the same bind table (shed = drop retrievals / tool calls). Stage D still assumes Poisson arrivals and exponential services.
+
+Promotion trigger:
+
+- Stage F: held-out next-window measured sojourn / miss rate, `R² > 0.5`. Stage G: apply the wait-loop lever on a live agent and check the sign of `ΔW`.
+
 ## Part XII. Register Governance Rule
 
 This document should be updated whenever one of the following happens:
