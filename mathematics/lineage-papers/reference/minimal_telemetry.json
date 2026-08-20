@@ -1,0 +1,9 @@
+{
+  "memory_entries": 120,
+  "graph_nodes": 40,
+  "graph_edges": 70,
+  "permanence_integrity": 0.82,
+  "retrieval_attempts": 20,
+  "retrieval_hits": 14,
+  "tau_retrieval_s": 0.12
+}

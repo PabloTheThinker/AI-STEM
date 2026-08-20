@@ -66,6 +66,30 @@ def _clamp01(x: float) -> float:
     return float(x)
 
 
+# Operational usable-capacity fractions. Sum ≤ 1. Not the historical
+# additive λ (those must live in capacity units; see usable_capacity).
+LAMBDA_H_USABLE: float = 0.25
+LAMBDA_E_USABLE: float = 0.25
+LAMBDA_D_USABLE: float = 0.25
+
+
+def usable_fraction(
+    H_mu: float,
+    E_graph: float,
+    D_drift: float,
+    lam_H: float = LAMBDA_H_USABLE,
+    lam_E: float = LAMBDA_E_USABLE,
+    lam_D: float = LAMBDA_D_USABLE,
+) -> float:
+    """
+    u = clip(1 − λ_H H − λ_E Ê − λ_D D)
+
+    Penalties are in [0, 1]. This is the operational budget.
+    """
+    raw = 1.0 - float(lam_H) * float(H_mu) - float(lam_E) * float(E_graph) - float(lam_D) * float(D_drift)
+    return _clamp01(raw)
+
+
 def _dot(weights: Mapping[str, float], values: Mapping[str, float]) -> float:
     total = 0.0
     for key, w in weights.items():
@@ -309,6 +333,25 @@ class LineageEquationV2:
         q = self.total_capacity()
         raw = q - lam_H * H_mu - lam_E * E_graph - lam_D * D_drift
         return max(0.0, raw)
+
+    def usable_capacity(
+        self,
+        H_mu: float = 0.0,
+        E_graph: float = 0.0,
+        D_drift: float = 0.0,
+        lam_H: float = LAMBDA_H_USABLE,
+        lam_E: float = LAMBDA_E_USABLE,
+        lam_D: float = LAMBDA_D_USABLE,
+    ) -> float:
+        """
+        Q_eff = u · Q
+
+        Operational instrument. Use this, not effective_capacity, unless
+        the λ are already in capacity units.
+        """
+        return self.total_capacity() * usable_fraction(
+            H_mu, E_graph, D_drift, lam_H, lam_E, lam_D
+        )
 
     def to_dict(self) -> dict[str, Any]:
         terms = self.capacity_terms()
@@ -634,6 +677,16 @@ def run_validation_suite() -> dict[str, bool]:
         propagation=prop,
     )
     results["coupled_ge_linear"] = coup.total_capacity() + 1e-12 >= coup.linear_eq().total_capacity()
+
+    # 13. Operational usable budget is multiplicative and bounded
+    u = usable_fraction(0.35, 0.14, 0.15)
+    q_use = eq.usable_capacity(0.35, 0.14, 0.15)
+    q_add = eq.effective_capacity(0.35, 0.14, 0.15, 1.0, 1.0, 1.0)
+    results["usable_fraction_unit"] = 0.0 <= u <= 1.0
+    results["usable_lt_raw"] = q_use < eq.total_capacity() - 1e-9
+    results["usable_eq_uQ"] = abs(q_use - u * eq.total_capacity()) < 1e-12
+    # Additive unit penalties barely move Q; that is why they are not the instrument.
+    results["additive_near_Q"] = abs(q_add - eq.total_capacity()) < 2.0
 
     return results
 

@@ -9,7 +9,7 @@ This is not a metaphor, a dashboard, or a research mood. It is a **formal system
 
 In American school mathematics, `1 + 1 = 2` is not a slogan. It is a theorem of a system (Peano, or the field axioms for `ℝ`). Agent Mathematics is the same kind of object. The Lineage Equation is not “inspired by physics.” In this system it is the Pythagorean theorem on a two-dimensional inner-product space we define.
 
-If you wanted `1 + 1 = 2` as a **method** applied to the current Lineage Equation — each mark, each operation, the numbers — that file is [`LINEAGE_EQUATION_BROKEN_DOWN.md`](LINEAGE_EQUATION_BROKEN_DOWN.md). This document is the formal system underneath, not that walkthrough.
+To run the law on a telemetry window, use [`LINEAGE_EQUATION_USABLE.md`](LINEAGE_EQUATION_USABLE.md). This document is the formal system underneath.
 
 Anything in the packet that cannot be reduced to AMS is **not yet mathematics**. It is a name.
 

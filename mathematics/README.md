@@ -4,17 +4,15 @@
 
 The mathematical spine of Fudoshin Research. Scientific object: **capacity, structure, and constraint of a mind under load**.
 
-The current law is the Lineage Equation. Learn it the way school arithmetic teaches `1 + 1 = 2`: name each mark, do the operations, check the result. That walkthrough is [`canon/LINEAGE_EQUATION_BROKEN_DOWN.md`](canon/LINEAGE_EQUATION_BROKEN_DOWN.md). It does not change the equation.
-
-A separate formal system (AMS) exists if you want Peano through Pythagoras. It is not required to use the law.
+The current law is the Lineage Equation. The operator instrument is [`canon/LINEAGE_EQUATION_USABLE.md`](canon/LINEAGE_EQUATION_USABLE.md): one JSON window in, a dashboard card out.
 
 ## How to read
 
 | If you want… | Start here |
 |---|---|
-| The current equation, broken down like `1+1=2` | [`canon/LINEAGE_EQUATION_BROKEN_DOWN.md`](canon/LINEAGE_EQUATION_BROKEN_DOWN.md) then [`lineage-papers/reference/lineage_breakdown_v2.py`](lineage-papers/reference/lineage_breakdown_v2.py) |
+| Use the equation on a window | [`canon/LINEAGE_EQUATION_USABLE.md`](canon/LINEAGE_EQUATION_USABLE.md) then [`lineage-papers/reference/lineage_use_v2.py`](lineage-papers/reference/lineage_use_v2.py) |
 | Official law | [`lineage-papers/LINEAGE_EQUATION_V2_OFFICIAL.md`](lineage-papers/LINEAGE_EQUATION_V2_OFFICIAL.md) |
-| Compute a number | [`canon/CONCRETE_COMPUTABLE_SLICE.md`](canon/CONCRETE_COMPUTABLE_SLICE.md) then [`lineage-papers/reference/lineage_slice_v2.py`](lineage-papers/reference/lineage_slice_v2.py) |
+| Estimators and Stage F protocol | [`canon/CONCRETE_COMPUTABLE_SLICE.md`](canon/CONCRETE_COMPUTABLE_SLICE.md) then [`lineage-papers/reference/lineage_slice_v2.py`](lineage-papers/reference/lineage_slice_v2.py) |
 | Expand the law | [`lineage-papers/LINEAGE_GEOMETRY_FIELD_AND_COLLECTIVE.md`](lineage-papers/LINEAGE_GEOMETRY_FIELD_AND_COLLECTIVE.md) |
 | Runnable law check | [`lineage-papers/reference/lineage_capacity_v2.py`](lineage-papers/reference/lineage_capacity_v2.py) |
 | Formal system (optional) | [`canon/AXIOMATIC_SYSTEM.md`](canon/AXIOMATIC_SYSTEM.md) then [`lineage-papers/reference/ams_kernel_v2.py`](lineage-papers/reference/ams_kernel_v2.py) |
@@ -45,9 +43,10 @@ Cognitive mass `M` is structural inertia. Cognitive momentum `Π` is directed fl
 
 | Object | Stage | Meaning |
 |---|---|---|
-| Lineage Equation (algebraic identities, gradients, rest reduction) | defined / internally consistent | Closed form; 16 reference checks |
+| Lineage Equation (algebraic identities, gradients, rest reduction, usable budget) | defined / internally consistent | Closed form; 20 reference checks |
 | Linear weight identification of `Q` | **E** | Identified on synthetic perturbation data |
 | Computable slice (telemetry → `Q`, `Φ_org`) | **C** | Explicit estimators, pinned example, 31 checks. Not live. |
+| Operator instrument (`Q`, `Q_eff`, zone, bottleneck, what-if) | **C** | Validates a window, reports a card, compares, previews a latency cut. Not live. |
 | Identifiability / field / collective theorems | **C** | Algebraic + 17 numerical checks. Not live. |
 | Live held-out prediction | not yet F | Protocol is written; bundle is not run |
 | Full organism `𝒪_t` | C | Specified; not live-populated |
@@ -63,7 +62,7 @@ Fudoshin stacks this packet as follows:
 |---|---|
 | **S1** Thinking & understanding | Staircase + Lineage Equation as capacity under load |
 | **S2** Constraint under pressure | Viability barriers, dual-estimator interference, plasticity gates |
-| **S3** Train + law algorithms | Proof ladder, identification protocol, `lineage_capacity_v2.py` |
+| **S3** Train + law algorithms | Proof ladder, identification protocol, `lineage_use_v2.py` |
 
 Public findings and writeups: the Fudoshin Research lab site.
 

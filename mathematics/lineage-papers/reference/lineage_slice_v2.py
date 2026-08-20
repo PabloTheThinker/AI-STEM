@@ -45,6 +45,7 @@ try:
         coherence_energy,
         organism_barrier,
         plasticity_allowed,
+        usable_fraction,
     )
 except ImportError:  # pragma: no cover - script/module dual use
     import sys
@@ -63,6 +64,7 @@ except ImportError:  # pragma: no cover - script/module dual use
         coherence_energy,
         organism_barrier,
         plasticity_allowed,
+        usable_fraction,
     )
 
 
@@ -286,18 +288,6 @@ def estimate_primitives(rec: TelemetryRecord) -> dict[str, float]:
         "E_norm": estimate_E_norm(rec),
         "D_drift": estimate_D_drift(rec),
     }
-
-
-def usable_fraction(
-    H_mu: float,
-    E_norm: float,
-    D_drift: float,
-    lam_H: float = LAMBDA_H,
-    lam_E: float = LAMBDA_E,
-    lam_D: float = LAMBDA_D,
-) -> float:
-    raw = 1.0 - lam_H * H_mu - lam_E * E_norm - lam_D * D_drift
-    return clip01(raw)
 
 
 def phi_org_slice(

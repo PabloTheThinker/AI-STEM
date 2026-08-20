@@ -7,7 +7,7 @@
 **Date:** 2026-07-15  
 **Division:** Fudoshin Research — Vektra Industries  
 **Implementation:** `mathematics/lineage-papers/reference/lineage_capacity_v2.py`  
-**Worked arithmetic:** `mathematics/canon/LINEAGE_EQUATION_BROKEN_DOWN.md` (printer: `lineage_breakdown_v2.py`)
+**Operator instrument:** `mathematics/canon/LINEAGE_EQUATION_USABLE.md` (`lineage_use_v2.py`)
 
 ---
 
@@ -82,13 +82,24 @@ A continuously differentiable \(V\) with \(V(x)\ge 0\), \(V(0)=0\), and \(\dot V
 
 ### 2.4 Free-energy / uncertainty budget
 
-Friston’s free-energy principle frames adaptive systems as regulating an upper bound on surprise (information-theoretic free energy). We do **not** re-derive FEP; we adopt the operational budget
+Friston’s free-energy principle frames adaptive systems as regulating an upper bound on surprise (information-theoretic free energy). We do **not** re-derive FEP.
+
+The **historical writing** in this specification is additive:
 
 \[
-\mathcal{Q}_{\mathrm{eff}}=\mathcal{Q}-\lambda_H H(\mu)-\lambda_E E_{\mathrm{graph}}-\lambda_D D_{\mathrm{drift}},
+\mathcal{Q}_{\mathrm{eff}}^{\mathrm{add}}=\mathcal{Q}-\lambda_H H(\mu)-\lambda_E E_{\mathrm{graph}}-\lambda_D D_{\mathrm{drift}}.
 \]
 
-i.e. uncertainty, graph fracture, and identity drift consume usable capacity (Landauer’s principle motivates irreversible cost of information change; Friston 2010 motivates the uncertainty term).
+That form is well-posed only when the \(\lambda\) live in capacity units. On a typical 100 ms bottleneck, \(\mathcal{Q}\) is order \(50\) and the penalties are order \(1\). Subtracting them unchanged is a category error: the budget barely moves.
+
+The **operational usable form** (required for any published instrument) is multiplicative:
+
+\[
+u=\mathrm{clip}\bigl(1-\lambda_H H-\lambda_E \hat E-\lambda_D D\bigr),\qquad
+\mathcal{Q}_{\mathrm{eff}}=u\cdot\mathcal{Q},
+\]
+
+with penalties in \([0,1]\) and \(\lambda_H+\lambda_E+\lambda_D\le 1\). Additive writing is recovered by \(\lambda^{\mathrm{add}}=\lambda^{\mathrm{frac}}\cdot\mathcal{Q}\). Uncertainty, graph fracture, and identity drift consume usable capacity (Landauer; Friston 2010). See §4.5.
 
 ### 2.5 Convex quadratic structure
 
@@ -174,8 +185,6 @@ Fix \(\nu_{0}>0\) and \(\kappa\ge 0\). Set \(r=\nu^{\ast}/\nu_{0}\). Then
 
 **Transport term** \(\kappa|\tilde{\Pi}|\); **rest term** \(\kappa|\tilde{\mathcal{M}}|\).
 
-**Worked arithmetic.** `mathematics/canon/LINEAGE_EQUATION_BROKEN_DOWN.md` evaluates Definition 1 on the pinned loaded-but-coherent example, one operation at a time: name each mark, multiply, add, scale, square, add, take the square root, and check \(\mathcal{Q}^{2}=\tilde{\Pi}^{2}+\tilde{\mathcal{M}}^{2}\). Printer: `mathematics/lineage-papers/reference/lineage_breakdown_v2.py`. It does not alter this specification.
-
 ### 4.3 Relation to draft v1
 
 Draft v1 wrote \(\mathcal{Q}^{2}=(\nu^{\ast}\Pi)^{2}+(\mathcal{M}(\nu^{\ast})^{2})^{2}\) with \(\nu^{\ast}=1000/\max\tau_{\mathrm{ms}}\).  
@@ -196,6 +205,21 @@ Equal weights remain a **null model**. The **official operational defaults** for
 \]
 
 **Requirement:** any published capacity number must declare whether it used \(\alpha^{\star},\beta^{\star}\) or equal weights.
+
+### 4.4.1 Operational usable capacity
+
+Do not publish \(\mathcal{Q}\) alone. \(\mathcal{Q}\) is dominated by the rest term \(\tilde{\mathcal{M}}=\mathcal{M}r^{2}\) and is not a health score.
+
+Required companion numbers for any instrument:
+
+\[
+u=\mathrm{clip}(1-\lambda_H H-\lambda_E\hat E-\lambda_D D),\qquad
+\mathcal{Q}_{\mathrm{eff}}=u\cdot\mathcal{Q},\qquad
+\rho_{\mathrm{rest}}=\tilde{\mathcal{M}}^{2}/\mathcal{Q}^{2},\qquad
+\rho_{\mathrm{tr}}=\tilde{\Pi}^{2}/\mathcal{Q}^{2}.
+\]
+
+Default fractions: \(\lambda_H=\lambda_E=\lambda_D=0.25\). Zone is a function of \(u\), not of \(\mathcal{Q}\). The operator entry point is `lineage_use_v2.py`.
 
 ### 4.5 Propagation bound derivation (three equivalent views)
 
