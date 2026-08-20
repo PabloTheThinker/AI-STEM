@@ -78,17 +78,42 @@ The official-`Q` counterfactual ignores wait and always cuts the bottleneck. It 
 
 ## 4. What the seeded loop does
 
-Hot start: `Π = 0.60`, official working mass and latencies, `u = 0.84`, `W_max = 0.400 s`. Theory wait at the start is `0.424 s`. Required shed to the wall is `δ* ≈ 0.032`; the guard aims near `Π ≈ 0.55`.
+Hot start: `Π = 0.60`, official working mass and latencies, `u = 0.84`, `W_max = 0.400 s`. Theory wait at the start is `0.424 s`. Required shed to the wall is `δ* ≈ 0.032`; the 10 ms guard aims near `Π ≈ 0.55`.
+
+Seeded run (`lineage_loop_v2.py`, same seed family as Stage D):
 
 ```text
-open loop   first action hold     final measured wait stays over 0.400 s
-wait loop   first action shed     final measured wait under 0.400 s
-Q loop      first action cut      official hint; wait is not the reason
+open loop  Π=0.60  observe only
+  t       Pi    meas_W    form_W   p_miss  action                       amt        Q
+  0   0.6000    0.4185    0.4237    0.403  hold                       0.000   50.274
+  1   0.6000    0.4364    0.4237    0.419  hold                       0.000   50.274
+  2   0.6000    0.4045    0.4237    0.392  hold                       0.000   50.274
+end  0.6000    0.4302    0.4237    0.423  —                                  50.274
+
+wait loop  Π=0.60  measure → shed/hold
+  t       Pi    meas_W    form_W   p_miss  action                       amt        Q
+  0   0.6000    0.4185    0.4237    0.403  shed_load                  0.048   50.274
+  1   0.5523    0.3890    0.3900    0.369  hold                       0.000   50.236
+  2   0.5523    0.3905    0.3900    0.367  hold                       0.000   50.236
+  3   0.5523    0.4016    0.3900    0.374  shed_load                  0.020   50.236
+end  0.5323    0.3744    0.3778    0.328  —                                  50.221
+
+Q loop     Π=0.60  official hint (cut)
+  t       Pi    meas_W    form_W   p_miss  action                       amt        Q
+  0   0.6000    0.4185    0.4237    0.403  cut_bottleneck_latency     0.100   50.274
+  1   0.6000    0.4255    0.3963    0.400  cut_bottleneck_latency     0.100   62.008
+end  0.6000    0.3624    0.3723    0.336  —                                  76.494
 ```
+
+Three facts from that table, none of them a slogan.
+
+1. The open loop never leaves the wrong side of the wall. A card without an apply does this.
+2. The wait-loop sheds, holds, then sheds again. Tick 3 measured `0.402 s` against a formula of `0.390 s` — relative error 3%, still over the wall. The controller believes the measurement. That is the integral. `Q` moved from `50.274` to `50.221`.
+3. The Q-loop cuts, twice. After the first cut the formula is already under the wall (`0.396 s`) and the measurement is not (`0.426 s`). The Q-controller does not care: it is scoring `ν*²`. `Q` jumps to `76.5`. Wait is not why it moved.
 
 Along the wait-loop, `|formula_W − measured_W| / formula_W < 0.05`. The controller did not use that formula to decide.
 
-After the mean is repaired, `p_miss` is still above 0.20. Idle already misses about 10%. A 10% miss budget is a different setpoint and still allows almost no flux (`Π ≈ 0.010`). This loop does not pretend otherwise.
+After the mean is repaired, `p_miss` is still `0.328`. Idle already misses about 10%. A 10% miss budget is a different setpoint and still allows almost no flux (`Π ≈ 0.010`). This loop does not pretend otherwise.
 
 At the pinned working point (`Π = 0.468`) the wait-loop holds. The Q-loop still cuts. That is the card's own warning, now executable as a counterfactual.
 
