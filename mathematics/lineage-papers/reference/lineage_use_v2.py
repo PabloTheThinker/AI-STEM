@@ -10,6 +10,8 @@ Preview a bottleneck cut. The law is unchanged.
     python3 lineage_use_v2.py window.json --cut-ms 20
     python3 lineage_use_v2.py --batch windows.jsonl
 
+The card is one window. The wait-closed loop is lineage_loop_v2.py.
+
 License: Fudoshin Research reference (Vektra Industries).
 """
 

@@ -235,7 +235,7 @@ A later study may claim Stage F only if all of the following hold.
 1. **Log** `TelemetryRecord` every controller cycle for at least three disjoint weeks.
 2. **Fit** weeks 1–2. Allowed fits: (a) official α*, β* held fixed, fit only `(λ_H, λ_E, λ_D)` on the simplex `λ_H+λ_E+λ_D ≤ 1`, or (b) linear instrument `Q_lin` for new α, β. Forbidden: fitting α, β inside the quadratic and calling that the law.
 3. **Predict** week 3.
-4. **Target must be exogenous.** Allowed targets: operator capacity rating, next-window task-success rate, next-window measured throughput. Forbidden: using computed `Q` or `Q_eff` as its own target.
+4. **Target must be exogenous.** Preferred: next-window measured sojourn and miss rate (the wait-loop already uses these; see `LINEAGE_CLOSED_LOOP.md`). Also allowed: operator capacity rating, next-window task-success rate, next-window measured throughput. Forbidden: using computed `Q` or `Q_eff` as its own target.
 5. **Pass:** held-out `R² > 0.5` on the chosen target, plus a published residual plot.
 6. **Misses stay on the register.** A failed week-3 prediction is a miss, not a quiet rewrite of α*.
 

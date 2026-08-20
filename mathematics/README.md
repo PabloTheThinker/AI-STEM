@@ -20,6 +20,7 @@ The current law is the Lineage Equation. The operator instrument is [`canon/LINE
 | Tandem sojourn, Kingman, mean SLA | [`lineage-papers/LINEAGE_TANDEM_KINGMAN_QOS.md`](lineage-papers/LINEAGE_TANDEM_KINGMAN_QOS.md) then [`lineage-papers/reference/lineage_network_v2.py`](lineage-papers/reference/lineage_network_v2.py) |
 | Pareto / Amdahl / PK / miss tail | [`lineage-papers/LINEAGE_PARETO_AMDAHL_PK.md`](lineage-papers/LINEAGE_PARETO_AMDAHL_PK.md) then [`lineage-papers/reference/lineage_qos_v2.py`](lineage-papers/reference/lineage_qos_v2.py) |
 | Traffic correction + simulation (Stage D) | [`lineage-papers/LINEAGE_TRAFFIC_AND_SIMULATION.md`](lineage-papers/LINEAGE_TRAFFIC_AND_SIMULATION.md) then [`lineage-papers/reference/lineage_traffic_v2.py`](lineage-papers/reference/lineage_traffic_v2.py), [`lineage-papers/reference/lineage_sim_v2.py`](lineage-papers/reference/lineage_sim_v2.py) |
+| Wait-closed loop (measure → act → measure) | [`lineage-papers/LINEAGE_CLOSED_LOOP.md`](lineage-papers/LINEAGE_CLOSED_LOOP.md) then [`lineage-papers/reference/lineage_loop_v2.py`](lineage-papers/reference/lineage_loop_v2.py) |
 | Runnable law check | [`lineage-papers/reference/lineage_capacity_v2.py`](lineage-papers/reference/lineage_capacity_v2.py) |
 | Formal system (optional) | [`canon/AXIOMATIC_SYSTEM.md`](canon/AXIOMATIC_SYSTEM.md) then [`lineage-papers/reference/ams_kernel_v2.py`](lineage-papers/reference/ams_kernel_v2.py) |
 | Doctrinal front door | [`canon/AGENT_MATHEMATICS_CANON.md`](canon/AGENT_MATHEMATICS_CANON.md) |
@@ -60,7 +61,8 @@ Cognitive mass `M` is structural inertia. Cognitive momentum `Π` is directed fl
 | Tandem / Kingman / mean SLA (all-hot) | **C** | `W_net = T/(1−Π)` — demoted to upper bound by the traffic correction. |
 | Pareto / Amdahl / PK / tail | **C** | Wall invariance, exact levers, hypoexponential tail. Numbers corrected below. |
 | Traffic-equation tandem + DES validation | **D** | `ρ_ℓ = λτ_ℓ`. Working point under mean SLA (`0.345 s`); tail 0.301 survives. Simulation matches to 0.6% and rejects all-hot by 23%. First exogenous check in the program. |
-| Live held-out prediction | not yet F | Protocol is written; bundle is not run |
+| Wait-closed loop | **D** | Plant is measured sojourn. Controller does not see `Q`. Hot window sheds; official hint still cuts. Tail not closed. Simulated plant, not live. |
+| Live held-out prediction | not yet F | Protocol is written; preferred target is next-window measured sojourn / miss rate |
 | Full organism `𝒪_t` | C | Specified; not live-populated |
 | Multi-agent `Q_team` | **C** | Shared-fabric bottleneck + isolated RMS; textbook sum-of-`Q` form retired |
 

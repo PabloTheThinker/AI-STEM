@@ -25,6 +25,7 @@ Files:
 - `../lineage-papers/LINEAGE_TANDEM_KINGMAN_QOS.md` — Jackson tandem sojourn, Kingman variability, mean delay SLA `Π*`.
 - `../lineage-papers/LINEAGE_PARETO_AMDAHL_PK.md` — required shed/cut, Amdahl slack, Pollaczek–Khinchine, hypoexponential miss probability.
 - `../lineage-papers/LINEAGE_TRAFFIC_AND_SIMULATION.md` — traffic-equation correction (`ρ_ℓ = λτ_ℓ`) and the first exogenous validation: a seeded discrete-event simulation. Stage D.
+- `../lineage-papers/LINEAGE_CLOSED_LOOP.md` — wait-closed loop: measure sojourn, act, measure again. Official `Q` is audit. Stage D on a simulated plant.
 - `AGENT_MATHEMATICS_CANON.md` — canonical doctrinal entry point for the full packet, unifying the staircase, proof-maturity logic, reading modes, and how the current Lineage work fits into the overall research program.
 - `AGENT_MATHEMATICS_PROOF_STATUS_REGISTER.md` — explicit maturity register grading major laws, state objects, variable families, and research claims against the packet’s proof ladder, with promotion triggers for each.
 - `AGENT_MATHEMATICS_EXPERIMENTAL_PROTOCOL.md` — stage-gated evidence workflow for promoting concepts through the proof ladder, including experiment bundles, artifact requirements, pass/fail rules, and standard study types.
