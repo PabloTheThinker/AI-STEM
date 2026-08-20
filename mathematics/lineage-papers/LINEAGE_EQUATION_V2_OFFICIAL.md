@@ -5,7 +5,7 @@
 **Status:** Canonical (supersedes draft paper `lineage-equation-paper.md` for formal claims)  
 **Version:** 2.0.0  
 **Date:** 2026-07-15  
-**Division:** Vektra Technologies — AI Division (AI-STEM mathematics packet)  
+**Division:** Fudoshin Research — Vektra Industries  
 **Implementation:** `mathematics/lineage-papers/reference/lineage_capacity_v2.py`
 
 ---
@@ -63,7 +63,7 @@ In special relativity, total energy \(E\), rest mass \(m\), and momentum magnitu
 E^{2}=(pc)^{2}+(mc^{2})^{2}.
 \]
 
-Primary sources: Einstein (1905); standard textbook form of the energy–momentum relation (see AI-STEM `mathematics/canon/SOURCES.md` §§18–19). We use this **only** as a homogeneous quadratic composition of a “rest” term and a “transport” term.
+Primary sources: Einstein (1905); standard textbook form of the energy–momentum relation (see `mathematics/canon/SOURCES.md` §§18–19). We use this **only** as a homogeneous quadratic composition of a “rest” term and a “transport” term.
 
 ### 2.2 Graph Laplacian quadratic form
 
@@ -422,5 +422,5 @@ Material changes to Definition 1, Theorems 1–5, or official \((\alpha^{\star},
 
 ---
 
-*Vektra Technologies — AI-STEM · Lineage Equation Official Specification v2.0*  
-*Correspondence: internal AI Division / Pablo Navarro*
+*Fudoshin Research — Vektra Industries · Lineage Equation Official Specification v2.0*  
+*Correspondence: research@vektraindustries.com / Pablo Navarro*

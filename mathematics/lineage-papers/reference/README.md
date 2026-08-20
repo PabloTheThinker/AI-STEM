@@ -1,5 +1,7 @@
 # Lineage Equation reference (v2)
 
+**Fudoshin Research · Vektra Industries**
+
 Pure-Python official implementation of the Lineage Equation.
 
 - Spec: `../LINEAGE_EQUATION_V2_OFFICIAL.md`

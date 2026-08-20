@@ -24,7 +24,7 @@ Rest reduction (Π = 0):
 This module is intentionally free of numpy/scipy so it can be audited
 and embedded in constrained agent runtimes.
 
-License: Vektra Technologies research reference (AI-STEM).
+License: Fudoshin Research reference (Vektra Industries).
 """
 
 from __future__ import annotations

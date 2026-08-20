@@ -2385,4 +2385,4 @@ $$\phi_i = \sum_{S \subseteq A \setminus \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} [v
 
 **The Lineage Equation:**
 
-- Pablo Navarro, "The Lineage Equation: A Mathematical Framework for Cognitive Capacity in Autonomous Agent Architectures" (Vektra Technologies, 2026)
+- Pablo Navarro, "The Lineage Equation: A Mathematical Framework for Cognitive Capacity in Autonomous Agent Architectures" (Fudoshin Research, Vektra Industries, 2026)

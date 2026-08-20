@@ -1,42 +1,56 @@
 # AI S.T.E.M.
 
-**Science, Technology, Engineering & Mathematics for Artificial Intelligence**
+**Fudoshin Research · Vektra Industries**
 
-**Vektra Technologies | AI Division**
+Science, Technology, Engineering & Mathematics for minds under load.
 
 ---
 
 ## About
 
-This repository contains open research in mathematics, science, and engineering applied to artificial intelligence. The work spans original mathematical frameworks, bio-inspired architectures, cognitive science foundations, and cross-domain AI research.
+This repository is the open research corpus behind **Fudoshin Research**, the research lab of Vektra Industries. The scientific object is how artificial and hybrid minds think, decide, understand, and stay constrained under load.
 
-Everything here is the math and the science — the theoretical foundations behind building intelligent systems. No product code. No implementation details. Just the ideas.
+The **active program is mathematics**: Agent Mathematics, the Lineage Equation, and the proof-maturity ladder. Other domains remain as supporting papers. This is the math and the science — not product code.
 
-## Repository Structure
+Public lab face: [Fudoshin Research](https://github.com/PabloTheThinker/fudoshin-research).
+
+## Active program
 
 ### `mathematics/`
-Original mathematical frameworks for agent cognition and control systems.
 
-- **`canon/`** — The canonical mathematics research packet. Covers agent numeracy, arithmetic of state, algebra of invariants, geometry of state spaces, calculus and sensitivity, probability and estimation, control and dynamical systems, graph and network mathematics. Includes proof status registers and experimental protocols.
-- **`textbook/`** — A complete textbook building from first distinctions through the Lineage Equation.
-- **`lineage-papers/`** — Research papers on the Lineage Equation and CognitiveNet.
+The Fudoshin Research mathematics packet.
+
+- **`canon/`** — Canonical staircase from numeracy through multi-agent mathematics. Proof-status register, experimental protocol, organism equations, and first implementation specs.
+- **`textbook/`** — Pedagogical climb from first distinctions through the Lineage Equation.
+- **`lineage-papers/`** — Official Lineage Equation v2 specification, historical v1 paper, CognitiveNet roadmaps, and the pure-Python reference module.
+
+Normative math lives in `mathematics/lineage-papers/LINEAGE_EQUATION_V2_OFFICIAL.md`.
+
+## Supporting research
 
 ### `biology-inspired-ai/`
-Architectures derived from biological systems — virtual blood cells, virtual nervous systems, neural pulse signaling, immune system models, biological regeneration, homeostasis, and cellular replication applied to AI.
+
+Architectures derived from biological systems — virtual blood, virtual nervous systems, immune models, regeneration, homeostasis, and cellular replication.
 
 ### `cognitive-science/`
-Foundational research in emotional spectrum models, drive neuroscience, neural architecture, emotional development across lifespans, and living research system architecture.
 
-### `domain-research/`
-Cross-domain AI research spanning biology, chemistry, engineering, geopolitics, history, physics, politics, science, and space.
+Emotion, drive, neural architecture, lifespan development, and living research system architecture.
+
+### `ai-psychology/`
+
+Eight papers plus a textbook formalizing measurable agent psychology.
+
+### Domain stubs
+
+`ai-biology/`, `ai-chemistry/`, `ai-engineering/`, `ai-history/`, `ai-physics/`, `ai-science/`, and `ai-space/` are reserved packets. They are not yet populated.
 
 ## Philosophy
 
-Research should be open. The math doesn't care who reads it — it cares whether it's correct. We publish this work because the field moves faster when foundations are shared.
+Research should be open. The math does not care who reads it — it cares whether it is correct. We publish because the field moves faster when foundations are shared. Official maturity is the highest contiguous proof stage. Misses count.
 
 ## Author
 
-Pablo — Founder, Vektra Technologies
+Pablo — Fudoshin Research, Vektra Industries
 
 ## License
 

@@ -1,6 +1,8 @@
 # Mathematics Research Packet
 
-This directory contains the canonical mathematics research for agent cognition and control systems.
+**Fudoshin Research · Vektra Industries**
+
+This directory contains the canonical mathematics research for agent cognition and control systems. It is the S1 mathematical spine of Fudoshin Research.
 
 ## Goal
 

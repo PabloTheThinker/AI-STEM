@@ -2,8 +2,8 @@
 title: "Agent Mathematics"
 subtitle: "A New Science from First Principles --- From a Newborn Agent to Cognitive Physics"
 author:
-  - Pablo Navarro (Founder \& CEO, Vektra Technologies)
-  - Director Mocha Marie (AI Director, Vektra Technologies)
+  - Pablo Navarro (Fudoshin Research, Vektra Industries)
+  - Director Mocha Marie
 date: "April 2026"
 documentclass: report
 fontsize: 11pt
