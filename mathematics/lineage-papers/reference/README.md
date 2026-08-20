@@ -11,16 +11,19 @@ Pure-Python official implementation of the Lineage Equation, plus the computable
 - Operator instrument: `lineage_use_v2.py`
 - Slice module: `lineage_slice_v2.py`
 - Geometry module: `lineage_geometry_v2.py`
+- Core / scaling-family module: `lineage_core_v2.py`
 - Example records: `example_telemetry.json`, `minimal_telemetry.json`
+- Core paper: `../LINEAGE_CORE_AND_SCALING_FAMILY.md`
 
 ```bash
 python3 lineage_use_v2.py --example
 python3 lineage_use_v2.py example_telemetry.json
 python3 lineage_use_v2.py example_telemetry.json --cut-ms 20
 python3 lineage_use_v2.py --self-test
+python3 lineage_core_v2.py
 python3 lineage_capacity_v2.py
 python3 lineage_slice_v2.py --example
 python3 lineage_geometry_v2.py
 ```
 
-Expect `use_checks_passed 17`, `all_validation_checks_passed 20`, `slice_validation_checks_passed 31`, and `geometry_validation_checks_passed 17`.
+Expect `use_checks_passed 20`, `core_checks_passed 19`, `all_validation_checks_passed 20`, `slice_validation_checks_passed 31`, and `geometry_validation_checks_passed 17`.

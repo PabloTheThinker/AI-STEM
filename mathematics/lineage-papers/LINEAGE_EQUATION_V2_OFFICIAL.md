@@ -221,6 +221,8 @@ u=\mathrm{clip}(1-\lambda_H H-\lambda_E\hat E-\lambda_D D),\qquad
 
 Default fractions: \(\lambda_H=\lambda_E=\lambda_D=0.25\). Zone is a function of \(u\), not of \(\mathcal{Q}\). The operator entry point is `lineage_use_v2.py`.
 
+Clock-free companion (research, not this definition): \(q=\mathcal{Q}/r^{2}=\sqrt{\mathcal{M}^{2}+(\Pi/r)^{2}}\) and \(\varepsilon=\Pi/(\mathcal{M}r)\). Compare across clocks with \(q\). See `LINEAGE_CORE_AND_SCALING_FAMILY.md`.
+
 ### 4.5 Propagation bound derivation (three equivalent views)
 
 Let \(\tau^{\ast}=\max_\ell\tau_\ell\) in seconds.

@@ -13,7 +13,10 @@ One telemetry window in. A card out:
 
 | Field | Meaning |
 |---|---|
-| `Q` | capacity from the law. Dominated by rest. Not a health score. |
+| `Q` | capacity from the law. Dominated by rest. Not a health score. A clock times `q`. |
+| `q` | clock-free core `Q/r² ≈ M`. Compare minds across clocks with this. |
+| `eps` | load ratio `Π/(M r)`. Flux share of `Q²` is `ε²/(1+ε²)`. |
+| `regime` | `rest` / `mixed` / `transport` from `ε` |
 | `u` | usable fraction in `[0,1]`. This is the health number. |
 | `Q_eff` | `u · Q`. Report this next to `Q`. |
 | `zone` | `steady` / `guarded` / `repair` / `critical` from `u` |

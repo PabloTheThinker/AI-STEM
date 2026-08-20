@@ -25,6 +25,7 @@ from typing import Any, Mapping
 
 try:
     from lineage_capacity_v2 import usable_fraction
+    from lineage_core_v2 import core_q, little_L, load_ratio, regime
     from lineage_slice_v2 import (
         SliceResult,
         TelemetryRecord,
@@ -34,6 +35,7 @@ try:
 except ImportError:  # pragma: no cover
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from lineage_capacity_v2 import usable_fraction
+    from lineage_core_v2 import core_q, little_L, load_ratio, regime
     from lineage_slice_v2 import (
         SliceResult,
         TelemetryRecord,
@@ -187,23 +189,32 @@ def _action(rec: TelemetryRecord, out: SliceResult) -> str:
 def evaluate(rec: TelemetryRecord, warnings: list[str] | None = None) -> dict[str, Any]:
     """Dashboard card for one window. Law unchanged."""
     out = compute_slice(rec)
-    q = float(out.terms["Q"])
+    Q = float(out.terms["Q"])
     m_t = float(out.terms["M_tilde"])
     p_t = float(out.terms["Pi_tilde"])
-    q2 = q * q if q > 0.0 else 1.0
+    M = float(out.terms["M"])
+    Pi = float(out.terms["Pi"])
+    r = float(out.terms["r"])
+    q2 = Q * Q if Q > 0.0 else 1.0
+    eps = load_ratio(M, Pi, r) if M != 0.0 else float("inf")
+    q_core = core_q(M, Pi, r)
     bn = bottleneck(rec)
     warn = list(warnings or [])
     return {
         "schema": SCHEMA,
         "weight_table": out.weight_table,
-        "Q": q,
+        "Q": Q,
         "Q_eff": float(out.Q_eff),
         "E0": float(out.terms["rest_energy"]),
+        "q": q_core,
+        "eps": eps,
+        "L": little_L(Pi, 1.0 / r if r else 0.0),
+        "regime": regime(eps) if math.isfinite(eps) else "transport",
         "u": float(out.usable),
         "rest_share": (m_t * m_t) / q2,
         "transport_share": (p_t * p_t) / q2,
-        "M": float(out.terms["M"]),
-        "Pi": float(out.terms["Pi"]),
+        "M": M,
+        "Pi": Pi,
         "nu_star_hz": float(out.terms["nu_star"]),
         "zone": out.zone,
         "hint": out.hint,
@@ -222,7 +233,7 @@ def evaluate_mapping(data: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def compare(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:
-    keys = ("Q", "Q_eff", "u", "E0", "rest_share", "transport_share", "Phi_org")
+    keys = ("Q", "Q_eff", "u", "E0", "q", "eps", "L", "rest_share", "transport_share", "Phi_org")
     delta = {k: float(after[k]) - float(before[k]) for k in keys}
     return {
         "schema": SCHEMA,
@@ -231,6 +242,7 @@ def compare(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:
         "delta": delta,
         "zone_changed": before["zone"] != after["zone"],
         "hint_changed": before["hint"] != after["hint"],
+        "regime_changed": before["regime"] != after["regime"],
         "bottleneck_changed": before["bottleneck"]["name"] != after["bottleneck"]["name"],
     }
 
@@ -268,6 +280,10 @@ def render_card(card: dict[str, Any]) -> str:
         f"Q               {card['Q']:.6f}",
         f"Q_eff           {card['Q_eff']:.6f}",
         f"u               {card['u']:.6f}",
+        f"q               {card['q']:.6f}",
+        f"eps             {card['eps']:.6f}",
+        f"L               {card['L']:.6f}",
+        f"regime          {card['regime']}",
         f"E0              {card['E0']:.6f}",
         f"rest_share      {card['rest_share']:.6f}",
         f"transport_share {card['transport_share']:.6f}",
@@ -318,6 +334,9 @@ def run_checks() -> dict[str, bool]:
     suite["bottleneck_retrieval"] = card["bottleneck"]["name"] == "retrieval"
     suite["shares_sum_one"] = abs(card["rest_share"] + card["transport_share"] - 1.0) < 1e-9
     suite["Q_eff_is_uQ"] = abs(card["Q_eff"] - card["u"] * card["Q"]) < 1e-9
+    suite["core_q_near_M"] = abs(float(card["q"]) - float(card["M"])) < 0.01
+    suite["regime_rest"] = card["regime"] == "rest"
+    suite["Q_is_r2_q"] = abs(float(card["Q"]) - float(card["q"]) * float(card["nu_star_hz"]) ** 2) < 1e-6
 
     messy = dict(
         identity_alert_count=1,
