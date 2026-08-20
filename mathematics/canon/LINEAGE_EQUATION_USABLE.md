@@ -63,6 +63,8 @@ python3 mathematics/lineage-papers/reference/lineage_use_v2.py --self-test
 
 The card is one window. The loop is measure → act → measure. That instrument is `lineage_loop_v2.py` (`--run`, `--compare`, `--replay`). Official `Q` stays on the tick as audit. The controller sees wait. See `LINEAGE_CLOSED_LOOP.md`.
 
+The bind is `lineage_bind_v2.py`. `--decide window.json` returns the lever an orchestrator should apply (`drop_low_priority`, `enable_retrieval_cache`, `freeze_writes`). See `LINEAGE_BIND.md`.
+
 ## Smallest window that still computes
 
 `minimal_telemetry.json`:
@@ -99,4 +101,4 @@ Q_eff  = u · Q
 - The official weights are not claimed true for every machine.
 - A green `zone` is not a live prediction. Stage F still needs an exogenous target. Preferred target: next-window measured sojourn / miss rate.
 - `--cut-ms` is a first-order preview, not a causal experiment.
-- The card does not close a loop. `lineage_loop_v2.py` does, on wait, on a simulated plant. Not live.
+- The card does not close a loop. `lineage_loop_v2.py` does, on wait, on a simulated plant. `lineage_bind_v2.py` applies the lever to a five-stage agent. Neither is a live product agent.

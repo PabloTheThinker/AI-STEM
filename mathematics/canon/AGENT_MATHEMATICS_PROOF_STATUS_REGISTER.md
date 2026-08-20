@@ -1180,6 +1180,30 @@ Promotion trigger:
 
 - Stage F: held-out next-window measured sojourn / miss rate, `R² > 0.5`. Stage G: apply the wait-loop lever on a live agent and check the sign of `ΔW`.
 
+## Part XVI. Bind: measured service, executable levers (2026-08-20)
+
+### 1. Five-stage agent
+
+Object:
+
+- In-process agent whose stages do work (corpus scan, graph walk, memory ring, sync, write). Service measured by clock. `Π` from bottleneck busy time. Wait controller unchanged. Apply is a bind: shed → drop low-priority jobs; cut → retrieval cache; repair → freeze writes. `--decide` is the socket.
+
+Current Stage:
+
+- **`D`**. Service is no longer `Exp(1/τ)`. Arrivals are still Poisson. Corpus is synthetic. Not F. Not G.
+
+Why:
+
+- Open loop stays over a plant-calibrated mean SLA. Wait-loop first action is `shed_load` / `drop_low_priority`; jobs in window fall and wait falls. Q-loop first action is `cut` / `enable_retrieval_cache`. Windows are valid slice records with `measured_wait_s`. 25 checks in `lineage_bind_v2.py`.
+
+Main missing evidence:
+
+- a live orchestrator calling `--decide` with logged sojourn from a product agent.
+
+Promotion trigger:
+
+- Stage F/G on that orchestrator: held-out sojourn, then an intervention whose sign matches the bind.
+
 ## Part XII. Register Governance Rule
 
 This document should be updated whenever one of the following happens:
