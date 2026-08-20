@@ -233,3 +233,8 @@ Those can be added next in a second research pass.
     DOI: https://doi.org/10.1214/aoms/1177706889
     Why it matters:
     - tandem waits; with Burke, the tagged job’s time in system is a hypoexponential sum.
+
+34. D. V. Lindley, `The theory of queues with a single server`, *Math. Proc. Camb. Phil. Soc.* 48 (1952)
+    DOI: https://doi.org/10.1017/S0305004100027638
+    Why it matters:
+    - the waiting-time recursion behind the discrete-event simulator: mechanism, not formula, generates the waits the theory must match.

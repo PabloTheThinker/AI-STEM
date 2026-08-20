@@ -36,7 +36,8 @@ try:
     )
     from lineage_network_v2 import DEFAULT_KAPPA, DEFAULT_W_MAX
     from lineage_ops_v2 import mm1_sojourn, ops_card
-    from lineage_qos_v2 import qos_action_text, qos_card
+    from lineage_qos_v2 import qos_action_text
+    from lineage_traffic_v2 import traffic_card
     from lineage_slice_v2 import (
         SliceResult,
         TelemetryRecord,
@@ -57,7 +58,8 @@ except ImportError:  # pragma: no cover
     )
     from lineage_network_v2 import DEFAULT_KAPPA, DEFAULT_W_MAX
     from lineage_ops_v2 import mm1_sojourn, ops_card
-    from lineage_qos_v2 import qos_action_text, qos_card
+    from lineage_qos_v2 import qos_action_text
+    from lineage_traffic_v2 import traffic_card
     from lineage_slice_v2 import (
         SliceResult,
         TelemetryRecord,
@@ -233,7 +235,7 @@ def evaluate(
     nu = float(out.terms["nu_star"])
     ops = ops_card(M, Pi, nu, float(out.usable))
     taus = record_taus(rec)
-    qos = qos_card(M, Pi, taus, float(out.usable), w_max, kappa, alpha)
+    qos = traffic_card(M, Pi, taus, float(out.usable), w_max, kappa, alpha)
     action = str(qos["network_action"])
     W = float(ops["W_sojourn"])
     tau_star = 1.0 / nu if nu else math.inf
@@ -277,6 +279,7 @@ def evaluate(
         "eta": ops["eta"],
         "W_sojourn": W,
         "W_net": W_net,
+        "W_net_upper": float(qos["W_net_upper"]),
         "T": float(qos["T"]),
         "kappa": float(qos["kappa"]),
         "W_max": float(qos["W_max"]),
@@ -402,7 +405,7 @@ def what_if_shed(
     u = float(before["u"])
     tau = 1.0 / nu if nu else math.inf
     taus = record_taus(rec)
-    qos = qos_card(M, new_pi, taus, u, w_max, kappa)
+    qos = traffic_card(M, new_pi, taus, u, w_max, kappa)
     after["Pi"] = new_pi
     after["eta"] = 1.0 - new_pi
     after["Lambda_job"] = lambda_job(M, new_pi, nu)
@@ -410,6 +413,7 @@ def what_if_shed(
     after["Lambda_W_net"] = float(qos["Lambda_W_net"])
     after["W_sojourn"] = mm1_sojourn(tau, new_pi) if math.isfinite(tau) else math.inf
     after["W_net"] = float(qos["W_net"])
+    after["W_net_upper"] = float(qos["W_net_upper"])
     after["Pi_star"] = float(qos["Pi_star"])
     after["shed_needed"] = float(qos["shed_needed"])
     after["cut_T_ms"] = float(qos["cut_T_ms"])
@@ -489,6 +493,7 @@ def render_card(card: dict[str, Any]) -> str:
         f"eta             {card['eta']:.6f}",
         f"W_sojourn       {card['W_sojourn']:.6f} s",
         f"W_net           {card['W_net']:.6f} s",
+        f"W_net_upper     {card['W_net_upper']:.6f} s",
         f"T               {card['T']:.6f} s",
         f"W_max           {card['W_max']:.6f} s",
         f"Pi_star         {card['Pi_star']:.6f}",
@@ -569,15 +574,18 @@ def run_checks() -> dict[str, bool]:
     ) < 1e-9
     suite["ops_sheds"] = card["ops_action"] == "shed_load"
     suite["hint_still_cuts"] = card["hint"] == "cut_bottleneck_latency"
-    suite["over_sla"] = card["over_sla"] is True
+    # Corrected traffic model: working point is UNDER the mean SLA.
+    suite["under_sla_traffic"] = card["over_sla"] is False
     suite["W_net_gt_single"] = float(card["W_net"]) > float(card["W_sojourn"])
-    suite["shed_needed_pos"] = float(card["shed_needed"]) > 0.02
-    suite["p_over_mid"] = (
-        card["p_over_sla"] is not None and 0.40 < float(card["p_over_sla"]) < 0.48
+    suite["upper_bounds_W_net"] = float(card["W_net_upper"]) > float(card["W_net"])
+    suite["shed_needed_zero"] = float(card["shed_needed"]) == 0.0
+    suite["p_over_tail_real"] = (
+        card["p_over_sla"] is not None and 0.28 < float(card["p_over_sla"]) < 0.32
     )
     meet = what_if_meet_sla(rec)
-    suite["meet_clears_sla"] = meet["after"]["over_sla"] is False
-    suite["meet_raises_LWnet"] = meet["delta"]["Lambda_W_net"] > 0.0
+    suite["meet_is_noop_under_sla"] = (
+        meet.get("meet_sla") is True and meet["delta"]["W_net"] == 0.0
+    )
 
     shed = what_if_shed(rec, 0.10)
     suite["shed_raises_LW"] = shed["delta"]["Lambda_W"] > 0.0

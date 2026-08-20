@@ -1053,28 +1053,32 @@ Promotion trigger:
 
 ## Part XIII. Tandem SLA and Pareto levers (2026-08-20)
 
-### 1. Jackson tandem sojourn
+> **Corrected same day (Part XIV).** The common-`Π` model below is an
+> upper bound, not the default. It overstated the working-point wait by
+> 22.8% and wrongly declared it over the mean SLA. The corrected model
+> was validated against a discrete-event simulation and holds Stage D.
+
+### 1. Jackson tandem sojourn (all-hot bound)
 
 Object:
 
-- `W_net = T/(1−Π)`, `Λ_W,net = M(1−Π)/T`, overestimate `T/τ*`.
+- `W_net_upper = T/(1−Π)`: every stage at the bottleneck's utilization.
 
 Current Stage:
 
-- `C`
+- `C` — retained as the exact worst case; demoted from default.
 
 Why:
 
-- Jackson (1957) + Burke (1956) under a common-`Π` reading. 14 checks in `lineage_network_v2.py`. Working `W_net = 0.423 s` against single-node `0.226 s`.
+- Jackson (1957) + Burke (1956) under a common-`Π` reading. 14 checks in `lineage_network_v2.py`. The reading was flagged in the paper and turned out to be worth 78 ms of phantom wait; see Part XIV.
 
 Main missing evidence:
 
-- measured per-node utilization, not one flux scalar.
-- live sojourn vs predicted `T/(1−Π)`.
+- a live system where the fast stages actually carry foreign traffic (the only regime where this bound is tight).
 
 Promotion trigger:
 
-- exogenous end-to-end wait on held-out windows; `R² > 0.5` against `W_net`.
+- none sought; this is a bound, not a model.
 
 ### 2. Required shed / cut and Amdahl slack
 
@@ -1119,6 +1123,38 @@ Main missing evidence:
 Promotion trigger:
 
 - Kolmogorov–Smirnov against the hypoexponential on live waits; or a declared non-exponential `κ` with measured SCVs.
+
+## Part XIV. Traffic correction and simulated validation (2026-08-20)
+
+### 1. Single-stream traffic model
+
+Object:
+
+- `ρ_ℓ = λ τ_ℓ` with `λ = Π ν*`; `W_net = Σ τ_ℓ/(1−λτ_ℓ)`; levers `δ*`, cut by bisection; hypoexponential tail with rates `1/τ_ℓ − λ`.
+
+Current Stage:
+
+- **`D`** — first exogenous validation in the program.
+
+Why:
+
+- A seeded discrete-event simulator (Lindley tandem recursion, 70,000 measured jobs, no sojourn formula inside) reproduced the predicted mean to 0.6% and the predicted 400 ms miss fraction to 0.0007, at two load levels. The all-hot model missed mechanism by 23% and was rejected by the same run.
+
+What the correction changed:
+
+- Working point is **under** the 400 ms mean SLA (`0.345 s`), `Π* = 0.568` not `0.4375`, `δ* = 0`, throughput unbound by the SLA. The tail conclusion survived: `p_miss = 0.301`; a 10% miss budget still allows `Π ≈ 0.010`.
+
+Main missing evidence:
+
+- Stage D is still synthetic: Poisson arrivals and exponential services are the assumed mechanism. Stage F needs live per-stage waits.
+
+Promotion trigger:
+
+- live end-to-end waits: mean within 10% of `W_net` and KS non-rejection of the hypoexponential, on held-out windows.
+
+### 2. Program-level lesson
+
+Every earlier check tested formulas against themselves. The one reading that was flagged in prose but never priced ("Π common across nodes") flipped an operational verdict when priced. Rule going forward: **a named reading must either carry a bound or a mechanism test before its numbers reach a card.**
 
 ## Part XII. Register Governance Rule
 

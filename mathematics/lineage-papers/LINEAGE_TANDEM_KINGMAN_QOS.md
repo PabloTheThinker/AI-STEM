@@ -6,6 +6,14 @@
 **Implementation:** `mathematics/lineage-papers/reference/lineage_network_v2.py`  
 **Does not change:** Official Specification v2.0.
 
+> **Correction (same day).** This paper loads every node at the bottleneck's
+> utilization. A single stream through five stages actually gives `ρ_ℓ = λ τ_ℓ`
+> (Jackson traffic equation), which makes this model an **upper bound** that
+> overstates the working-point wait by 22.8% and wrongly declares it over the
+> mean SLA. The corrected default, validated by discrete-event simulation, is
+> `LINEAGE_TRAFFIC_AND_SIMULATION.md`. The theorems below are kept as the exact
+> all-hot worst case (`W_net_upper` on the operator card).
+
 ---
 
 ## Abstract

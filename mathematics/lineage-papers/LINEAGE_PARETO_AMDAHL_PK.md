@@ -7,6 +7,14 @@
 **Depends on:** `LINEAGE_TANDEM_KINGMAN_QOS.md`  
 **Does not change:** Official Specification v2.0.
 
+> **Correction (same day).** The numbers below inherit the all-hot reading and
+> are the **upper-bound** case. Under the single-stream traffic equations the
+> working point is under the mean SLA (`W_net = 0.345 s`, `Π* = 0.568`,
+> `δ* = 0`), while the tail conclusion survives (`p_miss = 0.301`; a 10% miss
+> budget still allows `Π ≈ 0.010`). Corrected model and simulation:
+> `LINEAGE_TRAFFIC_AND_SIMULATION.md`. The wall-invariance, Amdahl, PK, and
+> hypoexponential theorems are unchanged as mathematics.
+
 ---
 
 ## Abstract

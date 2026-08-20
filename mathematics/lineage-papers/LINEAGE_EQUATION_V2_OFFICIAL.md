@@ -225,7 +225,7 @@ Clock-free companion (research, not this definition): \(q=\mathcal{Q}/r^{2}=\sqr
 
 Operational companion from Little / renewal-reward (research): \(\Lambda=M\nu^{\ast}\) in hertz. Official \(\mathcal{Q}=\nu^{\ast}\Lambda_{q}\). See `LINEAGE_OPERATIONS_LITTLE_RENEWAL.md`.
 
-Tandem / SLA companion (research): sojourn is \(\sum\tau_\ell/(1-\Pi)\), not the bottleneck-only wait. Required shed and cut, Amdahl slack, and the Jackson miss tail are in `LINEAGE_TANDEM_KINGMAN_QOS.md` and `LINEAGE_PARETO_AMDAHL_PK.md`. They do not change Definition 1.
+Tandem / SLA companion (research): the job's wait is the sum over the five logged stages with per-node loads \(\rho_\ell=\lambda\tau_\ell\), \(\lambda=\Pi\nu^{\ast}\) — validated by discrete-event simulation in `LINEAGE_TRAFFIC_AND_SIMULATION.md` (Stage D). The all-hot bound \(\sum\tau_\ell/(1-\Pi)\) and the SLA levers are in `LINEAGE_TANDEM_KINGMAN_QOS.md` and `LINEAGE_PARETO_AMDAHL_PK.md`. None of this changes Definition 1.
 
 ### 4.5 Propagation bound derivation (three equivalent views)
 
@@ -441,8 +441,9 @@ Algebraic identities (Theorems 1–4) are not empirical claims; they are checked
 | Validation entrypoint | `python3 …/lineage_capacity_v2.py` |
 | Computable slice (telemetry → numbers) | `mathematics/canon/CONCRETE_COMPUTABLE_SLICE.md` + `reference/lineage_slice_v2.py` |
 | Geometry / field / collective | `mathematics/lineage-papers/LINEAGE_GEOMETRY_FIELD_AND_COLLECTIVE.md` + `reference/lineage_geometry_v2.py` |
-| Tandem / Kingman / mean SLA | `LINEAGE_TANDEM_KINGMAN_QOS.md` + `reference/lineage_network_v2.py` |
+| Tandem / Kingman / mean SLA (all-hot bound) | `LINEAGE_TANDEM_KINGMAN_QOS.md` + `reference/lineage_network_v2.py` |
 | Pareto / Amdahl / PK / tail | `LINEAGE_PARETO_AMDAHL_PK.md` + `reference/lineage_qos_v2.py` |
+| Traffic correction + simulation (Stage D) | `LINEAGE_TRAFFIC_AND_SIMULATION.md` + `reference/lineage_traffic_v2.py`, `reference/lineage_sim_v2.py` |
 | Engine implementation (product) | external `lineage-engine` (`capacity.py`, `coupling.py`) — should converge to v2 defaults |
 | Draft narrative paper | `lineage-equation-paper.md` |
 

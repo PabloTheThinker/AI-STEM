@@ -22,8 +22,9 @@ One telemetry window in. A card out:
 | `Lambda_W` | single-node responsiveness `M (1−Π) ν*`. Partitions with `Λ_job`. |
 | `Lambda_W_net` | tandem responsiveness `M / W_net`. This is the wait the job feels. |
 | `ops_action` | working lever: mean SLA first, then `Λ_W`. `hint` is still the official-`Q` score. |
-| `W_net` | Jackson tandem sojourn `T/(1−Π)` (or Kingman if `κ ≠ 1`). |
-| `shed_needed` / `cut_T_ms` | exact levers that put `W_net` on `W_max`. Same `Λ_W,net`, different `Λ_job`. |
+| `W_net` | single-stream tandem sojourn `Σ τ_ℓ/(1−λτ_ℓ)` with `λ = Π ν*`. Simulation-validated. |
+| `W_net_upper` | all-hot bound `T/(1−Π)` — every stage at the bottleneck's heat. Worst case, not the default. |
+| `shed_needed` / `cut_T_ms` | exact levers (bisection) that put `W_net` on `W_max`. 0 when already under. |
 | `p_over_sla` | `P(W_net > W_max)` under Jackson-exponential sojourns. A mean cap is not this. |
 | `eta` | `1 − Π`. Stability margin under the utilization reading. |
 | `W_sojourn` | single-node M/M/1 sojourn `τ*/(1−Π)` in seconds. |
