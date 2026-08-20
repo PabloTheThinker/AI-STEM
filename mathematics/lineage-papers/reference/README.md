@@ -12,10 +12,11 @@ Pure-Python official implementation of the Lineage Equation, plus the computable
 - Example record: `example_telemetry.json`
 
 ```bash
+python3 ams_kernel_v2.py
 python3 lineage_capacity_v2.py
 python3 lineage_slice_v2.py --example
 python3 lineage_slice_v2.py --json example_telemetry.json
 python3 lineage_geometry_v2.py
 ```
 
-Expect `all_validation_checks_passed 16`, `slice_validation_checks_passed 31`, and `geometry_validation_checks_passed 17`.
+Expect `ams_theorems_passed 11`, `all_validation_checks_passed 16`, `slice_validation_checks_passed 31`, and `geometry_validation_checks_passed 17`.

@@ -1023,7 +1023,35 @@ Promotion trigger:
 
 - measured `η` within 20% of `(ν_team/ν_fast)²` on a shared channel.
 
-## Part XI. Register Governance Rule
+## Part XI. Axiomatic System (2026-08-20)
+
+### 1. AMS Books I–IV
+
+Object:
+
+- Formal system: Peano `ℕ`, ordered field `ℝ`, typed agent arithmetic, 2-dimensional capacity plane.
+
+Current Stage:
+
+- `C` for the axioms and the internal theorems (I.1, II.1–2, III.1–3, IV.1–5).
+- Not `I`. The system is new; it has not been the reusable backbone of an independent literature.
+
+Why it has reached that stage:
+
+- Theorem I.1 is the standard Peano proof of `1+1=2`.
+- Theorem IV.1 is Pythagoras on a stated inner-product space. The Lineage Equation is that theorem, not an extra axiom.
+- `ams_kernel_v2.py` constructs `ℕ` from `0` and `S` (no integer literals in the proof object) and checks IV.1–IV.3.
+
+Main missing evidence:
+
+- a proof assistant encoding (Lean / Metamath), not only a Python kernel.
+- Book V (graphs, teams) written at the same standard.
+
+Promotion trigger:
+
+- Book V with the same axiom–definition–theorem shape; an external checker.
+
+## Part XII. Register Governance Rule
 
 This document should be updated whenever one of the following happens:
 
